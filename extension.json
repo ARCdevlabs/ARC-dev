@@ -1,0 +1,16 @@
+{
+    "extensions": [
+        {
+            "builtin": "True",
+            "type": "extension",
+            "rocket_mode_compatible": "True",
+            "name": "ARC-dev",
+            "description": "ARC-dev",
+            "author": "Nguyễn Thanh Sơn",
+            "url": "https://github.com/ARCdevlabs/ARC-dev.git",
+            "website": "https://github.com/ARCdevlabs/ARC-extension",
+            "image": "",
+            "dependencies": []
+        }
+    ]
+}
