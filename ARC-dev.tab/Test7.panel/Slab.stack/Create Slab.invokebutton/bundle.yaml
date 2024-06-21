@@ -1,0 +1,7 @@
+title:   
+  en_us: Create Slab
+  ja: 更新中..Thêm View vào Sheet
+author: 
+  - "Phan Mẫu Cường"
+assembly: ADSK.JExtRAC.AutomaticFloor
+command_class: CmdCreateStructuralFloor
