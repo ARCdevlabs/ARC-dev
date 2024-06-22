@@ -42,6 +42,16 @@ def create_area (idoc, area_view, uv_point):
     return area
 
 
+
+import clr
+clr.AddReference('RevitAPI')
+clr.AddReference('RevitServices')
+
+from Autodesk.Revit.DB import IFailuresPreprocessor, FailureProcessingResult, BuiltInFailures
+
+
+
+
 level_of_view = active_view.GenLevel
 
 id_level_of_view = level_of_view.Id
@@ -54,44 +64,43 @@ for tung_area_scheme in all_area_schemes:
 trans_group = TransactionGroup(doc, "Create slab")
 trans_group.Start()
 
-t1 = Transaction (doc, "Tạo slab (tạo plan cho area và đặt area separation)")
+from pyrevit import revit
 
-t1.Start()
+with revit.Transaction("Tạo area plan và đặt area separation", swallow_errors=True):
 
-area_plan = create_new_area_plan(doc,area_scheme.Id,id_level_of_view)   
-  
-level_plane = level_of_view.GetPlaneReference()
+    area_plan = create_new_area_plan(doc,area_scheme.Id,id_level_of_view)   
+    
+    level_plane = level_of_view.GetPlaneReference()
 
-sketch_plane = SketchPlane.Create(doc, level_plane)
+    sketch_plane = SketchPlane.Create(doc, level_plane)
 
-curve_array = Autodesk.Revit.DB.CurveArray()
+    curve_array = Autodesk.Revit.DB.CurveArray()
 
-list_area_separation = []
-list_area = []
+    list_area_separation = []
+    list_area = []
 
-all_beam_in_view = get_all_element_of_category_in_view (doc, active_view, BuiltInCategory.OST_StructuralFraming)
+    all_beam_in_view = get_all_element_of_category_in_view (doc, active_view, BuiltInCategory.OST_StructuralFraming)
 
-for i in all_beam_in_view:
+    for i in all_beam_in_view:
 
-    beam_id = i.Id
+        beam_id = i.Id
 
-    curve = i.Location.Curve
+        curve = i.Location.Curve
 
-    curve_direction = curve.Direction
+        curve_direction = curve.Direction
 
-    start_point = curve.GetEndPoint(0)
+        start_point = curve.GetEndPoint(0)
 
-    end_point = curve.GetEndPoint(1)
+        end_point = curve.GetEndPoint(1)
 
-    line = Autodesk.Revit.DB.Line.CreateBound(XYZ(start_point.X,start_point.Y,0),XYZ(end_point.X,end_point.Y,0))
+        line = Autodesk.Revit.DB.Line.CreateBound(XYZ(start_point.X,start_point.Y,0),XYZ(end_point.X,end_point.Y,0))
 
-    curve_array.Append(line)
+        curve_array.Append(line)
 
-for cur in curve_array:
-    area_separation = doc.Create.NewAreaBoundaryLine(sketch_plane, cur, area_plan)
-    list_area_separation.append(area_separation)
+    for cur in curve_array:
+        area_separation = doc.Create.NewAreaBoundaryLine(sketch_plane, cur, area_plan)
+        list_area_separation.append(area_separation)
 
-t1.Commit()
 
 try:
     def main():
@@ -126,28 +135,27 @@ try:
                         return None
                 
                 
-                t3 = Transaction (doc, "Tạo slab (tạo area khi pick vào ô dầm)")
-                t3.Start()
-                try:
+                with revit.Transaction("tạo area khi pick vào ô dầm", swallow_errors=True):
+                    try:
 
-                    return_point = module.pick_point_with_nearest_snap(uidoc)
+                        return_point = module.pick_point_with_nearest_snap(uidoc)
 
-                except:
-                    
-                    return_point = False
+                    except:
+                        
+                        return_point = False
 
-                if return_point != False:
-                    
-                    UV_point = UV(return_point.X,return_point.Y)
+                    if return_point != False:
+                        
+                        UV_point = UV(return_point.X,return_point.Y)
 
-                    new_area = create_area(doc,area_plan, UV_point)
-                    list_area.append(new_area)
+                        new_area = create_area(doc,area_plan, UV_point)
+                        list_area.append(new_area)
 
-                else:
+                    else:
 
-                    new_area = None
+                        new_area = None
 
-                t3.Commit()
+
 
                 list_type_floors = module.all_type_of_class_and_OST(doc, FloorType, BuiltInCategory.OST_Floors)
                 for floor in list_type_floors:
@@ -158,12 +166,9 @@ try:
                 
                 if new_area != None:
 
-                    t4 = Transaction (doc, "Tạo slab (tạo slab sau khi tạo xong area")
-                    t4.Start()
+                    with revit.Transaction("Tạo sàn từ area", swallow_errors=False):
 
-                    create_slab (new_area, type_floor_id, height_offset, id_level_of_view)
-
-                    t4.Commit()
+                        create_slab (new_area, type_floor_id, height_offset, id_level_of_view)
 
                 else:
                     break
