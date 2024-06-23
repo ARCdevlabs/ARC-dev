@@ -92,6 +92,20 @@ class Server(forms.Reactive):
         self._status = value
 
 
+class MyPath(forms.Reactive):
+    def __init__(self, path):
+        self._path = path
+
+    @forms.reactive
+    def path(self):
+        return self._path
+
+    @path.setter
+    def path(self, value):
+        self._path = value
+
+
+
 class Mod(object):
     def __init__(self, abbrev, color):
         # "abbrev_son" và "color" được khai báo trong phần {Binding... của của WPF, ví dụ bên dưới:
@@ -206,6 +220,8 @@ class ViewModel(forms.Reactive):
             Tag('Tag 3', []),
         ]
 
+        self.my_path = MyPath(r'C:\Users\ADMIN\AppData\Roaming\pyRevit\Extensions\ARC-dev.extension\ARC-dev.tab\Test7.panel\Slab.stack\Test XAML_frompyrevit.pushbutton\cuoi.gif')
+        # print MyPath(r'C:\Users\ADMIN\AppData\Roaming\pyRevit\Extensions\ARC-dev.extension\ARC-dev.tab\Test7.panel\Slab.stack\Test XAML_frompyrevit.pushbutton\cuoi.gif')
     @forms.reactive
     def title(self):
         return self._title

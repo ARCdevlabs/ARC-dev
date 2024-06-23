@@ -3,9 +3,9 @@
         ShowInTaskbar="False"
         WindowStartupLocation="CenterScreen"
         HorizontalContentAlignment="Center"
-        SizeToContent="Height" Width="900"
+        SizeToContent="Height" Width="865"
         ResizeMode="NoResize"
-        Title="XAML Tests">
+        Title="XAML Tests" Height="887">
     <Window.Resources>
 
         <DataTemplate x:Key="SupportsItem">
@@ -23,7 +23,7 @@
                 </DataTrigger>
                 <DataTrigger Binding="{Binding}" Value="Core_Son">
                     <Setter TargetName="itemborder" Property="Background" Value="#b1b695" />
-                    
+
                 </DataTrigger>
                 <DataTrigger Binding="{Binding}" Value="CLI_Son">
                     <Setter TargetName="itemborder" Property="Background" Value="#a690a4" />
@@ -108,7 +108,11 @@
             <ColumnDefinition />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <!-- Hàng này sẽ mở rộng để lấp đầy không gian -->
+        </Grid.RowDefinitions>
+
         <StackPanel Grid.Column="0">
             <GroupBox x:Name="empinfo" Header="Muti-Value Data Binding" Margin="0,0,0,10">
                 <StackPanel Margin="5">
@@ -198,7 +202,8 @@
                      Margin="0,10,10,0"
                      Grid.Column="0"
                      SelectionMode="Extended"
-                     ItemTemplate="{StaticResource TagListItemTemplate_SonTest}"> <!-- ItemTemplate: Đã khai báo stacticResource ở đầu code rồi-->
+                     ItemTemplate="{StaticResource TagListItemTemplate_SonTest}">
+                    <!-- ItemTemplate: Đã khai báo stacticResource ở đầu code rồi-->
                     <!-- SelectionMode="Extended" có nghĩa là có thể chọn nhiều dòng, nhấn giữ shift để chọn nhanh, còn 2 phương thức khác "Multiple" và "Single" -->
                     <ListBox.Resources>
                         <!-- ContextMenu: Đây là khai báo khi bấm vào chuột phải-->
@@ -218,6 +223,31 @@
             <GroupBox Header="Heavy Revit Work" Padding="10">
                 <Button Content="Do Revit Work" Height="30" Click="do_revit_work"/>
             </GroupBox>
-        </StackPanel>   
+        </StackPanel>
+        <StackPanel Grid.Column="2">
+            <GroupBox Grid.Column="2" 
+                  Padding="10"
+                  Header="Hình Ảnh Bựa"
+                  Margin="10,0,10,0"
+                  VerticalAlignment="Top"
+                  HorizontalAlignment  ="Stretch">
+                      <MediaElement Name="gif_bua"
+                            Source= 'C:\Users\ADMIN\AppData\Roaming\pyRevit\Extensions\ARC-dev.extension\ARC-dev.tab\Test7.panel\Slab.stack\Test XAML_frompyrevit.pushbutton\cuoi.gif'
+                            LoadedBehavior="Play"
+                            Stretch="Uniform" />
+             </GroupBox>
+            <GroupBox Grid.Column="2" 
+                  Padding="10"
+                  Header="Hình Ảnh Bựa"
+                  Margin="10,0,10,0"
+                  VerticalAlignment="Top"
+                  HorizontalAlignment  ="Stretch">
+                <Image Name="pepe_bua"
+                       Source="C:\Users\ADMIN\AppData\Roaming\pyRevit\Extensions\ARC-dev.extension\ARC-dev.tab\Test7.panel\Slab.stack\Test XAML_frompyrevit.pushbutton\pepe_cai_bang.jpg"/>
+                
+            </GroupBox>
+
+        </StackPanel>
+
     </Grid>
 </Window>
