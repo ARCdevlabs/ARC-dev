@@ -2,7 +2,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         ShowInTaskbar="False"
         WindowStartupLocation="CenterScreen"
-        HorizontalContentAlignment="Center" Height="993" Width="686">
+        HorizontalContentAlignment="Center" Height="2000" Width="1500">
     <Window.Resources>
         <Style x:Key="ClearButton" TargetType="Button">
             <Setter Property="Background" Value="White"/>
