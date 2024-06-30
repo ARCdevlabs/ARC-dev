@@ -3,6 +3,9 @@
         ShowInTaskbar="False"
         WindowStartupLocation="CenterScreen"
         HorizontalContentAlignment="Center"
+        SizeToContent="Height" Width="1000"
+        ResizeMode="NoResize"
+        Title="XAML Tests" Height="1000" Margin="10,10,10,10" MaxWidth="1000" MaxHeight="1000">
     <Window.Resources>
 
         <DataTemplate x:Key="SupportsItem">
@@ -261,6 +264,36 @@
             </GroupBox>
         </StackPanel>
 
+        <StackPanel Grid.Column="2">
+            <GroupBox
+
+                  Padding="10"
+                  Header="Hình Ảnh Bựa"
+                  VerticalAlignment="Top"
+                  Height="200"
+                  HorizontalAlignment  ="Stretch">
+                <MediaElement Name="gif_bua"
+                            Source= 'C:\Users\ADMIN\AppData\Roaming\pyRevit\Extensions\ARC-dev.extension\ARC-dev.tab\Test7.panel\Slab.stack\Test XAML_frompyrevit.pushbutton\cuoi.gif'
+                            LoadedBehavior="Play"
+                            Stretch="Uniform" />
+            </GroupBox>
+            
+            <Button x:Name="new_button"
+                    Content= "{Binding binding_title_new_button}"
+                    HorizontalAlignment="Stretch" VerticalAlignment="Center"
+                    Height="30" 
+                    Click="click_button_cua_son"/>
+            <TextBox x:Name="search_tb" 
+                     Height="25"
+                     VerticalContentAlignment="Center"/>
+
+            <ListView x:Name="list_lb"
+                      SelectionMode="Extended"
+                      HorizontalContentAlignment="Stretch"
+                      ScrollViewer.VerticalScrollBarVisibility="Visible"
+                      Height="500"
+                      >
+            </ListView>
         </StackPanel>
 
     </Grid>

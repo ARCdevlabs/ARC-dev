@@ -245,6 +245,9 @@ class ViewModel(forms.Reactive):
         self.my_path = MyPath(r'C:\Users\ADMIN\AppData\Roaming\pyRevit\Extensions\ARC-dev.extension\ARC-dev.tab\Test7.panel\Slab.stack\Test XAML_frompyrevit.pushbutton\cuoi.gif')
         # print MyPath(r'C:\Users\ADMIN\AppData\Roaming\pyRevit\Extensions\ARC-dev.extension\ARC-dev.tab\Test7.panel\Slab.stack\Test XAML_frompyrevit.pushbutton\cuoi.gif')
 
+        # self.title_button_son = \
+        #     ButtonData_Cua_Son("Button SON")
+
     @forms.reactive
     def title(self):
         return self._title
