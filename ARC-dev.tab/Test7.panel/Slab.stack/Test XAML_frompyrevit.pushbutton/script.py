@@ -15,11 +15,8 @@ from pyrevit import coreutils
 from pyrevit import revit, DB
 from pyrevit import forms
 from pyrevit import script
-
-
 logger = script.get_logger()
 output = script.get_output()
-
 
 class NestedObject(forms.Reactive): #Điều này có nghĩa là NestedObject 
                                     #là một lớp con của forms.Reactive. Nói cách khác,
@@ -47,11 +44,35 @@ class ButtonData(forms.Reactive):
         self.nested = nested
 
     @forms.reactive
-    def title(self):
+    def son_title_trang(self):
         return self._title
 
-    @title.setter
-    def title(self, value):
+    @son_title_trang.setter
+    def son_title_trang(self, value):
+        self._title = value
+
+class Nested_Data_Son(forms.Reactive):
+    def __init__(self, nested):
+        # self._text = text #_text quy ước là một thuộc tính "private"
+        self.nested = nested
+    @forms.reactive
+    def nested(self):
+        return self._text
+    
+    @nested.setter
+    def nested(self, value):
+        self._text = value
+
+class ButtonData_Cua_Son(forms.Reactive):
+    def __init__(self, title):
+        self._title = title
+
+    @forms.reactive
+    def binding_title_new_button(self):
+        return self._title
+
+    @binding_title_new_button.setter
+    def binding_title_new_button(self, value):
         self._title = value
 
 # Thay tên của các decorator "job_son" ở class EmployeeInfo. phải khai báo binding "{Binding job_son}" ở WPF nữa.
@@ -154,9 +175,11 @@ class DataSelectorConverter(framework.Windows.Data.IMultiValueConverter):
         pass
 
 
+
+
 class ViewModel(forms.Reactive):
     def __init__(self):
-        self._title = "Title"
+        self._title = "Đây là title"
 
 
 # self.employee_data: Khởi tạo một danh sách employee_data chứa các đối tượng EmployeeInfo.
@@ -206,12 +229,11 @@ class ViewModel(forms.Reactive):
 # self.nested_data: Khởi tạo một đối tượng NestedObject với thuộc tính text là "Text in Data Object".
 # self.data: Khởi tạo một đối tượng ButtonData với các thuộc tính được chỉ định.
         self.nested_data = NestedObject(text="Text in Data Object_Sơn thêm vào chút")
-        self.data = \
-            ButtonData(
-                title="Title in Data Object",
-                nested=self.nested_data
-                )
+        
+        self.data_cua_son = Nested_Data_Son(nested = self.nested_data) 
 
+        self.data = ButtonData(title="Title in Data Object",nested=self.nested_data)
+                
         self.server = Server(r'https://status.epicgames.com/api/v2/status.json')
 
         self.tags = [
@@ -222,6 +244,7 @@ class ViewModel(forms.Reactive):
 
         self.my_path = MyPath(r'C:\Users\ADMIN\AppData\Roaming\pyRevit\Extensions\ARC-dev.extension\ARC-dev.tab\Test7.panel\Slab.stack\Test XAML_frompyrevit.pushbutton\cuoi.gif')
         # print MyPath(r'C:\Users\ADMIN\AppData\Roaming\pyRevit\Extensions\ARC-dev.extension\ARC-dev.tab\Test7.panel\Slab.stack\Test XAML_frompyrevit.pushbutton\cuoi.gif')
+
     @forms.reactive
     def title(self):
         return self._title
@@ -230,13 +253,23 @@ class ViewModel(forms.Reactive):
     def title(self, value):
         self._title = value
 
+# class tim_kiem_text_in_list():
+#     def __init__(self, list_dau_vao, key_tim_kiem):
+#         list_ket_qua = []
+#         for moi_item in list_dau_vao:
+#             if str(key_tim_kiem) in str(moi_item):
+#                 list_ket_qua.append(moi_item)
+#         self._list_ket_qua = list_ket_qua
+
 
 # code-behind for the window
+list_test = list(range(1, 50))
+from System.Collections.ObjectModel import ObservableCollection
+
 class UI(forms.WPFWindow, forms.Reactive):
     def __init__(self):
         self.vm = ViewModel()
-
-    def setup(self):
+    def setup(self):  #Tên của def luôn luôn là "setup" để script.load_ui(UI(), 'ui_test.xaml') có thể hiểu được.
         mbinding = framework.Windows.Data.MultiBinding()
         mbinding.Converter = DataSelectorConverter()
         mbinding.Bindings.Add(framework.Windows.Data.Binding("."))
@@ -245,15 +278,41 @@ class UI(forms.WPFWindow, forms.Reactive):
         mbinding.Bindings.Add(binding)
         mbinding.NotifyOnSourceUpdated = True
 
-        self.textbox.DataContext = self.vm.nested_data #name "textbox" trong form wpf được gán bằng self.vm.nested_data
+        self.textbox_son.DataContext = self.vm.nested_data #name "textbox_son" trong form wpf được gán bằng self.vm.nested_data
         self.emppanel.SetBinding(self.emppanel.DataContextProperty, mbinding)
         self.empinfo.DataContext = self.vm.employee_data
-        self.textblock.DataContext = self.vm.data #name "textblock" trong form wpf được gán bằng self.vm.data
-        self.button.DataContext = self.vm.data
+        self.textblock_son.DataContext = self.vm.data_cua_son #name "textblock_son" trong form wpf được gán bằng self.vm.data
+        self.son_button.DataContext = self.vm.data
         self.statuslight.DataContext = self.vm.server
+
+
+
+
+        self.new_button.DataContext = ButtonData_Cua_Son("Đây là button của Sơn")
+
+        self.list_lb.ItemsSource = ObservableCollection[int](list_test)
+        self.search_tb.TextChanged += self.search_tb_TextChanged      
 
         self.set_image_source(self.testimage, 'pepe.JPG')
         self.taglist.ItemsSource = self.vm.tags
+
+    
+    @property
+    def setup_search_text_box_son(self):
+        return self.search_tb.Text
+
+    def search_tb_TextChanged(self, sender, e):
+        search_text = self.search_tb.Text.lower()
+        filtered_list = [item for item in list_test if search_text in str(item).lower()]
+        self.list_lb.ItemsSource = ObservableCollection[int](filtered_list)
+
+    def click_button_cua_son(self, sender, args):
+        import nances
+        input_textbox_son = self.setup_search_text_box_son
+        nances.message_box(str(input_textbox_son))
+
+
+
 
     def set_status(self, status):
         self.vm.server.status = status is not None
@@ -271,6 +330,11 @@ class UI(forms.WPFWindow, forms.Reactive):
         self.vm.nested_data.text = "Text in Data Object (Updated)"
         for emp in self.vm.employee_data:
             emp.job_son = emp.job_son.replace(" (Updated)", "") + " (Updated)" #Nếu không có dòng này thì mỗi lần click vào button_click thì chữ (Updated) cứ bị cộng dồn vào liên tục
+
+
+    # def new_button(self, sender, args):  #Đặt hành động Click trong form WPF bằng tham số button_click, bây giờ khai báo khi click thì điều gì xảy ra.
+    #     # self.vm.title = "Đây là button Sơn tạo" 
+    #     self.new_button.Content = "Đây là button Sơn tạo"
 
     def read_data(self, sender, args):
         forms.alert(self.vm.nested_data.text)

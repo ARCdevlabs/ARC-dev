@@ -3,9 +3,6 @@
         ShowInTaskbar="False"
         WindowStartupLocation="CenterScreen"
         HorizontalContentAlignment="Center"
-        SizeToContent="Height" Width="865"
-        ResizeMode="NoResize"
-        Title="XAML Tests" Height="887">
     <Window.Resources>
 
         <DataTemplate x:Key="SupportsItem">
@@ -31,6 +28,7 @@
             </DataTemplate.Triggers>
         </DataTemplate>
 
+
         <ItemsPanelTemplate x:Key="SupportsList">
             <WrapPanel IsItemsHost="True"/>
         </ItemsPanelTemplate>
@@ -50,6 +48,7 @@
                 <Polygon Points="0,0 0,18 8,9" Fill="{Binding color}" />
             </WrapPanel>
         </ControlTemplate>
+
 
         <DataTemplate x:Key="ModifierListItemTemplate">
             <Control Template="{StaticResource ModifierListItemControlTemplate}" Margin="-8,0,0,0"/>
@@ -101,12 +100,49 @@
             </WrapPanel>
         </DataTemplate>
 
+
+
+
+
+
+
+
+        <ControlTemplate x:Key="ItemTemplate">
+            <TextBlock Text="{Binding name}"
+                       VerticalAlignment="Center"
+                       Margin="10,0,0,0"/>
+
+
+        </ControlTemplate>
+        <DataTemplate x:Key="ItemContainerTemplate">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <CheckBox Grid.Column="0"
+                          VerticalAlignment="Center"
+                          IsChecked="{Binding checked}"
+                          Checked="check_selected"
+                          Unchecked="uncheck_selected"
+                          Visibility="{Binding checkable}"/>
+                <Control Grid.Column="1"
+                         VerticalAlignment="Center" VerticalContentAlignment="Center"
+                         Template="{DynamicResource ItemTemplate}"/>
+            </Grid>
+        </DataTemplate>
+
+        <ItemsPanelTemplate x:Key="ItemsPanelTemplate">
+            <StackPanel />
+        </ItemsPanelTemplate>
+
     </Window.Resources>
     <Grid x:Name="stackpanel" Margin="15">
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
             <ColumnDefinition />
             <ColumnDefinition />
+
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
@@ -148,10 +184,10 @@
             </GroupBox>
             <GroupBox Header="Reactive Binding" Margin="0,0,0,10">
                 <StackPanel Margin="5">
-                    <TextBlock x:Name="textblock" Text="{Binding nested.text}" Margin="0,0,0,10" TextWrapping="Wrap"/>
-                    <TextBox x:Name="textbox" Text="{Binding text, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Height="30" VerticalContentAlignment="Center" Margin="0,0,0,10"/>
-                    <Button x:Name="button"
-                        Content="{Binding title}"
+                    <TextBlock x:Name="textblock_son" Text="{Binding nested.text}" Margin="0,0,0,10" TextWrapping="Wrap"/>
+                    <TextBox x:Name="textbox_son" Text="{Binding text, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Height="30" VerticalContentAlignment="Center" Margin="0,0,0,10"/>
+                    <Button x:Name="son_button"
+                        Content="{Binding son_title_trang}"
                         HorizontalAlignment="Stretch" VerticalAlignment="Center"
                         Height="35"
                         Click="button_click"/>
@@ -224,28 +260,6 @@
                 <Button Content="Do Revit Work" Height="30" Click="do_revit_work"/>
             </GroupBox>
         </StackPanel>
-        <StackPanel Grid.Column="2">
-            <GroupBox Grid.Column="2" 
-                  Padding="10"
-                  Header="Hình Ảnh Bựa"
-                  Margin="10,0,10,0"
-                  VerticalAlignment="Top"
-                  HorizontalAlignment  ="Stretch">
-                      <MediaElement Name="gif_bua"
-                            Source= 'C:\Users\ADMIN\AppData\Roaming\pyRevit\Extensions\ARC-dev.extension\ARC-dev.tab\Test7.panel\Slab.stack\Test XAML_frompyrevit.pushbutton\cuoi.gif'
-                            LoadedBehavior="Play"
-                            Stretch="Uniform" />
-             </GroupBox>
-            <GroupBox Grid.Column="2" 
-                  Padding="10"
-                  Header="Hình Ảnh Bựa"
-                  Margin="10,0,10,0"
-                  VerticalAlignment="Top"
-                  HorizontalAlignment  ="Stretch">
-                <Image Name="pepe_bua"
-                       Source="C:\Users\ADMIN\AppData\Roaming\pyRevit\Extensions\ARC-dev.extension\ARC-dev.tab\Test7.panel\Slab.stack\Test XAML_frompyrevit.pushbutton\pepe_cai_bang.jpg"/>
-                
-            </GroupBox>
 
         </StackPanel>
 
