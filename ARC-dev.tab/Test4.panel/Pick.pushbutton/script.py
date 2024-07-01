@@ -7,7 +7,7 @@ Pick favorites from all available categories
 from collections import namedtuple
 
 from pyrevit import revit, UI
-from pyrevit import forms
+from nancestest import forms
 from pyrevit import script
 
 # import this script's configurator
