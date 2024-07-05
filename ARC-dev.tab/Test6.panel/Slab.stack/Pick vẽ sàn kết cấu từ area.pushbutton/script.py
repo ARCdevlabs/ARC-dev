@@ -166,7 +166,7 @@ try:
                 
                 if new_area != None:
 
-                    with revit.Transaction("Tạo sàn từ area", swallow_errors=False):
+                    with revit.Transaction("Tạo sàn từ area", swallow_errors=True):
 
                         create_slab (new_area, type_floor_id, height_offset, id_level_of_view)
 

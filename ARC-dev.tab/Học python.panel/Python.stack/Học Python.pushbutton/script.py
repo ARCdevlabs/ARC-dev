@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-'''
+
 # Định nghĩa lớp cha
 class Class1:
     def __init__(self, value):
@@ -22,7 +22,6 @@ class Class2(Class1):
 instance = Class2(10, 20)
 instance.display()
 
-'''
 
 
 '''
