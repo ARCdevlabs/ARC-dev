@@ -32,8 +32,7 @@ class NestedObject(forms.Reactive): #Điều này có nghĩa là NestedObject
         return self._text
 
     @text.setter
-    # Setter: Định nghĩa phương thức setter cho thuộc tính.
-    # Ngoài setter còn có các decorate khác như: @abstractmethod,@staticmethod,@classmethod,@property
+    # truyền dữ liệu vào @text.setter
     def text(self, value):
         self._text = value
 
@@ -313,8 +312,6 @@ class UI(forms.WPFWindow, forms.Reactive):
         import nances
         input_textbox_son = self.setup_search_text_box_son
         nances.message_box(str(input_textbox_son))
-
-
 
 
     def set_status(self, status):

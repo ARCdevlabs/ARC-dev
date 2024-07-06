@@ -291,8 +291,15 @@
                       SelectionMode="Extended"
                       HorizontalContentAlignment="Stretch"
                       ScrollViewer.VerticalScrollBarVisibility="Visible"
-                      Height="500"
-                      >
+                      Height="500">
+                <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <CheckBox VerticalAlignment="Center"/>
+                        <TextBlock Text="{Binding}" VerticalAlignment="Center" Margin="5,0,0,0"/>
+                    </StackPanel>
+                </DataTemplate>
+                </ListView.ItemTemplate>
             </ListView>
         </StackPanel>
 
