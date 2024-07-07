@@ -1,14 +1,13 @@
 title:   
-  en_us: Cut grid
+  en_us: Cắt trục và level
 tooltip:
   en_us:
-    Cắt trục dựa theo Crop View và Scope Box
+    Cắt trục+level dựa theo Crop View và Scope Box
 
-    Chọn Crop View hoặc Scope Box trước, 
+    1.Chọn trục+level
 
-    sau đó chọn trục
-
-    (Kích thước mặc định là 20mm)
-
+    2.Chạy tool, nhập khoảng cách
+    
+    3.Chọn crop view
 author: 
   - "Tô Thanh Tùng"
