@@ -4,8 +4,8 @@ clr.AddReference("System.Windows.Forms")
 clr.AddReference("System")
 from System.Collections.ObjectModel import ObservableCollection
 from System.ComponentModel import INotifyPropertyChanged, PropertyChangedEventArgs
-from System.Windows.Input import Key, Keyboard
-from nances import script, forms
+# from System.Windows.Input import Key, Keyboard
+from pyrevit import script, forms
 
 class ButtonData_Cua_Son(forms.Reactive):
     def __init__(self, title):

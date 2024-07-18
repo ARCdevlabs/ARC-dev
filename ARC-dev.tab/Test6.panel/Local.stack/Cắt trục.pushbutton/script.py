@@ -3,7 +3,7 @@ __doc__ = 'Rút ngắn chiều dài grid và level'
 from Autodesk.Revit.UI.Selection import ObjectType
 from Autodesk.Revit.DB import *
 from Autodesk.Revit.DB import Line
-from rpw.ui.forms import Alert, TextInput, TaskDialog
+from rpw.ui.forms import *
 from pyrevit import forms
 import Autodesk
 import sys
@@ -21,12 +21,27 @@ if not selection:
     sys.exit()
 
 # Hộp thoại nhập khoảng cách
-distance_str = TextInput('Nhập kc điểm đầu cuối đến scope box (mm):', default='-1000')
-if not distance_str:
-    TaskDialog.Show("Thông báo", "Không có giá trị khoảng cách nào được nhập. Dừng chương trình.")
-    sys.exit()
-
-distance = float(distance_str) / 304.8  # Chuyển đổi từ mm sang feet
+components = [
+    Label('Start point from Crop Region:'),
+    TextBox('textbox1', Text="2000"),
+    Label('End point from Crop Region:'),
+    TextBox('textbox2', Text="1000"),
+    Separator(),
+    Label('Điểm hiện đầu trục:'),
+    CheckBox('checkbox_default', 'Default', default=True),
+    CheckBox('checkbox_start', 'Start_Point'),
+    CheckBox('checkbox_end', 'End_Point'),
+    Separator(),
+    Button('Chọn Crop View')
+]
+form = FlexForm('Rút ngắn chiều dài grid và level', components)
+form.show()
+form.values
+offset_head = float(form.values["textbox1"]) / 304.8  # Chuyển đổi từ mm sang feet
+offset_tail = float(form.values["textbox2"]) / 304.8  # Chuyển đổi từ mm sang feet
+selected_default = form.values["checkbox_default"]
+selected_start = form.values["checkbox_start"]
+selected_end = form.values["checkbox_end"]
 
 # Chọn Scope Box
 with forms.WarningBar(title='Chọn crop view'):
@@ -50,8 +65,7 @@ for elem_id in selection:
 crop_length_x = scopebox_boun.Max.X - scopebox_boun.Min.X
 crop_length_y = scopebox_boun.Max.Y - scopebox_boun.Min.Y
 
-# Hàm thay đổi khoảng cách grid ở mặt bằng
-def RUTNGAN_TRUC_MAT_BANG(grid, distance, scopebox_boun, view):
+def RUTNGAN_TRUC_MAT_BANG(grid, scopebox_boun, view):
     datum_extent_type = Autodesk.Revit.DB.DatumExtentType.ViewSpecific
     list_curve = grid.GetCurvesInView(datum_extent_type, view)
     if list_curve:
@@ -69,19 +83,35 @@ def RUTNGAN_TRUC_MAT_BANG(grid, distance, scopebox_boun, view):
 
             if is_vertical:
                 # Điều chỉnh điểm đầu và điểm cuối của trục đứng
-                new_start_point = XYZ(start_point.X, min_point.Y - distance, start_point.Z)
-                new_end_point = XYZ(end_point.X, max_point.Y + distance, end_point.Z)
+                new_start_point = XYZ(start_point.X, min_point.Y - offset_tail, start_point.Z)
+                new_end_point = XYZ(end_point.X, max_point.Y + offset_head, end_point.Z)
             else:
                 # Điều chỉnh điểm đầu và điểm cuối của trục ngang
-                new_start_point = XYZ(min_point.X - distance, start_point.Y, start_point.Z)
-                new_end_point = XYZ(max_point.X + distance, end_point.Y, end_point.Z)
+                new_start_point = XYZ(min_point.X - offset_tail, start_point.Y, start_point.Z)
+                new_end_point = XYZ(max_point.X + offset_head, end_point.Y, end_point.Z)
             
             # Tạo đường cong mới
             new_curve = Line.CreateBound(new_start_point, new_end_point)
             grid.SetCurveInView(datum_extent_type, view, new_curve)
+            
+            # Hiển thị/Ẩn đầu trục
+            if selected_start:
+                grid.ShowBubbleInView(DatumEnds.End0, view)
+                grid.HideBubbleInView(DatumEnds.End1, view)
+            elif selected_end:
+                grid.ShowBubbleInView(DatumEnds.End1, view)
+                grid.HideBubbleInView(DatumEnds.End0, view)
+            elif selected_default:
+                if offset_head > offset_tail:
+                    grid.ShowBubbleInView(DatumEnds.End0, view)
+                    grid.HideBubbleInView(DatumEnds.End1, view)
+                else:
+                    grid.ShowBubbleInView(DatumEnds.End1, view)
+                    grid.HideBubbleInView(DatumEnds.End0, view)
 
 # Hàm thay đổi khoảng cách grid ở mặt đứng
-def RUTNGAN_TRUC_MAT_DUNG(grid, distance, scopebox_boun, view):
+# Hàm thay đổi khoảng cách grid ở mặt đứng
+def RUTNGAN_TRUC_MAT_DUNG(grid, scopebox_boun, view):
     datum_extent_type = Autodesk.Revit.DB.DatumExtentType.ViewSpecific
     list_curve = grid.GetCurvesInView(datum_extent_type, view)
     if list_curve:
@@ -100,33 +130,48 @@ def RUTNGAN_TRUC_MAT_DUNG(grid, distance, scopebox_boun, view):
             if is_vertical:
                 if scopebox_boun.Min.Z != 0:
                     # Điều chỉnh điểm đầu và điểm cuối của trục đứng theo phương Z
-                    new_start_point = XYZ(start_point.X, start_point.Y, min_point.Z - distance)
-                    new_end_point = XYZ(end_point.X, end_point.Y, max_point.Z + distance)
+                    new_start_point = XYZ(start_point.X, start_point.Y, min_point.Z - offset_head)
+                    new_end_point = XYZ(end_point.X, end_point.Y, max_point.Z + offset_tail)
                 else:
                     # Điều chỉnh điểm đầu và điểm cuối của trục đứng theo phương Y
-                    new_start_point = XYZ(start_point.X, min_point.Y - distance, start_point.Z)
-                    new_end_point = XYZ(end_point.X, max_point.Y + distance, end_point.Z)
+                    new_start_point = XYZ(start_point.X, min_point.Y - offset_head, start_point.Z)
+                    new_end_point = XYZ(end_point.X, max_point.Y + offset_tail, end_point.Z)
             else:
                 # Điều chỉnh điểm đầu và điểm cuối của trục ngang theo phương X hoặc Y
                 if scopebox_boun.Min.Z != 0:
                     is_horizontal_x = abs(start_point.X - end_point.X) > 0.01
                     if is_horizontal_x:
-                        new_start_point = XYZ(min_point.X - distance, start_point.Y, start_point.Z)
-                        new_end_point = XYZ(max_point.X + distance, end_point.Y, end_point.Z)
+                        new_start_point = XYZ(min_point.X - offset_head, start_point.Y, start_point.Z)
+                        new_end_point = XYZ(max_point.X + offset_tail, end_point.Y, end_point.Z)
                     else:
-                        new_start_point = XYZ(start_point.X, min_point.Y - distance, start_point.Z)
-                        new_end_point = XYZ(end_point.X, max_point.Y + distance, end_point.Z)
+                        new_start_point = XYZ(start_point.X, min_point.Y - offset_head, start_point.Z)
+                        new_end_point = XYZ(end_point.X, max_point.Y + offset_tail, end_point.Z)
                 else:
-                    new_start_point = XYZ(min_point.X - distance, start_point.Y, start_point.Z)
-                    new_end_point = XYZ(max_point.X + distance, end_point.Y, end_point.Z)
+                    new_start_point = XYZ(min_point.X - offset_head, start_point.Y, start_point.Z)
+                    new_end_point = XYZ(max_point.X + offset_tail, end_point.Y, end_point.Z)
             
             # Tạo đường cong mới
             new_curve = Line.CreateBound(new_start_point, new_end_point)
             grid.SetCurveInView(datum_extent_type, view, new_curve)
+            
+            # Hiển thị/Ẩn đầu trục
+            if selected_start:
+                grid.ShowBubbleInView(DatumEnds.End0, view)
+                grid.HideBubbleInView(DatumEnds.End1, view)
+            elif selected_end:
+                grid.ShowBubbleInView(DatumEnds.End1, view)
+                grid.HideBubbleInView(DatumEnds.End0, view)
+            elif selected_default:
+                if offset_head > offset_tail:
+                    grid.ShowBubbleInView(DatumEnds.End0, view)
+                    grid.HideBubbleInView(DatumEnds.End1, view)
+                else:
+                    grid.ShowBubbleInView(DatumEnds.End1, view)
+                    grid.HideBubbleInView(DatumEnds.End0, view)
 
-def RUTNGAN_LEVEL(level, distance, scopebox_boun, crop_length_x, crop_length_y):
+def RUTNGAN_LEVEL(level, scopebox_boun, crop_length_x, crop_length_y, view):
     datum_extent_type = Autodesk.Revit.DB.DatumExtentType.ViewSpecific
-    list_curve = level.GetCurvesInView(datum_extent_type, doc.ActiveView)
+    list_curve = level.GetCurvesInView(datum_extent_type, view)
     if list_curve:
         curve = list_curve[0]
         if isinstance(curve, Line):
@@ -139,24 +184,39 @@ def RUTNGAN_LEVEL(level, distance, scopebox_boun, crop_length_x, crop_length_y):
 
             if start_point.X < end_point.X:
                 # Điều chỉnh theo hướng từ trái sang phải
-                new_start_point = XYZ(min_point.X - distance, start_point.Y, start_point.Z)
-                new_end_point = XYZ(min_point.X - distance + crop_length_x + 2 * distance, end_point.Y, end_point.Z)
+                new_start_point = XYZ(min_point.X - offset_tail, start_point.Y, start_point.Z)
+                new_end_point = XYZ(max_point.X + offset_head, end_point.Y, end_point.Z)
             elif start_point.X > end_point.X:
                 # Điều chỉnh theo hướng từ phải sang trái
-                new_start_point = XYZ(max_point.X + distance, start_point.Y, start_point.Z)
-                new_end_point = XYZ(max_point.X + distance - crop_length_x - 2 * distance, end_point.Y, end_point.Z)
+                new_start_point = XYZ(max_point.X + offset_tail, start_point.Y, start_point.Z)
+                new_end_point = XYZ(min_point.X - offset_head, end_point.Y, end_point.Z)
             elif start_point.Y < end_point.Y:
                 # Điều chỉnh theo hướng từ dưới lên trên
-                new_start_point = XYZ(start_point.X, min_point.Y - distance, start_point.Z)
-                new_end_point = XYZ(end_point.X, min_point.Y - distance + crop_length_y + 2 * distance, end_point.Z)
+                new_start_point = XYZ(start_point.X, min_point.Y - offset_tail, start_point.Z)
+                new_end_point = XYZ(end_point.X, max_point.Y + offset_head, end_point.Z)
             elif start_point.Y > end_point.Y:
                 # Điều chỉnh theo hướng từ trên xuống dưới
-                new_start_point = XYZ(start_point.X, max_point.Y + distance, start_point.Z)
-                new_end_point = XYZ(end_point.X, max_point.Y + distance - crop_length_y - 2 * distance, end_point.Z)
+                new_start_point = XYZ(start_point.X, max_point.Y + offset_tail, start_point.Z)
+                new_end_point = XYZ(end_point.X, min_point.Y - offset_head, end_point.Z)
 
             # Tạo đường cong mới
             new_curve = Line.CreateBound(new_start_point, new_end_point)
-            level.SetCurveInView(datum_extent_type, doc.ActiveView, new_curve)
+            level.SetCurveInView(datum_extent_type, view, new_curve)
+
+            # Hiển thị/Ẩn đầu level
+            if selected_start:
+                level.ShowBubbleInView(DatumEnds.End0, view)
+                level.HideBubbleInView(DatumEnds.End1, view)
+            elif selected_end:
+                level.ShowBubbleInView(DatumEnds.End1, view)
+                level.HideBubbleInView(DatumEnds.End0, view)
+            elif selected_default:
+                if offset_head > offset_tail:
+                    level.ShowBubbleInView(DatumEnds.End0, view)
+                    level.HideBubbleInView(DatumEnds.End1, view)
+                else:
+                    level.ShowBubbleInView(DatumEnds.End1, view)
+                    level.HideBubbleInView(DatumEnds.End0, view)
 
 def get_builtin_parameter_by_name(element, built_in_parameter):
     param = element.get_Parameter(built_in_parameter)
@@ -181,11 +241,11 @@ try:
     t2.Start()
     for grid in grids:
         if doc.ActiveView.ViewType == ViewType.FloorPlan or doc.ActiveView.ViewType == ViewType.CeilingPlan:
-            RUTNGAN_TRUC_MAT_BANG(grid, distance, scopebox_boun, doc.ActiveView)
+            RUTNGAN_TRUC_MAT_BANG(grid, scopebox_boun, doc.ActiveView)
         else:
-            RUTNGAN_TRUC_MAT_DUNG(grid, distance, scopebox_boun, doc.ActiveView)
+            RUTNGAN_TRUC_MAT_DUNG(grid, scopebox_boun, doc.ActiveView)
     for level in levels:
-        RUTNGAN_LEVEL(level, distance, scopebox_boun, crop_length_x, crop_length_y)
+        RUTNGAN_LEVEL(level, scopebox_boun, crop_length_x, crop_length_y, doc.ActiveView)
     t2.Commit()
 
     # Tắt crop view, bật crop view
