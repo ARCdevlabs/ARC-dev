@@ -82,20 +82,22 @@ with revit.Transaction("Tạo area plan và đặt area separation", swallow_err
     all_beam_in_view = get_all_element_of_category_in_view (doc, active_view, BuiltInCategory.OST_StructuralFraming)
 
     for i in all_beam_in_view:
+        try:
 
-        beam_id = i.Id
+            beam_id = i.Id
 
-        curve = i.Location.Curve
+            curve = i.Location.Curve
+            curve_direction = curve.Direction
 
-        curve_direction = curve.Direction
+            start_point = curve.GetEndPoint(0)
 
-        start_point = curve.GetEndPoint(0)
+            end_point = curve.GetEndPoint(1)
 
-        end_point = curve.GetEndPoint(1)
+            line = Autodesk.Revit.DB.Line.CreateBound(XYZ(start_point.X,start_point.Y,0),XYZ(end_point.X,end_point.Y,0))
 
-        line = Autodesk.Revit.DB.Line.CreateBound(XYZ(start_point.X,start_point.Y,0),XYZ(end_point.X,end_point.Y,0))
-
-        curve_array.Append(line)
+            curve_array.Append(line)
+        except:
+            pass
 
     for cur in curve_array:
         area_separation = doc.Create.NewAreaBoundaryLine(sketch_plane, cur, area_plan)
@@ -201,5 +203,4 @@ try:
     t6.Commit()
 except:
     pass
-
 trans_group.Assimilate()
