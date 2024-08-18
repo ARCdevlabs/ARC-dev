@@ -1,270 +1,213 @@
-# -*- coding: utf8 -*-
-__doc__ = 'Rút ngắn chiều dài grid và level'
+# -*- coding: utf-8 -*-
+__doc__ = 'Rút ngắn chiều dài Grids và Levels'
 from Autodesk.Revit.UI.Selection import ObjectType
 from Autodesk.Revit.DB import *
-from Autodesk.Revit.DB import Line
 from rpw.ui.forms import *
 from pyrevit import forms
 import Autodesk
 import sys
-
+import traceback
+from System.Collections.Generic import *
+from Autodesk.Revit.UI import TaskDialog
 # Get UIDocument
 uidoc = __revit__.ActiveUIDocument
 
 # Get Document 
 doc = uidoc.Document
 
-# Lấy danh sách các đối tượng đã được chọn
-selection = uidoc.Selection.GetElementIds()  # Trả về 1 list ElementId
-if not selection:
-    TaskDialog.Show("Thông báo", "Không có đối tượng nào được chọn. Dừng chương trình.")
-    sys.exit()
+class GridSelectionFilter(Autodesk.Revit.UI.Selection.ISelectionFilter):
+	def AllowElement(self, element):
+		return element.Category.Id.IntegerValue in [int(BuiltInCategory.OST_Grids), int(BuiltInCategory.OST_Levels)]
 
-# Hộp thoại nhập khoảng cách
-components = [
-    Label('Start point from Crop Region:'),
-    TextBox('textbox1', Text="2000"),
-    Label('End point from Crop Region:'),
-    TextBox('textbox2', Text="1000"),
-    Separator(),
-    Label('Điểm hiện đầu trục:'),
-    CheckBox('checkbox_default', 'Default', default=True),
-    CheckBox('checkbox_start', 'Start_Point'),
-    CheckBox('checkbox_end', 'End_Point'),
-    Separator(),
-    Button('Chọn Crop View')
-]
-form = FlexForm('Rút ngắn chiều dài grid và level', components)
-form.show()
-form.values
-offset_head = float(form.values["textbox1"]) / 304.8  # Chuyển đổi từ mm sang feet
-offset_tail = float(form.values["textbox2"]) / 304.8  # Chuyển đổi từ mm sang feet
-selected_default = form.values["checkbox_default"]
-selected_start = form.values["checkbox_start"]
-selected_end = form.values["checkbox_end"]
+	def AllowReference(self, reference, point):
+		return False
 
-# Chọn Scope Box
-with forms.WarningBar(title='Chọn crop view'):
-    scope_box_ref = uidoc.Selection.PickObject(ObjectType.Element, "Chọn Scope Box")
-scope_box = doc.GetElement(scope_box_ref.ElementId)
-# Lấy tọa độ của Scope Box
-scopebox_boun = scope_box.get_BoundingBox(doc.ActiveView)
+def pick_grid_by_rectangle():
+	with forms.WarningBar(title='Quét chuột để chọn các Grids và Levels'):
+		selection = uidoc.Selection
+		selected_elements = selection.PickElementsByRectangle(GridSelectionFilter(), "Chọn Grids và Levels")
+	return selected_elements
 
-# Lọc các đối tượng Grid và Level
+# Lấy danh sách các đối tượng bằng cách chọn trước chạy tool sau
+selected_ids = uidoc.Selection.GetElementIds()
+
+if not selected_ids:
+	selected_elements = pick_grid_by_rectangle()
+	if not selected_elements:
+		TaskDialog.Show("Thông báo", "Không có đối tượng nào được chọn")
+		sys.exit()
+else:
+	selected_elements = [doc.GetElement(id) for id in selected_ids]
+
+# Lọc ra các đối tượng Grid và Level
 grids = []
 levels = []
 
-for elem_id in selection:
-    elem = doc.GetElement(elem_id)
-    if elem.Category.Id.IntegerValue == int(BuiltInCategory.OST_Grids):
-        grids.append(elem)
-    elif elem.Category.Id.IntegerValue == int(BuiltInCategory.OST_Levels):
-        levels.append(elem)
+for element in selected_elements:
+	if isinstance(element, Grid):
+		grids.append(element)
+	elif isinstance(element, Level):
+		levels.append(element)
 
-# Tính toán chiều dài của scope box
-crop_length_x = scopebox_boun.Max.X - scopebox_boun.Min.X
-crop_length_y = scopebox_boun.Max.Y - scopebox_boun.Min.Y
+# Nếu không có Grid hoặc Level nào được chọn, hiển thị thông báo và thoát
+if not grids and not levels:
+	TaskDialog.Show("Thông báo", "Vui lòng chọn Grids hoặc Levels.")
+	sys.exit()
 
-def RUTNGAN_TRUC_MAT_BANG(grid, scopebox_boun, view):
-    datum_extent_type = Autodesk.Revit.DB.DatumExtentType.ViewSpecific
-    list_curve = grid.GetCurvesInView(datum_extent_type, view)
-    if list_curve:
-        curve = list_curve[0]
-        if isinstance(curve, Line):
-            start_point = curve.GetEndPoint(0)
-            end_point = curve.GetEndPoint(1)
-            
-            # Kiểm tra xem trục đứng hay trục ngang
-            is_vertical = abs(start_point.X - end_point.X) < 0.01
-            
-            # Lấy tọa độ của Scope Box
-            min_point = scopebox_boun.Min
-            max_point = scopebox_boun.Max
+# Hàm thiết lập work plane
+def set_work_plane_for_view(view):
+	try:
+		# Create a Plane using the view's direction and origin
+		plane = Autodesk.Revit.DB.Plane.CreateByNormalAndOrigin(view.ViewDirection, view.Origin)
+		sketch_plane = Autodesk.Revit.DB.SketchPlane.Create(doc, plane)
+		view.SketchPlane = sketch_plane
+		return True
+	except Exception as e:
+		print("Lỗi khi set Work Plane: ", e)
+		print(traceback.format_exc())
+		return False
 
-            if is_vertical:
-                # Điều chỉnh điểm đầu và điểm cuối của trục đứng
-                new_start_point = XYZ(start_point.X, min_point.Y - offset_tail, start_point.Z)
-                new_end_point = XYZ(end_point.X, max_point.Y + offset_head, end_point.Z)
-            else:
-                # Điều chỉnh điểm đầu và điểm cuối của trục ngang
-                new_start_point = XYZ(min_point.X - offset_tail, start_point.Y, start_point.Z)
-                new_end_point = XYZ(max_point.X + offset_head, end_point.Y, end_point.Z)
-            
-            # Tạo đường cong mới
-            new_curve = Line.CreateBound(new_start_point, new_end_point)
-            grid.SetCurveInView(datum_extent_type, view, new_curve)
-            
-            # Hiển thị/Ẩn đầu trục
-            if selected_start:
-                grid.ShowBubbleInView(DatumEnds.End0, view)
-                grid.HideBubbleInView(DatumEnds.End1, view)
-            elif selected_end:
-                grid.ShowBubbleInView(DatumEnds.End1, view)
-                grid.HideBubbleInView(DatumEnds.End0, view)
-            elif selected_default:
-                if offset_head > offset_tail:
-                    grid.ShowBubbleInView(DatumEnds.End0, view)
-                    grid.HideBubbleInView(DatumEnds.End1, view)
-                else:
-                    grid.ShowBubbleInView(DatumEnds.End1, view)
-                    grid.HideBubbleInView(DatumEnds.End0, view)
+# Hàm click chuột
+def pick_point_with_nearest_snap(iuidoc):
+	snap_settings = Autodesk.Revit.UI.Selection.ObjectSnapTypes.None
+	prompt = "Click để chọn một điểm"
+	click_point = None
+	try:
+		click_point = iuidoc.Selection.PickPoint(snap_settings, prompt)
+	except Exception:
+		pass  # Ignore the exception and continue
+	return click_point
 
-# Hàm thay đổi khoảng cách grid ở mặt đứng
-# Hàm thay đổi khoảng cách grid ở mặt đứng
-def RUTNGAN_TRUC_MAT_DUNG(grid, scopebox_boun, view):
-    datum_extent_type = Autodesk.Revit.DB.DatumExtentType.ViewSpecific
-    list_curve = grid.GetCurvesInView(datum_extent_type, view)
-    if list_curve:
-        curve = list_curve[0]
-        if isinstance(curve, Line):
-            start_point = curve.GetEndPoint(0)
-            end_point = curve.GetEndPoint(1)
-            
-            # Kiểm tra xem trục đứng hay trục ngang
-            is_vertical = abs(start_point.Z - end_point.Z) > 0.01 if scopebox_boun.Min.Z != 0 else abs(start_point.X - end_point.X) < 0.01
-            
-            # Lấy tọa độ của Scope Box
-            min_point = scopebox_boun.Min
-            max_point = scopebox_boun.Max
+# Hàm xác định vị trí chuột so với đầu trục
+def nearest_point_on_line(start, end, point):
+	line_direction = (end - start).Normalize()
+	vector = point - start
+	distance = vector.DotProduct(line_direction)
+	closest_point = start + line_direction * distance
+	return closest_point
 
-            if is_vertical:
-                if scopebox_boun.Min.Z != 0:
-                    # Điều chỉnh điểm đầu và điểm cuối của trục đứng theo phương Z
-                    new_start_point = XYZ(start_point.X, start_point.Y, min_point.Z - offset_head)
-                    new_end_point = XYZ(end_point.X, end_point.Y, max_point.Z + offset_tail)
-                else:
-                    # Điều chỉnh điểm đầu và điểm cuối của trục đứng theo phương Y
-                    new_start_point = XYZ(start_point.X, min_point.Y - offset_head, start_point.Z)
-                    new_end_point = XYZ(end_point.X, max_point.Y + offset_tail, end_point.Z)
-            else:
-                # Điều chỉnh điểm đầu và điểm cuối của trục ngang theo phương X hoặc Y
-                if scopebox_boun.Min.Z != 0:
-                    is_horizontal_x = abs(start_point.X - end_point.X) > 0.01
-                    if is_horizontal_x:
-                        new_start_point = XYZ(min_point.X - offset_head, start_point.Y, start_point.Z)
-                        new_end_point = XYZ(max_point.X + offset_tail, end_point.Y, end_point.Z)
-                    else:
-                        new_start_point = XYZ(start_point.X, min_point.Y - offset_head, start_point.Z)
-                        new_end_point = XYZ(end_point.X, max_point.Y + offset_tail, end_point.Z)
-                else:
-                    new_start_point = XYZ(min_point.X - offset_head, start_point.Y, start_point.Z)
-                    new_end_point = XYZ(max_point.X + offset_tail, end_point.Y, end_point.Z)
-            
-            # Tạo đường cong mới
-            new_curve = Line.CreateBound(new_start_point, new_end_point)
-            grid.SetCurveInView(datum_extent_type, view, new_curve)
-            
-            # Hiển thị/Ẩn đầu trục
-            if selected_start:
-                grid.ShowBubbleInView(DatumEnds.End0, view)
-                grid.HideBubbleInView(DatumEnds.End1, view)
-            elif selected_end:
-                grid.ShowBubbleInView(DatumEnds.End1, view)
-                grid.HideBubbleInView(DatumEnds.End0, view)
-            elif selected_default:
-                if offset_head > offset_tail:
-                    grid.ShowBubbleInView(DatumEnds.End0, view)
-                    grid.HideBubbleInView(DatumEnds.End1, view)
-                else:
-                    grid.ShowBubbleInView(DatumEnds.End1, view)
-                    grid.HideBubbleInView(DatumEnds.End0, view)
+# Rút ngắn trục ở mb
+def RUTNGAN_TRUC_MAT_BANG(grid, view, click_point):
+	datum_extent_type = Autodesk.Revit.DB.DatumExtentType.ViewSpecific
+	list_curve = grid.GetCurvesInView(datum_extent_type, view)
+	if list_curve:
+		curve = list_curve[0]
+		if isinstance(curve, Line):
+			start_point = curve.GetEndPoint(0)
+			end_point = curve.GetEndPoint(1)
 
-def RUTNGAN_LEVEL(level, scopebox_boun, crop_length_x, crop_length_y, view):
-    datum_extent_type = Autodesk.Revit.DB.DatumExtentType.ViewSpecific
-    list_curve = level.GetCurvesInView(datum_extent_type, view)
-    if list_curve:
-        curve = list_curve[0]
-        if isinstance(curve, Line):
-            start_point = curve.GetEndPoint(0)
-            end_point = curve.GetEndPoint(1)
+			# Tính điểm gần nhất với click_point
+			closest_point = nearest_point_on_line(start_point, end_point, click_point)
+			distance_to_start = closest_point.DistanceTo(start_point)
+			distance_to_end = closest_point.DistanceTo(end_point)
 
-            # Lấy tọa độ của Scope Box
-            min_point = scopebox_boun.Min
-            max_point = scopebox_boun.Max
+			# Determine the new start and end points
+			if distance_to_start < distance_to_end:
+				new_start_point = closest_point
+				new_end_point = end_point
+			else:
+				new_start_point = start_point
+				new_end_point = closest_point
 
-            if start_point.X < end_point.X:
-                # Điều chỉnh theo hướng từ trái sang phải
-                new_start_point = XYZ(min_point.X - offset_tail, start_point.Y, start_point.Z)
-                new_end_point = XYZ(max_point.X + offset_head, end_point.Y, end_point.Z)
-            elif start_point.X > end_point.X:
-                # Điều chỉnh theo hướng từ phải sang trái
-                new_start_point = XYZ(max_point.X + offset_tail, start_point.Y, start_point.Z)
-                new_end_point = XYZ(min_point.X - offset_head, end_point.Y, end_point.Z)
-            elif start_point.Y < end_point.Y:
-                # Điều chỉnh theo hướng từ dưới lên trên
-                new_start_point = XYZ(start_point.X, min_point.Y - offset_tail, start_point.Z)
-                new_end_point = XYZ(end_point.X, max_point.Y + offset_head, end_point.Z)
-            elif start_point.Y > end_point.Y:
-                # Điều chỉnh theo hướng từ trên xuống dưới
-                new_start_point = XYZ(start_point.X, max_point.Y + offset_tail, start_point.Z)
-                new_end_point = XYZ(end_point.X, min_point.Y - offset_head, end_point.Z)
+			# Tạo curve mới với tọa độ mới
+			new_curve = Line.CreateBound(new_start_point, new_end_point)
+			if new_curve.IsBound:
+				grid.SetCurveInView(datum_extent_type, view, new_curve)
 
-            # Tạo đường cong mới
-            new_curve = Line.CreateBound(new_start_point, new_end_point)
-            level.SetCurveInView(datum_extent_type, view, new_curve)
+# Rút ngắn trục mặt đứng
+def RUTNGAN_TRUC_MAT_DUNG(grid, view, click_point):
+	datum_extent_type = Autodesk.Revit.DB.DatumExtentType.ViewSpecific
+	list_curve = grid.GetCurvesInView(datum_extent_type, view)
+	if list_curve:
+		curve = list_curve[0]
+		if isinstance(curve, Line):
+			start_point = curve.GetEndPoint(0)
+			end_point = curve.GetEndPoint(1)
 
-            # Hiển thị/Ẩn đầu level
-            if selected_start:
-                level.ShowBubbleInView(DatumEnds.End0, view)
-                level.HideBubbleInView(DatumEnds.End1, view)
-            elif selected_end:
-                level.ShowBubbleInView(DatumEnds.End1, view)
-                level.HideBubbleInView(DatumEnds.End0, view)
-            elif selected_default:
-                if offset_head > offset_tail:
-                    level.ShowBubbleInView(DatumEnds.End0, view)
-                    level.HideBubbleInView(DatumEnds.End1, view)
-                else:
-                    level.ShowBubbleInView(DatumEnds.End1, view)
-                    level.HideBubbleInView(DatumEnds.End0, view)
+			# Tính điểm gần nhất với click_point
+			closest_point = nearest_point_on_line(start_point, end_point, click_point)
+			distance_to_start = closest_point.DistanceTo(start_point)
+			distance_to_end = closest_point.DistanceTo(end_point)
 
-def get_builtin_parameter_by_name(element, built_in_parameter):
-    param = element.get_Parameter(built_in_parameter)
-    return param    
+			# So sánh vị trí new start and end points
+			if distance_to_start < distance_to_end:
+				new_start_point = closest_point
+				new_end_point = end_point
+			else:
+				new_start_point = start_point
+				new_end_point = closest_point
+
+			# Tạo curve mới với tọa độ mới
+			new_curve = Line.CreateBound(new_start_point, new_end_point)
+			if new_curve.IsBound:
+				grid.SetCurveInView(datum_extent_type, view, new_curve)
+
+# Rút ngắn level
+def RUTNGAN_LEVEL(level, click_point):
+	datum_extent_type = Autodesk.Revit.DB.DatumExtentType.ViewSpecific
+	list_curve = level.GetCurvesInView(datum_extent_type, doc.ActiveView)
+	if list_curve:
+		curve = list_curve[0]
+		if isinstance(curve, Line):
+			start_point = curve.GetEndPoint(0)
+			end_point = curve.GetEndPoint(1)
+
+			# Tính toán điểm gần nhất
+			closest_point = nearest_point_on_line(start_point, end_point, click_point)
+			distance_to_start = closest_point.DistanceTo(start_point)
+			distance_to_end = closest_point.DistanceTo(end_point)
+
+			if distance_to_start < distance_to_end:
+				new_start_point = closest_point
+				new_end_point = end_point
+			else:
+				new_start_point = start_point
+				new_end_point = closest_point
+
+			# Vẽ lại curve mới
+			new_curve = Line.CreateBound(new_start_point, new_end_point)
+			if new_curve.IsBound:
+				level.SetCurveInView(datum_extent_type, doc.ActiveView, new_curve)
 
 trans_group = TransactionGroup(doc, "Cắt trục và level")
 trans_group.Start()
 
 try:
-    # Lưu giá trị Scope Box ban đầu
-    current_scope_box = doc.ActiveView.get_Parameter(BuiltInParameter.VIEWER_VOLUME_OF_INTEREST_CROP)
-    original_scope_box_id = current_scope_box.AsElementId()
+	# Chạy set work plane
+	t1 = Transaction(doc, "Set Work Plane")
+	t1.Start()
+	if not set_work_plane_for_view(uidoc.ActiveView):
+		TaskDialog.Show("Thông báo", "Không thể thiết lập Work Plane. Vui lòng thử lại.")
+		t1.RollBack()
+		trans_group.RollBack()
+		sys.exit()
+	t1.Commit()
 
-    # Đổi Scope Box thành None
-    t1 = Transaction(doc, "Chuyển Scope Box về None")
-    t1.Start()
-    current_scope_box.Set(ElementId.InvalidElementId)
-    t1.Commit()
+	# Chọn vị trí thay đổi chiều dài
+	with forms.WarningBar(title='Chọn điểm để thay đổi chiều dài trục'):
+		click_point = pick_point_with_nearest_snap(uidoc)
 
-    # Rút ngắn lưới trục và level cách crop view 1 đoạn
-    t2 = Transaction(doc, "Cắt trục và level")
-    t2.Start()
-    for grid in grids:
-        if doc.ActiveView.ViewType == ViewType.FloorPlan or doc.ActiveView.ViewType == ViewType.CeilingPlan:
-            RUTNGAN_TRUC_MAT_BANG(grid, scopebox_boun, doc.ActiveView)
-        else:
-            RUTNGAN_TRUC_MAT_DUNG(grid, scopebox_boun, doc.ActiveView)
-    for level in levels:
-        RUTNGAN_LEVEL(level, scopebox_boun, crop_length_x, crop_length_y, doc.ActiveView)
-    t2.Commit()
+	if not click_point:
+		TaskDialog.Show("Thông báo", "Vui lòng chọn lại Grids và Levels. Sau đó chọn điểm rút ngắn")
+		trans_group.RollBack()
+		sys.exit()
 
-    # Tắt crop view, bật crop view
-    t3 = Transaction(doc, "Bật tắt crop view")
-    t3.Start()
-    crop_view = get_builtin_parameter_by_name(doc.ActiveView, BuiltInParameter.VIEWER_CROP_REGION)
-    crop_view.Set(0)
-    crop_view.Set(1)
-    t3.Commit()
+	# Thay đổi chiều dài trục và level
+	t2 = Transaction(doc, "Cắt trục và level")
+	t2.Start()
+	for grid in grids:
+		if doc.ActiveView.ViewType == ViewType.FloorPlan or doc.ActiveView.ViewType == ViewType.CeilingPlan:
+			RUTNGAN_TRUC_MAT_BANG(grid, doc.ActiveView, click_point)
+		else:
+			RUTNGAN_TRUC_MAT_DUNG(grid, doc.ActiveView, click_point)
+	for level in levels:
+		RUTNGAN_LEVEL(level, click_point)
+	t2.Commit()
 
-    # Trả lại Scope Box ban đầu
-    t4 = Transaction(doc, "Trả lại Scope Box ban đầu")
-    t4.Start()
-    current_scope_box.Set(original_scope_box_id)
-    t4.Commit()
-
-    trans_group.Assimilate()
+	trans_group.Assimilate()
 except Exception as e:
-    print("Error: ", e)
-    trans_group.RollBack()
+	print("Lỗi: ", e)
+	print(traceback.format_exc())
+	trans_group.RollBack()
 finally:
-    trans_group.Dispose()
+	trans_group.Dispose()
