@@ -1,4 +1,4 @@
-using System;
+using System; //Không gian tên chuẩn của .NET Framework, cung cấp các lớp và giao diện cơ bản như Console.
 using Autodesk.Revit.UI;
 using Autodesk.Revit.DB;
 
@@ -6,7 +6,7 @@ using pyRevitLabs.NLog;
 
 namespace PickObjectExample
 {
-    public class PickObjectCommand : IExternalCommand
+    public class PickObjectCommand : IExternalCommand // Đây là lớp để định nghĩa một lệnh tùy chỉnh trong Revit
     {
         // Define the logger field
         private Logger logger = LogManager.GetCurrentClassLogger();
