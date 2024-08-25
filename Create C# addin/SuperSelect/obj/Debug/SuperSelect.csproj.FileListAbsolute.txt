@@ -1,0 +1,9 @@
+C:\Users\ADMIN\AppData\Roaming\pyRevit\Extensions\ARC-dev.extension\Create C# addin\SuperSelect\obj\Debug\SuperSelect.csproj.AssemblyReference.cache
+C:\Users\ADMIN\AppData\Roaming\pyRevit\Extensions\ARC-dev.extension\Create C# addin\SuperSelect\obj\Debug\SuperSelect.csproj.CoreCompileInputs.cache
+C:\Users\ADMIN\AppData\Roaming\pyRevit\Extensions\ARC-dev.extension\Create C# addin\SuperSelect\obj\Debug\SelectFilterForm.resources
+C:\Users\ADMIN\AppData\Roaming\pyRevit\Extensions\ARC-dev.extension\Create C# addin\SuperSelect\obj\Debug\SuperSelect.csproj.GenerateResource.cache
+C:\Users\ADMIN\AppData\Roaming\pyRevit\Extensions\ARC-dev.extension\Create C# addin\SuperSelect\bin\Debug\SuperSelect.dll
+C:\Users\ADMIN\AppData\Roaming\pyRevit\Extensions\ARC-dev.extension\Create C# addin\SuperSelect\bin\Debug\SuperSelect.pdb
+C:\Users\ADMIN\AppData\Roaming\pyRevit\Extensions\ARC-dev.extension\Create C# addin\SuperSelect\obj\Debug\SuperSelect.dll
+C:\Users\ADMIN\AppData\Roaming\pyRevit\Extensions\ARC-dev.extension\Create C# addin\SuperSelect\obj\Debug\SuperSelect.pdb
+C:\Users\ADMIN\AppData\Roaming\pyRevit\Extensions\ARC-dev.extension\Create C# addin\SuperSelect\obj\Debug\SuperSelect.Properties.Resources.resources

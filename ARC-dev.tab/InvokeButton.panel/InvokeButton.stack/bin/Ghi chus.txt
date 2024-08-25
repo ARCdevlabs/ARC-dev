@@ -1,0 +1,4 @@
+Tool cut dim co van de
+Tool export parameter bi loi excel
+Tool Delete tag chu bi ki
+Tool load cua so thi chua co cua so de load

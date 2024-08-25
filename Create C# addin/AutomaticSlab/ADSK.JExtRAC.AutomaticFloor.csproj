@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+  <PropertyGroup>
+    <AssemblyName>ADSK.JExtRAC.AutomaticFloor</AssemblyName>
+    <GenerateAssemblyInfo>False</GenerateAssemblyInfo>
+    <UseWindowsForms>True</UseWindowsForms>
+    <TargetFramework>net48</TargetFramework>
+  </PropertyGroup>
+  <PropertyGroup>
+    <LangVersion>11.0</LangVersion>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RootNamespace />
+  </PropertyGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Reference Include="RevitAPIUI" />
+    <Reference Include="RevitAPI" />
+    <Reference Include="ADSK.JExtCom.22.1">
+      <HintPath>..\..\..\..\..\..\..\..\..\ProgramData\Autodesk\ApplicationPlugins\REXJ_RAC2022.bundle\Contents\REXJ\ADSK.JExtCom.22.1.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data" />
+  </ItemGroup>
+</Project>

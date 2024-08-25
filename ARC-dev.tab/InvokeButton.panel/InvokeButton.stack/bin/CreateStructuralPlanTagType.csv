@@ -1,0 +1,5 @@
+Column Tag Type Name,Tag_構造柱タグ/TD符号
+Frame Tag Type Name,Tag_構造フレームタグ/TD符号
+Wall Tag Type Name,Tag_壁タグ/SSC符号
+Footing Tag Type Name,Tag_構造基礎タグ/TD符号
+Floor Tag Type Name,Tag_床タグ/SSC符号
