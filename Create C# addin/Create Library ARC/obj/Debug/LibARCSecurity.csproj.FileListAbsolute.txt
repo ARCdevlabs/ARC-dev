@@ -1,0 +1,6 @@
+C:\Users\Admin\AppData\Roaming\pyRevit\Extensions\ARC-dev.extension\Create C# addin\Create Library ARC\obj\Debug\LibARCSecurity.csproj.AssemblyReference.cache
+C:\Users\Admin\AppData\Roaming\pyRevit\Extensions\ARC-dev.extension\Create C# addin\Create Library ARC\obj\Debug\LibARCSecurity.csproj.CoreCompileInputs.cache
+C:\Users\Admin\AppData\Roaming\pyRevit\Extensions\ARC-dev.extension\Create C# addin\Create Library ARC\bin\Debug\LibARC.pdb
+C:\Users\Admin\AppData\Roaming\pyRevit\Extensions\ARC-dev.extension\Create C# addin\Create Library ARC\obj\Debug\LibARC.pdb
+C:\Users\Admin\AppData\Roaming\pyRevit\Extensions\ARC-dev.extension\Create C# addin\Create Library ARC\bin\Debug\LibARC.dll
+C:\Users\Admin\AppData\Roaming\pyRevit\Extensions\ARC-dev.extension\Create C# addin\Create Library ARC\obj\Debug\LibARC.dll
