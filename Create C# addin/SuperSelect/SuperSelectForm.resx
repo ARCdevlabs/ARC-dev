@@ -117,36 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="buttonCollapse.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAFJJREFUOE+1
-        jNEKwDAIA/3/n96eHEdJTAvdwYEYY93kGYyoEo1sHzr4oGenhKE9mvjtQe+dH1ww6L1TwmAtrEoYuKOj
-        B5MRVaIRVaIRVWpvUPUCaTVjncA/cHcAAAAASUVORK5CYII=
-</value>
-  </data>
-  <data name="buttonExpand.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAFpJREFUOE+1
-        jEkKwDAMA/3/T6cnlUHxkkI6ILAl2XGT1WgkO6JGjosVfKC5UgrDstTx2wP5lV5oMJDPzL0NBl7mLm+D
-        QVX69IBl7vJavMxdXosfuEayI+kGEQ8GUl+hePPqGQAAAABJRU5ErkJggg==
-</value>
-  </data>
-  <data name="buttonUncheck.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAIJJREFUOE9j
-        QAPuQDwTiOuIwLVAvAeIUYAPEJtBmEQBkEEogCwDQM4GaQThRiAuROKjY28g5gViGAAbMAuIQbYSg4ug
-        NAyADcDwBx4AcsWoAQNtACgdgKISZBCIvQSISTYgEYhBrgBhUyCmyAtgQLEBoCwJypoggwhhkJ/BzoYA
-        BgYAI70miHhkhxgAAAAASUVORK5CYII=
-</value>
-  </data>
-  <data name="buttonCheck.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAALxJREFUOE/F
-        k7ENwjAQRb0AVJQwA1IkWIECxA6MAH2QEB2IAaBmDIbjPyeW7AtxLCh40pPt4n7uktgZVvIujwXW8iUT
-        NnLZbIsgKOGrANqmEE9yH52tazmSAR/wkDy1xEO7BnxAZ44MdPGfgJncyt6ASk44fGAqr3IsewMovrVr
-        TFwM2RFsiC2GwXcQQubyIuNi4D/gUxLE/imTACDkLG0xULSTdIEL2QnIYUfw/BzAleRqEjQkM/u2G5x7
-        A41JLM9rWGuMAAAAAElFTkSuQmCC
-</value>
-  </data>
 </root>

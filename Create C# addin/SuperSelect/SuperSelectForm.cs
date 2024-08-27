@@ -112,7 +112,6 @@ public class SelectFilterForm : System.Windows.Forms.Form
     private RadioButton rBListMaterial;
 
     private CheckBox checkBoxInstance;
-    private Button buttonRemove;
 
     public List<ElementId> checkedIds { get; set; }
 
@@ -132,7 +131,6 @@ public class SelectFilterForm : System.Windows.Forms.Form
 
         base.MaximizeBox = false;
 
-        buttonRemove.Visible = false;
     }
 
     private void SelectFilterForm_Load(object sender, EventArgs e)
@@ -1264,7 +1262,6 @@ public class SelectFilterForm : System.Windows.Forms.Form
 
     private void InitializeComponent()
     {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SelectFilterForm));
             this.treeViewElements = new System.Windows.Forms.TreeView();
             this.labelCount = new System.Windows.Forms.Label();
             this.groupBoxSelection = new System.Windows.Forms.GroupBox();
@@ -1301,7 +1298,6 @@ public class SelectFilterForm : System.Windows.Forms.Form
             this.buttonExpand = new System.Windows.Forms.Button();
             this.buttonUncheck = new System.Windows.Forms.Button();
             this.buttonCheck = new System.Windows.Forms.Button();
-            this.buttonRemove = new System.Windows.Forms.Button();
             this.groupBoxSelection.SuspendLayout();
             this.groupBoxListingOption.SuspendLayout();
             this.groupBoxSearch.SuspendLayout();
@@ -1313,7 +1309,7 @@ public class SelectFilterForm : System.Windows.Forms.Form
             this.treeViewElements.CheckBoxes = true;
             this.treeViewElements.Location = new System.Drawing.Point(12, 43);
             this.treeViewElements.Name = "treeViewElements";
-            this.treeViewElements.Size = new System.Drawing.Size(400, 657);
+            this.treeViewElements.Size = new System.Drawing.Size(552, 657);
             this.treeViewElements.TabIndex = 0;
             this.treeViewElements.AfterCheck += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterCheck);
             this.treeViewElements.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
@@ -1322,7 +1318,7 @@ public class SelectFilterForm : System.Windows.Forms.Form
             // 
             this.labelCount.AutoSize = true;
             this.labelCount.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.labelCount.Location = new System.Drawing.Point(427, 607);
+            this.labelCount.Location = new System.Drawing.Point(582, 622);
             this.labelCount.Name = "labelCount";
             this.labelCount.Size = new System.Drawing.Size(111, 16);
             this.labelCount.TabIndex = 1;
@@ -1333,7 +1329,7 @@ public class SelectFilterForm : System.Windows.Forms.Form
             this.groupBoxSelection.Controls.Add(this.rBSelAll);
             this.groupBoxSelection.Controls.Add(this.rBSelCurrent);
             this.groupBoxSelection.Controls.Add(this.rBSelView);
-            this.groupBoxSelection.Location = new System.Drawing.Point(425, 158);
+            this.groupBoxSelection.Location = new System.Drawing.Point(580, 173);
             this.groupBoxSelection.Name = "groupBoxSelection";
             this.groupBoxSelection.Size = new System.Drawing.Size(194, 92);
             this.groupBoxSelection.TabIndex = 2;
@@ -1379,7 +1375,7 @@ public class SelectFilterForm : System.Windows.Forms.Form
             // buttonSelect
             // 
             this.buttonSelect.BackColor = System.Drawing.Color.YellowGreen;
-            this.buttonSelect.Location = new System.Drawing.Point(430, 627);
+            this.buttonSelect.Location = new System.Drawing.Point(585, 642);
             this.buttonSelect.Name = "buttonSelect";
             this.buttonSelect.Size = new System.Drawing.Size(188, 32);
             this.buttonSelect.TabIndex = 3;
@@ -1412,7 +1408,7 @@ public class SelectFilterForm : System.Windows.Forms.Form
             // buttonDeselect
             // 
             this.buttonDeselect.BackColor = System.Drawing.Color.Gray;
-            this.buttonDeselect.Location = new System.Drawing.Point(430, 666);
+            this.buttonDeselect.Location = new System.Drawing.Point(585, 681);
             this.buttonDeselect.Name = "buttonDeselect";
             this.buttonDeselect.Size = new System.Drawing.Size(188, 32);
             this.buttonDeselect.TabIndex = 6;
@@ -1431,7 +1427,7 @@ public class SelectFilterForm : System.Windows.Forms.Form
             this.groupBoxListingOption.Controls.Add(this.rBListType);
             this.groupBoxListingOption.Controls.Add(this.rBListCreated);
             this.groupBoxListingOption.Controls.Add(this.rBListWorkset);
-            this.groupBoxListingOption.Location = new System.Drawing.Point(425, 253);
+            this.groupBoxListingOption.Location = new System.Drawing.Point(580, 268);
             this.groupBoxListingOption.Name = "groupBoxListingOption";
             this.groupBoxListingOption.Size = new System.Drawing.Size(194, 228);
             this.groupBoxListingOption.TabIndex = 9;
@@ -1549,7 +1545,7 @@ public class SelectFilterForm : System.Windows.Forms.Form
             // checkBoxInstance
             // 
             this.checkBoxInstance.AutoSize = true;
-            this.checkBoxInstance.Location = new System.Drawing.Point(216, 21);
+            this.checkBoxInstance.Location = new System.Drawing.Point(383, 20);
             this.checkBoxInstance.Name = "checkBoxInstance";
             this.checkBoxInstance.Size = new System.Drawing.Size(102, 17);
             this.checkBoxInstance.TabIndex = 18;
@@ -1565,7 +1561,7 @@ public class SelectFilterForm : System.Windows.Forms.Form
             this.groupBoxSearch.Controls.Add(this.buttonReset);
             this.groupBoxSearch.Controls.Add(this.buttonSearch);
             this.groupBoxSearch.Controls.Add(this.textBoxSearch);
-            this.groupBoxSearch.Location = new System.Drawing.Point(425, 9);
+            this.groupBoxSearch.Location = new System.Drawing.Point(580, 24);
             this.groupBoxSearch.Name = "groupBoxSearch";
             this.groupBoxSearch.Size = new System.Drawing.Size(193, 149);
             this.groupBoxSearch.TabIndex = 12;
@@ -1623,6 +1619,8 @@ public class SelectFilterForm : System.Windows.Forms.Form
             // 
             // textBoxSearch
             // 
+            this.textBoxSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.textBoxSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxSearch.Location = new System.Drawing.Point(12, 20);
             this.textBoxSearch.Name = "textBoxSearch";
             this.textBoxSearch.Size = new System.Drawing.Size(159, 20);
@@ -1634,7 +1632,7 @@ public class SelectFilterForm : System.Windows.Forms.Form
             this.groupBoxFiltering.Controls.Add(this.checkBoxWarnings);
             this.groupBoxFiltering.Controls.Add(this.checkBoxInplace);
             this.groupBoxFiltering.Controls.Add(this.checkBoxHost);
-            this.groupBoxFiltering.Location = new System.Drawing.Point(424, 488);
+            this.groupBoxFiltering.Location = new System.Drawing.Point(579, 503);
             this.groupBoxFiltering.Name = "groupBoxFiltering";
             this.groupBoxFiltering.Size = new System.Drawing.Size(194, 114);
             this.groupBoxFiltering.TabIndex = 15;
@@ -1665,7 +1663,7 @@ public class SelectFilterForm : System.Windows.Forms.Form
             // 
             // buttonRefresh
             // 
-            this.buttonRefresh.Location = new System.Drawing.Point(337, 13);
+            this.buttonRefresh.Location = new System.Drawing.Point(489, 12);
             this.buttonRefresh.Name = "buttonRefresh";
             this.buttonRefresh.Size = new System.Drawing.Size(75, 25);
             this.buttonRefresh.TabIndex = 16;
@@ -1675,86 +1673,68 @@ public class SelectFilterForm : System.Windows.Forms.Form
             // 
             // buttonCollapse
             // 
-            this.buttonCollapse.BackColor = System.Drawing.Color.Transparent;
-            this.buttonCollapse.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.buttonCollapse.FlatAppearance.BorderSize = 0;
+            this.buttonCollapse.BackColor = System.Drawing.Color.Silver;
+            this.buttonCollapse.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
             this.buttonCollapse.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonCollapse.Image = ((System.Drawing.Image)(resources.GetObject("buttonCollapse.Image")));
-            this.buttonCollapse.Location = new System.Drawing.Point(102, 12);
+            this.buttonCollapse.Location = new System.Drawing.Point(287, 12);
             this.buttonCollapse.Name = "buttonCollapse";
-            this.buttonCollapse.Size = new System.Drawing.Size(23, 25);
+            this.buttonCollapse.Size = new System.Drawing.Size(71, 25);
             this.buttonCollapse.TabIndex = 0;
+            this.buttonCollapse.Text = "Collapse";
             this.buttonCollapse.UseVisualStyleBackColor = false;
             this.buttonCollapse.Click += new System.EventHandler(this.buttonCollapse_Click);
             // 
             // buttonExpand
             // 
-            this.buttonExpand.BackColor = System.Drawing.Color.Transparent;
-            this.buttonExpand.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.buttonExpand.FlatAppearance.BorderSize = 0;
+            this.buttonExpand.BackColor = System.Drawing.Color.Silver;
+            this.buttonExpand.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
             this.buttonExpand.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonExpand.Image = ((System.Drawing.Image)(resources.GetObject("buttonExpand.Image")));
-            this.buttonExpand.Location = new System.Drawing.Point(75, 12);
+            this.buttonExpand.Location = new System.Drawing.Point(210, 12);
             this.buttonExpand.Name = "buttonExpand";
-            this.buttonExpand.Size = new System.Drawing.Size(23, 25);
+            this.buttonExpand.Size = new System.Drawing.Size(71, 25);
             this.buttonExpand.TabIndex = 0;
+            this.buttonExpand.Text = "Expand";
             this.buttonExpand.UseVisualStyleBackColor = false;
             this.buttonExpand.Click += new System.EventHandler(this.buttonExpand_Click);
             // 
             // buttonUncheck
             // 
-            this.buttonUncheck.BackColor = System.Drawing.Color.Transparent;
-            this.buttonUncheck.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.buttonUncheck.FlatAppearance.BorderSize = 0;
+            this.buttonUncheck.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.buttonUncheck.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
             this.buttonUncheck.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonUncheck.Image = ((System.Drawing.Image)(resources.GetObject("buttonUncheck.Image")));
-            this.buttonUncheck.Location = new System.Drawing.Point(41, 12);
+            this.buttonUncheck.Location = new System.Drawing.Point(106, 12);
             this.buttonUncheck.Name = "buttonUncheck";
-            this.buttonUncheck.Size = new System.Drawing.Size(23, 25);
+            this.buttonUncheck.Size = new System.Drawing.Size(83, 25);
             this.buttonUncheck.TabIndex = 0;
+            this.buttonUncheck.Text = "UnCheck All";
             this.buttonUncheck.UseVisualStyleBackColor = false;
             this.buttonUncheck.Click += new System.EventHandler(this.buttonUncheck_Click);
             // 
             // buttonCheck
             // 
-            this.buttonCheck.BackColor = System.Drawing.Color.Transparent;
-            this.buttonCheck.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.buttonCheck.FlatAppearance.BorderSize = 0;
+            this.buttonCheck.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.buttonCheck.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
             this.buttonCheck.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonCheck.Image = ((System.Drawing.Image)(resources.GetObject("buttonCheck.Image")));
             this.buttonCheck.Location = new System.Drawing.Point(12, 12);
             this.buttonCheck.Name = "buttonCheck";
-            this.buttonCheck.Size = new System.Drawing.Size(23, 25);
+            this.buttonCheck.Size = new System.Drawing.Size(88, 25);
             this.buttonCheck.TabIndex = 0;
+            this.buttonCheck.Text = "Check All";
             this.buttonCheck.UseVisualStyleBackColor = false;
             this.buttonCheck.Click += new System.EventHandler(this.buttonCheck_Click);
-            // 
-            // buttonRemove
-            // 
-            this.buttonRemove.BackColor = System.Drawing.Color.Transparent;
-            this.buttonRemove.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.buttonRemove.FlatAppearance.BorderSize = 0;
-            this.buttonRemove.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonRemove.Location = new System.Drawing.Point(131, 12);
-            this.buttonRemove.Name = "buttonRemove";
-            this.buttonRemove.Size = new System.Drawing.Size(23, 25);
-            this.buttonRemove.TabIndex = 0;
-            this.buttonRemove.UseVisualStyleBackColor = false;
-            this.buttonRemove.Click += new System.EventHandler(this.buttonRemove_Click);
             // 
             // SelectFilterForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.ClientSize = new System.Drawing.Size(626, 716);
+            this.ClientSize = new System.Drawing.Size(785, 716);
             this.Controls.Add(this.checkBoxInstance);
             this.Controls.Add(this.buttonRefresh);
             this.Controls.Add(this.groupBoxFiltering);
             this.Controls.Add(this.groupBoxSearch);
             this.Controls.Add(this.groupBoxListingOption);
             this.Controls.Add(this.buttonDeselect);
-            this.Controls.Add(this.buttonRemove);
             this.Controls.Add(this.buttonCollapse);
             this.Controls.Add(this.buttonExpand);
             this.Controls.Add(this.buttonUncheck);
