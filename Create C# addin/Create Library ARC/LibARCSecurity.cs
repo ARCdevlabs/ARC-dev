@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Text;
+using Autodesk.Revit.DB;
 using Microsoft.Win32;
 
 
@@ -123,6 +124,17 @@ namespace namspaceLibARC
             }
 
         }
+    public static string CodePython()
+        {
+            string pythonCode = @"
+            if 1 > 0:
+                print(""OK"")
+            else:
+                print(""not OK"")
+            ";
+
+            return pythonCode;
+        }
 
         //static void Main()
         //{
@@ -133,3 +145,6 @@ namespace namspaceLibARC
         //}
     }
 }
+
+
+
