@@ -5,7 +5,7 @@ using Autodesk.Revit.DB;
 using Microsoft.Win32;
 
 
-namespace namspaceLibARC
+namespace NS.LibARC
 {
     public class LibARCSecurity
     {
@@ -123,17 +123,6 @@ namespace namspaceLibARC
                 return false;
             }
 
-        }
-    public static string CodePython()
-        {
-            string pythonCode = @"
-            if 1 > 0:
-                print(""OK"")
-            else:
-                print(""not OK"")
-            ";
-
-            return pythonCode;
         }
 
         //static void Main()

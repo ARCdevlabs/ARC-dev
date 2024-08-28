@@ -70,6 +70,7 @@
   <ItemGroup>
     <Compile Include="LibARCSecurity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WrapARC.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
