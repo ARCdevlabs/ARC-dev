@@ -1,0 +1,70 @@
+{
+  "format": 1,
+  "restore": {
+    "G:\\My Drive\\Lưu Trữ\\Visual\\Kawa\\CMS\\AutoJoinGeometry\\AutoJoinGeometry.csproj": {}
+  },
+  "projects": {
+    "G:\\My Drive\\Lưu Trữ\\Visual\\Kawa\\CMS\\AutoJoinGeometry\\AutoJoinGeometry.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "G:\\My Drive\\Lưu Trữ\\Visual\\Kawa\\CMS\\AutoJoinGeometry\\AutoJoinGeometry.csproj",
+        "projectName": "AutoJoinGeometry",
+        "projectPath": "G:\\My Drive\\Lưu Trữ\\Visual\\Kawa\\CMS\\AutoJoinGeometry\\AutoJoinGeometry.csproj",
+        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+        "outputPath": "G:\\My Drive\\Lưu Trữ\\Visual\\Kawa\\CMS\\AutoJoinGeometry\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net480"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net48": {
+            "targetAlias": "net480",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net48": {
+          "targetAlias": "net480",
+          "dependencies": {
+            "PresentationFramework": {
+              "target": "Package",
+              "version": "[4.6.0, )"
+            },
+            "PresentationFramework.Aero2": {
+              "target": "Package",
+              "version": "[1.0.1, )"
+            },
+            "Revit.AdWindows.x64": {
+              "target": "Package",
+              "version": "[2023.0.0, )"
+            },
+            "System.Runtime": {
+              "target": "Package",
+              "version": "[4.3.1, )"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.205\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

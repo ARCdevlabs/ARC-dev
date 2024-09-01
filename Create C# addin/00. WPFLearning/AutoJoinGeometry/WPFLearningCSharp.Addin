@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<RevitAddIns>
+	<AddIn Type="Application">
+		<Name>WPFLearningCSharp</Name>
+		<Assembly>C:\ProgramData\Autodesk\Revit\Addins\2022\WPFLearningCSharp.dll</Assembly>
+		<AddInId>D106A19F-DA2D-4F94-A7BC-0E89D2447399</AddInId>
+		<FullClassName>NS.WPFLearningCSharp.MainWindow</FullClassName>
+		<VendorId>ADSK</VendorId>
+		<VendorDescription>Autodesk, www.autodesk.com</VendorDescription>
+	</AddIn>
+</RevitAddIns>

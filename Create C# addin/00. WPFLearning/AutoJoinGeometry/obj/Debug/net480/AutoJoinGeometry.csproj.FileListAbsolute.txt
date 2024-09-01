@@ -1,0 +1,88 @@
+I:\My Drive\Lưu Trữ\Visual\Kawa\CMS\AutoJoinGeometry\bin\Debug\net480\Resources\JoinGeometry.png
+I:\My Drive\Lưu Trữ\Visual\Kawa\CMS\AutoJoinGeometry\bin\Debug\net480\AutoJoinGeometry.dll
+I:\My Drive\Lưu Trữ\Visual\Kawa\CMS\AutoJoinGeometry\bin\Debug\net480\AutoJoinGeometry.pdb
+I:\My Drive\Lưu Trữ\Visual\Kawa\CMS\AutoJoinGeometry\bin\Debug\net480\PresentationFramework.dll
+I:\My Drive\Lưu Trữ\Visual\Kawa\CMS\AutoJoinGeometry\bin\Debug\net480\PresentationFramework.Aero2.dll
+I:\My Drive\Lưu Trữ\Visual\Kawa\CMS\AutoJoinGeometry\obj\Debug\net480\AutoJoinGeometry.csproj.AssemblyReference.cache
+I:\My Drive\Lưu Trữ\Visual\Kawa\CMS\AutoJoinGeometry\obj\Debug\net480\JoinGeometryForm.g.cs
+I:\My Drive\Lưu Trữ\Visual\Kawa\CMS\AutoJoinGeometry\obj\Debug\net480\AutoJoinGeometry_MarkupCompile.cache
+I:\My Drive\Lưu Trữ\Visual\Kawa\CMS\AutoJoinGeometry\obj\Debug\net480\AutoJoinGeometry_MarkupCompile.lref
+I:\My Drive\Lưu Trữ\Visual\Kawa\CMS\AutoJoinGeometry\obj\Debug\net480\JoinGeometryForm.baml
+I:\My Drive\Lưu Trữ\Visual\Kawa\CMS\AutoJoinGeometry\obj\Debug\net480\AutoJoinGeometry.g.resources
+I:\My Drive\Lưu Trữ\Visual\Kawa\CMS\AutoJoinGeometry\obj\Debug\net480\AutoJoinGeometry.Resource.resources
+I:\My Drive\Lưu Trữ\Visual\Kawa\CMS\AutoJoinGeometry\obj\Debug\net480\AutoJoinGeometry.csproj.GenerateResource.cache
+I:\My Drive\Lưu Trữ\Visual\Kawa\CMS\AutoJoinGeometry\obj\Debug\net480\AutoJoinGeometry.GeneratedMSBuildEditorConfig.editorconfig
+I:\My Drive\Lưu Trữ\Visual\Kawa\CMS\AutoJoinGeometry\obj\Debug\net480\AutoJoinGeometry.AssemblyInfoInputs.cache
+I:\My Drive\Lưu Trữ\Visual\Kawa\CMS\AutoJoinGeometry\obj\Debug\net480\AutoJoinGeometry.AssemblyInfo.cs
+I:\My Drive\Lưu Trữ\Visual\Kawa\CMS\AutoJoinGeometry\obj\Debug\net480\AutoJoinGeometry.csproj.CoreCompileInputs.cache
+I:\My Drive\Lưu Trữ\Visual\Kawa\CMS\AutoJoinGeometry\obj\Debug\net480\AutoJoin.A5B54EFA.Up2Date
+I:\My Drive\Lưu Trữ\Visual\Kawa\CMS\AutoJoinGeometry\obj\Debug\net480\AutoJoinGeometry.dll
+I:\My Drive\Lưu Trữ\Visual\Kawa\CMS\AutoJoinGeometry\obj\Debug\net480\AutoJoinGeometry.pdb
+J:\My Drive\Lưu Trữ\Visual\Kawa\CMS\AutoJoinGeometry\obj\Debug\net480\AutoJoinGeometry.csproj.AssemblyReference.cache
+J:\My Drive\Lưu Trữ\Visual\Kawa\CMS\AutoJoinGeometry\obj\Debug\net480\JoinGeometryForm.g.cs
+J:\My Drive\Lưu Trữ\Visual\Kawa\CMS\AutoJoinGeometry\obj\Debug\net480\AutoJoinGeometry_MarkupCompile.cache
+J:\My Drive\Lưu Trữ\Visual\Kawa\CMS\AutoJoinGeometry\obj\Debug\net480\AutoJoinGeometry_MarkupCompile.lref
+J:\My Drive\Lưu Trữ\Visual\Kawa\CMS\AutoJoinGeometry\obj\Debug\net480\JoinGeometryForm.baml
+J:\My Drive\Lưu Trữ\Visual\Kawa\CMS\AutoJoinGeometry\obj\Debug\net480\AutoJoinGeometry.g.resources
+J:\My Drive\Lưu Trữ\Visual\Kawa\CMS\AutoJoinGeometry\obj\Debug\net480\AutoJoinGeometry.Resource.resources
+J:\My Drive\Lưu Trữ\Visual\Kawa\CMS\AutoJoinGeometry\obj\Debug\net480\AutoJoinGeometry.csproj.GenerateResource.cache
+J:\My Drive\Lưu Trữ\Visual\Kawa\CMS\AutoJoinGeometry\obj\Debug\net480\AutoJoinGeometry.GeneratedMSBuildEditorConfig.editorconfig
+J:\My Drive\Lưu Trữ\Visual\Kawa\CMS\AutoJoinGeometry\obj\Debug\net480\AutoJoinGeometry.AssemblyInfoInputs.cache
+J:\My Drive\Lưu Trữ\Visual\Kawa\CMS\AutoJoinGeometry\obj\Debug\net480\AutoJoinGeometry.AssemblyInfo.cs
+J:\My Drive\Lưu Trữ\Visual\Kawa\CMS\AutoJoinGeometry\obj\Debug\net480\AutoJoinGeometry.csproj.CoreCompileInputs.cache
+J:\My Drive\Lưu Trữ\Visual\Kawa\CMS\AutoJoinGeometry\obj\Debug\net480\AutoJoinGeometry.pdb
+J:\My Drive\Lưu Trữ\Visual\Kawa\CMS\AutoJoinGeometry\bin\Debug\net480\Resources\JoinGeometry.png
+J:\My Drive\Lưu Trữ\Visual\Kawa\CMS\AutoJoinGeometry\bin\Debug\net480\AutoJoinGeometry.dll
+J:\My Drive\Lưu Trữ\Visual\Kawa\CMS\AutoJoinGeometry\bin\Debug\net480\AutoJoinGeometry.pdb
+J:\My Drive\Lưu Trữ\Visual\Kawa\CMS\AutoJoinGeometry\bin\Debug\net480\PresentationFramework.dll
+J:\My Drive\Lưu Trữ\Visual\Kawa\CMS\AutoJoinGeometry\bin\Debug\net480\PresentationFramework.Aero2.dll
+J:\My Drive\Lưu Trữ\Visual\Kawa\CMS\AutoJoinGeometry\bin\Debug\net480\AdWindows.dll
+J:\My Drive\Lưu Trữ\Visual\Kawa\CMS\AutoJoinGeometry\obj\Debug\net480\AutoJoin.A5B54EFA.Up2Date
+J:\My Drive\Lưu Trữ\Visual\Kawa\CMS\AutoJoinGeometry\obj\Debug\net480\AutoJoinGeometry.dll
+G:\My Drive\Lưu Trữ\Visual\Kawa\CMS\AutoJoinGeometry\bin\Debug\net480\Resources\JoinGeometry.png
+G:\My Drive\Lưu Trữ\Visual\Kawa\CMS\AutoJoinGeometry\bin\Debug\net480\AutoJoinGeometry.dll
+G:\My Drive\Lưu Trữ\Visual\Kawa\CMS\AutoJoinGeometry\bin\Debug\net480\AutoJoinGeometry.pdb
+G:\My Drive\Lưu Trữ\Visual\Kawa\CMS\AutoJoinGeometry\bin\Debug\net480\PresentationFramework.dll
+G:\My Drive\Lưu Trữ\Visual\Kawa\CMS\AutoJoinGeometry\bin\Debug\net480\PresentationFramework.Aero2.dll
+G:\My Drive\Lưu Trữ\Visual\Kawa\CMS\AutoJoinGeometry\obj\Debug\net480\AutoJoinGeometry.csproj.AssemblyReference.cache
+G:\My Drive\Lưu Trữ\Visual\Kawa\CMS\AutoJoinGeometry\obj\Debug\net480\JoinGeometryForm.g.cs
+G:\My Drive\Lưu Trữ\Visual\Kawa\CMS\AutoJoinGeometry\obj\Debug\net480\AutoJoinGeometry_MarkupCompile.cache
+G:\My Drive\Lưu Trữ\Visual\Kawa\CMS\AutoJoinGeometry\obj\Debug\net480\AutoJoinGeometry_MarkupCompile.lref
+G:\My Drive\Lưu Trữ\Visual\Kawa\CMS\AutoJoinGeometry\obj\Debug\net480\JoinGeometryForm.baml
+G:\My Drive\Lưu Trữ\Visual\Kawa\CMS\AutoJoinGeometry\obj\Debug\net480\AutoJoinGeometry.g.resources
+G:\My Drive\Lưu Trữ\Visual\Kawa\CMS\AutoJoinGeometry\obj\Debug\net480\AutoJoinGeometry.Resource.resources
+G:\My Drive\Lưu Trữ\Visual\Kawa\CMS\AutoJoinGeometry\obj\Debug\net480\AutoJoinGeometry.csproj.GenerateResource.cache
+G:\My Drive\Lưu Trữ\Visual\Kawa\CMS\AutoJoinGeometry\obj\Debug\net480\AutoJoinGeometry.GeneratedMSBuildEditorConfig.editorconfig
+G:\My Drive\Lưu Trữ\Visual\Kawa\CMS\AutoJoinGeometry\obj\Debug\net480\AutoJoinGeometry.AssemblyInfoInputs.cache
+G:\My Drive\Lưu Trữ\Visual\Kawa\CMS\AutoJoinGeometry\obj\Debug\net480\AutoJoinGeometry.AssemblyInfo.cs
+G:\My Drive\Lưu Trữ\Visual\Kawa\CMS\AutoJoinGeometry\obj\Debug\net480\AutoJoinGeometry.csproj.CoreCompileInputs.cache
+G:\My Drive\Lưu Trữ\Visual\Kawa\CMS\AutoJoinGeometry\obj\Debug\net480\AutoJoin.A5B54EFA.Up2Date
+G:\My Drive\Lưu Trữ\Visual\Kawa\CMS\AutoJoinGeometry\obj\Debug\net480\AutoJoinGeometry.dll
+G:\My Drive\Lưu Trữ\Visual\Kawa\CMS\AutoJoinGeometry\obj\Debug\net480\AutoJoinGeometry.pdb
+D:\My Drive (nguyenthanhson1712@gmail.com)\003. Dùng chung\02. Revit API\06. Tool anh Cuong\04. Dự án mẫu MS\AutoJoinGeometry\obj\Debug\net480\AutoJoinGeometry.csproj.AssemblyReference.cache
+D:\My Drive (nguyenthanhson1712@gmail.com)\003. Dùng chung\02. Revit API\06. Tool anh Cuong\04. Dự án mẫu MS\AutoJoinGeometry\obj\Debug\net480\JoinGeometryForm.g.cs
+D:\My Drive (nguyenthanhson1712@gmail.com)\003. Dùng chung\02. Revit API\06. Tool anh Cuong\04. Dự án mẫu MS\AutoJoinGeometry\obj\Debug\net480\AutoJoinGeometry_MarkupCompile.cache
+D:\My Drive (nguyenthanhson1712@gmail.com)\003. Dùng chung\02. Revit API\06. Tool anh Cuong\04. Dự án mẫu MS\AutoJoinGeometry\obj\Debug\net480\AutoJoinGeometry_MarkupCompile.lref
+D:\My Drive (nguyenthanhson1712@gmail.com)\003. Dùng chung\02. Revit API\06. Tool anh Cuong\04. Dự án mẫu MS\AutoJoinGeometry\obj\Debug\net480\AutoJoinGeometry.dll
+D:\My Drive (nguyenthanhson1712@gmail.com)\003. Dùng chung\02. Revit API\06. Tool anh Cuong\04. Dự án mẫu MS\AutoJoinGeometry\obj\Debug\net480\AutoJoinGeometry.pdb
+C:\Users\ADMIN\AppData\Roaming\pyRevit\Extensions\ARC-dev.extension\Create C# addin\00. WPFLearning\AutoJoinGeometry\obj\Debug\net480\AutoJoinGeometry.csproj.AssemblyReference.cache
+C:\Users\ADMIN\AppData\Roaming\pyRevit\Extensions\ARC-dev.extension\Create C# addin\00. WPFLearning\AutoJoinGeometry\obj\Debug\net480\JoinGeometryForm.g.cs
+C:\Users\ADMIN\AppData\Roaming\pyRevit\Extensions\ARC-dev.extension\Create C# addin\00. WPFLearning\AutoJoinGeometry\obj\Debug\net480\AutoJoinGeometry_MarkupCompile.cache
+C:\Users\ADMIN\AppData\Roaming\pyRevit\Extensions\ARC-dev.extension\Create C# addin\00. WPFLearning\AutoJoinGeometry\obj\Debug\net480\AutoJoinGeometry_MarkupCompile.lref
+C:\Users\ADMIN\AppData\Roaming\pyRevit\Extensions\ARC-dev.extension\Create C# addin\00. WPFLearning\AutoJoinGeometry\obj\Debug\net480\AutoJoinGeometry.dll
+C:\Users\ADMIN\AppData\Roaming\pyRevit\Extensions\ARC-dev.extension\Create C# addin\00. WPFLearning\AutoJoinGeometry\obj\Debug\net480\AutoJoinGeometry.pdb
+C:\Users\ADMIN\AppData\Roaming\pyRevit\Extensions\ARC-dev.extension\Create C# addin\00. WPFLearning\AutoJoinGeometry\bin\Debug\net480\Resources\JoinGeometry.png
+C:\Users\ADMIN\AppData\Roaming\pyRevit\Extensions\ARC-dev.extension\Create C# addin\00. WPFLearning\AutoJoinGeometry\bin\Debug\net480\AutoJoinGeometry.dll
+C:\Users\ADMIN\AppData\Roaming\pyRevit\Extensions\ARC-dev.extension\Create C# addin\00. WPFLearning\AutoJoinGeometry\bin\Debug\net480\AutoJoinGeometry.pdb
+C:\Users\ADMIN\AppData\Roaming\pyRevit\Extensions\ARC-dev.extension\Create C# addin\00. WPFLearning\AutoJoinGeometry\bin\Debug\net480\PresentationFramework.dll
+C:\Users\ADMIN\AppData\Roaming\pyRevit\Extensions\ARC-dev.extension\Create C# addin\00. WPFLearning\AutoJoinGeometry\bin\Debug\net480\PresentationFramework.Aero2.dll
+C:\Users\ADMIN\AppData\Roaming\pyRevit\Extensions\ARC-dev.extension\Create C# addin\00. WPFLearning\AutoJoinGeometry\obj\Debug\net480\JoinGeometryForm.baml
+C:\Users\ADMIN\AppData\Roaming\pyRevit\Extensions\ARC-dev.extension\Create C# addin\00. WPFLearning\AutoJoinGeometry\obj\Debug\net480\AutoJoinGeometry.g.resources
+C:\Users\ADMIN\AppData\Roaming\pyRevit\Extensions\ARC-dev.extension\Create C# addin\00. WPFLearning\AutoJoinGeometry\obj\Debug\net480\AutoJoinGeometry.Resource.resources
+C:\Users\ADMIN\AppData\Roaming\pyRevit\Extensions\ARC-dev.extension\Create C# addin\00. WPFLearning\AutoJoinGeometry\obj\Debug\net480\AutoJoinGeometry.csproj.GenerateResource.cache
+C:\Users\ADMIN\AppData\Roaming\pyRevit\Extensions\ARC-dev.extension\Create C# addin\00. WPFLearning\AutoJoinGeometry\obj\Debug\net480\AutoJoinGeometry.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ADMIN\AppData\Roaming\pyRevit\Extensions\ARC-dev.extension\Create C# addin\00. WPFLearning\AutoJoinGeometry\obj\Debug\net480\AutoJoinGeometry.AssemblyInfoInputs.cache
+C:\Users\ADMIN\AppData\Roaming\pyRevit\Extensions\ARC-dev.extension\Create C# addin\00. WPFLearning\AutoJoinGeometry\obj\Debug\net480\AutoJoinGeometry.AssemblyInfo.cs
+C:\Users\ADMIN\AppData\Roaming\pyRevit\Extensions\ARC-dev.extension\Create C# addin\00. WPFLearning\AutoJoinGeometry\obj\Debug\net480\AutoJoinGeometry.csproj.CoreCompileInputs.cache
+C:\Users\ADMIN\AppData\Roaming\pyRevit\Extensions\ARC-dev.extension\Create C# addin\00. WPFLearning\AutoJoinGeometry\obj\Debug\net480\AutoJoinGeometry.sourcelink.json
+C:\Users\ADMIN\AppData\Roaming\pyRevit\Extensions\ARC-dev.extension\Create C# addin\00. WPFLearning\AutoJoinGeometry\obj\Debug\net480\AutoJoin.A5B54EFA.Up2Date

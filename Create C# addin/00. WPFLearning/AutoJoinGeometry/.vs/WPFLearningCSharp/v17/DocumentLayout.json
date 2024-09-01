@@ -1,0 +1,68 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\ADMIN\\AppData\\Roaming\\pyRevit\\Extensions\\ARC-dev.extension\\Create C# addin\\00. WPFLearning\\AutoJoinGeometry\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{FF68149B-1FAE-4663-A06E-E1F668CCFB4D}|WPFLearningCSharp.csproj|c:\\users\\admin\\appdata\\roaming\\pyrevit\\extensions\\arc-dev.extension\\create c# addin\\00. wpflearning\\autojoingeometry\\wpflearningcsharp.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FF68149B-1FAE-4663-A06E-E1F668CCFB4D}|WPFLearningCSharp.csproj|solutionrelative:wpflearningcsharp.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FF68149B-1FAE-4663-A06E-E1F668CCFB4D}|WPFLearningCSharp.csproj|c:\\users\\admin\\appdata\\roaming\\pyrevit\\extensions\\arc-dev.extension\\create c# addin\\00. wpflearning\\autojoingeometry\\wpflearningcsharp.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{FF68149B-1FAE-4663-A06E-E1F668CCFB4D}|WPFLearningCSharp.csproj|solutionrelative:wpflearningcsharp.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FF68149B-1FAE-4663-A06E-E1F668CCFB4D}|WPFLearningCSharp.csproj|c:\\users\\admin\\appdata\\roaming\\pyrevit\\extensions\\arc-dev.extension\\create c# addin\\00. wpflearning\\autojoingeometry\\command.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FF68149B-1FAE-4663-A06E-E1F668CCFB4D}|WPFLearningCSharp.csproj|solutionrelative:command.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Command.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\AppData\\Roaming\\pyRevit\\Extensions\\ARC-dev.extension\\Create C# addin\\00. WPFLearning\\AutoJoinGeometry\\Command.cs",
+              "RelativeDocumentMoniker": "Command.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\AppData\\Roaming\\pyRevit\\Extensions\\ARC-dev.extension\\Create C# addin\\00. WPFLearning\\AutoJoinGeometry\\Command.cs",
+              "RelativeToolTip": "Command.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-01T03:50:07.992Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "WPFLearningCSharp.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\AppData\\Roaming\\pyRevit\\Extensions\\ARC-dev.extension\\Create C# addin\\00. WPFLearning\\AutoJoinGeometry\\WPFLearningCSharp.xaml.cs",
+              "RelativeDocumentMoniker": "WPFLearningCSharp.xaml.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\AppData\\Roaming\\pyRevit\\Extensions\\ARC-dev.extension\\Create C# addin\\00. WPFLearning\\AutoJoinGeometry\\WPFLearningCSharp.xaml.cs",
+              "RelativeToolTip": "WPFLearningCSharp.xaml.cs",
+              "ViewState": "AgIAAJkAAAAAAAAAAAAiwL4AAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-01T02:08:07.524Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "WPFLearningCSharp.xaml",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\AppData\\Roaming\\pyRevit\\Extensions\\ARC-dev.extension\\Create C# addin\\00. WPFLearning\\AutoJoinGeometry\\WPFLearningCSharp.xaml",
+              "RelativeDocumentMoniker": "WPFLearningCSharp.xaml",
+              "ToolTip": "C:\\Users\\ADMIN\\AppData\\Roaming\\pyRevit\\Extensions\\ARC-dev.extension\\Create C# addin\\00. WPFLearning\\AutoJoinGeometry\\WPFLearningCSharp.xaml",
+              "RelativeToolTip": "WPFLearningCSharp.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-09-01T02:06:16.624Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

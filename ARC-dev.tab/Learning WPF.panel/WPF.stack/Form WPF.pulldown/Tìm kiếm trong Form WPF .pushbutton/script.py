@@ -7,6 +7,30 @@ from System.ComponentModel import INotifyPropertyChanged, PropertyChangedEventAr
 # from System.Windows.Input import Key, Keyboard
 from pyrevit import script, forms
 
+
+class reactive(property):
+    """Decorator for WPF bound properties"""
+    def __init__(self, getter):
+        def newgetter(ui_control):
+            try:
+                return getter(ui_control)
+            except AttributeError:
+                return None
+        super(reactive, self).__init__(newgetter)
+
+    def setter(self, setter):
+        def newsetter(ui_control, newvalue):
+            oldvalue = self.fget(ui_control)
+            if oldvalue != newvalue:
+                setter(ui_control, newvalue)
+                ui_control.OnPropertyChanged(setter.__name__)
+        return property(
+            fget=self.fget,
+            fset=newsetter,
+            fdel=self.fdel,
+            doc=self.__doc__)
+
+
 class ButtonData_Cua_Son(forms.Reactive):
     def __init__(self, title):
         self.__title = title
