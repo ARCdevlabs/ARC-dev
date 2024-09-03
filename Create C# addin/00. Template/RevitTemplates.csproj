@@ -1,0 +1,35 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputPath>output</OutputPath>
+        <TargetFramework>net8.0</TargetFramework>
+        <NoDefaultExcludes>true</NoDefaultExcludes>
+        <IncludeBuildOutput>false</IncludeBuildOutput>
+        <IncludeContentInPack>true</IncludeContentInPack>
+        <ContentTargetFolders>content</ContentTargetFolders>
+        <NoWarn>$(NoWarn);NU5128;NU5110;NU5111</NoWarn>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <PackageType>Template</PackageType>
+        <PackageId>Nice3point.Revit.Templates</PackageId>
+        <Authors>Nice3point</Authors>
+        <Description>Templates for Revit add-ins development</Description>
+        <PackageTags>revit;templates;addin</PackageTags>
+        <RepositoryType>git</RepositoryType>
+        <RepositoryUrl>https://github.com/Nice3point/RevitTemplates</RepositoryUrl>
+        <PackageProjectUrl>https://github.com/Nice3point/RevitTemplates</PackageProjectUrl>
+        <PackageIcon>images\PackageIcon.png</PackageIcon>
+        <PackageLicenseFile>License.md</PackageLicenseFile>
+        <PackageReadmeFile>Readme.md</PackageReadmeFile>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <None Include=".nuget\PackageIcon.png" PackagePath="images\" Pack="true"/>
+        <None Include="License.md" PackagePath="" Pack="true"/>
+        <None Include="Readme.md" PackagePath="" Pack="true"/>
+        <Content Include="source\**\*" Exclude="**\bin\**\*;**\obj\**\*"/>
+        <Compile Remove="**\*"/>
+    </ItemGroup>
+
+</Project>

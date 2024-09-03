@@ -1,0 +1,181 @@
+﻿{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "Nice3point",
+  "name": "Revit AddIn Application",
+  "shortName": "revit-addin-app",
+  "identity": "Nice3point.Revit.AddIn.Application",
+  "defaultName": "RevitAddIn",
+  "sourceName": "Nice3point.Revit.AddIn",
+  "description": "Template for creating an empty application for multi-project Revit add-in",
+  "classifications": [
+    "Revit",
+    "AddIn",
+    "Library",
+    "Application"
+  ],
+  "tags": {
+    "type": "project",
+    "language": "C#",
+    "platform": ".NET"
+  },
+  "preferNameDirectory": true,
+  "placeholderFilename": "keep.folder",
+  "guids": [
+    "AAAAAAAA-AAAA-AAAA-AAAA-AAAAAAAAAAAA"
+  ],
+  "symbols": {
+    "addin": {
+      "type": "parameter",
+      "displayName": "Add-In type",
+      "datatype": "choice",
+      "description": "The type of add-in to be registered in the .addin manifest",
+      "choices": [
+        {
+          "choice": "app",
+          "displayName": "Application",
+          "description": "Registers the add-in in the manifest with the Application type"
+        },
+        {
+          "choice": "command",
+          "displayName": "Command",
+          "description": "Registers the add-in in the manifest with the Command type"
+        }
+      ],
+      "defaultValue": "app"
+    },
+    "ioc": {
+      "type": "parameter",
+      "displayName": "IoC",
+      "datatype": "choice",
+      "description": "Supports the dependency injection (DI) software design pattern which is a technique for achieving Inversion of Control (IoC) between classes and their dependencies",
+      "choices": [
+        {
+          "choice": "disabled",
+          "displayName": "Disabled",
+          "description": "The add-in will not use IoC"
+        },
+        {
+          "choice": "container",
+          "displayName": "Service container",
+          "description": "Use Microsoft.Extensions.DependencyInjection implementation"
+        },
+        {
+          "choice": "host",
+          "displayName": "Hosting",
+          "description": "Use Microsoft.Extensions.Hosting implementation"
+        }
+      ],
+      "defaultValue": "disabled"
+    },
+    "log": {
+      "type": "parameter",
+      "displayName": "Serilog support",
+      "dataType": "bool",
+      "description": "Logging support for the add-in",
+      "defaultValue": "false"
+    },
+    "Command": {
+      "type": "computed",
+      "value": "addin == \"command\""
+    },
+    "Application": {
+      "type": "computed",
+      "value": "addin == \"app\""
+    },
+    "Container": {
+      "type": "computed",
+      "value": "ioc == \"container\""
+    },
+    "Hosting": {
+      "type": "computed",
+      "value": "ioc == \"host\""
+    },
+    "UseIoc": {
+      "type": "computed",
+      "value": "ioc != \"disabled\""
+    }
+  },
+  "sources": [
+    {
+      "modifiers": [
+        {
+          "condition": "Command",
+          "exclude": [
+            "Application.cs",
+            "Resources/Icons/RibbonIcon16.png",
+            "Resources/Icons/RibbonIcon32.png"
+          ]
+        },
+        {
+          "condition": "!UseIoc",
+          "exclude": [
+            "Host.cs"
+          ]
+        },
+        {
+          "condition": "!log || !UseIoc",
+          "exclude": [
+            "Config/LoggerConfigurator.cs"
+          ]
+        }
+      ]
+    }
+  ],
+  "primaryOutputs": [
+    {
+      "condition": "Application",
+      "path": "Application.cs"
+    },
+    {
+      "condition": "Command",
+      "path": "Commands/StartupCommand.cs"
+    }
+  ],
+  "postActions": [
+    {
+      "condition": "Application",
+      "description": "Opens Application.cs in the editor",
+      "manualInstructions": [],
+      "actionId": "84C0DA21-51C8-4541-9940-6CA19AF04EE6",
+      "args": {
+        "files": "0"
+      },
+      "continueOnError": true
+    },
+    {
+      "condition": "Command",
+      "description": "Opens Command.cs in the editor",
+      "manualInstructions": [],
+      "actionId": "84C0DA21-51C8-4541-9940-6CA19AF04EE6",
+      "args": {
+        "files": "0"
+      },
+      "continueOnError": true
+    }
+  ],
+  "SpecialCustomOperations": {
+    "**/*.addin": {
+      "operations": [
+        {
+          "type": "conditional",
+          "configuration": {
+            "actionableIf": [
+              "#if"
+            ],
+            "actionableElse": [
+              "#else"
+            ],
+            "actionableElseif": [
+              "#elseif"
+            ],
+            "endif": [
+              "#endif"
+            ],
+            "trim": "true",
+            "wholeLine": "true"
+          }
+        }
+      ]
+    }
+  }
+}
