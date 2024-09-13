@@ -1,0 +1,9 @@
+C:\Users\Admin\AppData\Roaming\pyRevit\Extensions\ARC-dev.extension\00. Solution ARC\JoinLgsWall\bin\Debug\JoinLgsWall.dll
+C:\Users\Admin\AppData\Roaming\pyRevit\Extensions\ARC-dev.extension\00. Solution ARC\JoinLgsWall\bin\Debug\JoinLgsWall.pdb
+C:\Users\Admin\AppData\Roaming\pyRevit\Extensions\ARC-dev.extension\00. Solution ARC\JoinLgsWall\bin\Debug\ARCLibrary.dll
+C:\Users\Admin\AppData\Roaming\pyRevit\Extensions\ARC-dev.extension\00. Solution ARC\JoinLgsWall\bin\Debug\ARCLibrary.pdb
+C:\Users\Admin\AppData\Roaming\pyRevit\Extensions\ARC-dev.extension\00. Solution ARC\JoinLgsWall\obj\Debug\JoinLgsWall.csproj.AssemblyReference.cache
+C:\Users\Admin\AppData\Roaming\pyRevit\Extensions\ARC-dev.extension\00. Solution ARC\JoinLgsWall\obj\Debug\JoinLgsWall.csproj.CoreCompileInputs.cache
+C:\Users\Admin\AppData\Roaming\pyRevit\Extensions\ARC-dev.extension\00. Solution ARC\JoinLgsWall\obj\Debug\JoinLgsW.F9E35C59.Up2Date
+C:\Users\Admin\AppData\Roaming\pyRevit\Extensions\ARC-dev.extension\00. Solution ARC\JoinLgsWall\obj\Debug\JoinLgsWall.dll
+C:\Users\Admin\AppData\Roaming\pyRevit\Extensions\ARC-dev.extension\00. Solution ARC\JoinLgsWall\obj\Debug\JoinLgsWall.pdb

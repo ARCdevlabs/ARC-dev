@@ -1,0 +1,53 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Admin\\AppData\\Roaming\\pyRevit\\Extensions\\ARC-dev.extension\\00. Solution ARC\\ARC\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{DBE8B40D-1E3A-46CA-8802-189AB9C4626B}|..\\JoinLgsWall\\JoinLgsWall.csproj|c:\\users\\admin\\appdata\\roaming\\pyrevit\\extensions\\arc-dev.extension\\00. solution arc\\joinlgswall\\joinlgswall.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{21D9627B-9E9A-48C3-BC61-91D1C42EB8E8}|ARCLibrary.csproj|c:\\users\\admin\\appdata\\roaming\\pyrevit\\extensions\\arc-dev.extension\\00. solution arc\\arc\\arclibrary.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{21D9627B-9E9A-48C3-BC61-91D1C42EB8E8}|ARCLibrary.csproj|solutionrelative:arclibrary.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ARCLibrary.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\AppData\\Roaming\\pyRevit\\Extensions\\ARC-dev.extension\\00. Solution ARC\\ARC\\ARCLibrary.cs",
+              "RelativeDocumentMoniker": "ARCLibrary.cs",
+              "ToolTip": "C:\\Users\\Admin\\AppData\\Roaming\\pyRevit\\Extensions\\ARC-dev.extension\\00. Solution ARC\\ARC\\ARCLibrary.cs",
+              "RelativeToolTip": "ARCLibrary.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-13T08:54:29.399Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "JoinLgsWall.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\AppData\\Roaming\\pyRevit\\Extensions\\ARC-dev.extension\\00. Solution ARC\\JoinLgsWall\\JoinLgsWall.cs",
+              "RelativeDocumentMoniker": "..\\JoinLgsWall\\JoinLgsWall.cs",
+              "ToolTip": "C:\\Users\\Admin\\AppData\\Roaming\\pyRevit\\Extensions\\ARC-dev.extension\\00. Solution ARC\\JoinLgsWall\\JoinLgsWall.cs",
+              "RelativeToolTip": "..\\JoinLgsWall\\JoinLgsWall.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAABgAAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-13T08:38:23.187Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

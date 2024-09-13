@@ -1,0 +1,5 @@
+is_global = true
+build_property.RootNamespace = Nice3point.Revit.Extensions
+build_property.ProjectDir = C:\Users\Admin\AppData\Roaming\pyRevit\Extensions\ARC-dev.extension\00. Solution ARC\Nice3point.Revit.Extensions\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 

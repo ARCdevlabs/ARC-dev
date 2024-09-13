@@ -1,0 +1,83 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\Admin\\AppData\\Roaming\\pyRevit\\Extensions\\ARC-dev.extension\\00. Solution ARC\\Nice3point.Revit.Extensions\\Nice3point.Revit.Extensions.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\Admin\\AppData\\Roaming\\pyRevit\\Extensions\\ARC-dev.extension\\00. Solution ARC\\Nice3point.Revit.Extensions\\Nice3point.Revit.Extensions.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Admin\\AppData\\Roaming\\pyRevit\\Extensions\\ARC-dev.extension\\00. Solution ARC\\Nice3point.Revit.Extensions\\Nice3point.Revit.Extensions.csproj",
+        "projectName": "Nice3point.Revit.Extensions",
+        "projectPath": "C:\\Users\\Admin\\AppData\\Roaming\\pyRevit\\Extensions\\ARC-dev.extension\\00. Solution ARC\\Nice3point.Revit.Extensions\\Nice3point.Revit.Extensions.csproj",
+        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Admin\\AppData\\Roaming\\pyRevit\\Extensions\\ARC-dev.extension\\00. Solution ARC\\Nice3point.Revit.Extensions\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net47"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net47": {
+            "targetAlias": "net47",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net47": {
+          "targetAlias": "net47",
+          "dependencies": {
+            "JetBrains.Annotations": {
+              "target": "Package",
+              "version": "[2023.*, )"
+            },
+            "Microsoft.NETFramework.ReferenceAssemblies": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[1.0.3, )",
+              "autoReferenced": true
+            },
+            "Nice3point.Revit.Api.AdWindows": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2020.*, )"
+            },
+            "Nice3point.Revit.Api.RevitAPI": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2020.*, )"
+            },
+            "Nice3point.Revit.Api.RevitAPIUI": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2020.*, )"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

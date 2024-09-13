@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "zAX/c1ukyYA=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Admin\\AppData\\Roaming\\pyRevit\\Extensions\\ARC-dev.extension\\00. Solution ARC\\Nice3point.Revit.Extensions\\Nice3point.Revit.Extensions.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Admin\\.nuget\\packages\\jetbrains.annotations\\2023.3.0\\jetbrains.annotations.2023.3.0.nupkg.sha512",
+    "C:\\Users\\Admin\\.nuget\\packages\\microsoft.netframework.referenceassemblies\\1.0.3\\microsoft.netframework.referenceassemblies.1.0.3.nupkg.sha512",
+    "C:\\Users\\Admin\\.nuget\\packages\\microsoft.netframework.referenceassemblies.net47\\1.0.3\\microsoft.netframework.referenceassemblies.net47.1.0.3.nupkg.sha512",
+    "C:\\Users\\Admin\\.nuget\\packages\\nice3point.revit.api.adwindows\\2020.2.60\\nice3point.revit.api.adwindows.2020.2.60.nupkg.sha512",
+    "C:\\Users\\Admin\\.nuget\\packages\\nice3point.revit.api.revitapi\\2020.2.60\\nice3point.revit.api.revitapi.2020.2.60.nupkg.sha512",
+    "C:\\Users\\Admin\\.nuget\\packages\\nice3point.revit.api.revitapiui\\2020.2.60\\nice3point.revit.api.revitapiui.2020.2.60.nupkg.sha512"
+  ],
+  "logs": []
+}

@@ -1,0 +1,9 @@
+C:\Users\Admin\AppData\Roaming\pyRevit\Extensions\ARC-dev.extension\00. Solution ARC\ARC\bin\Debug\ARCLibrary.dll
+C:\Users\Admin\AppData\Roaming\pyRevit\Extensions\ARC-dev.extension\00. Solution ARC\ARC\bin\Debug\ARCLibrary.pdb
+C:\Users\Admin\AppData\Roaming\pyRevit\Extensions\ARC-dev.extension\00. Solution ARC\ARC\bin\Debug\JetBrains.Annotations.dll
+C:\Users\Admin\AppData\Roaming\pyRevit\Extensions\ARC-dev.extension\00. Solution ARC\ARC\bin\Debug\JetBrains.Annotations.xml
+C:\Users\Admin\AppData\Roaming\pyRevit\Extensions\ARC-dev.extension\00. Solution ARC\ARC\obj\Debug\ARC.Library.csproj.AssemblyReference.cache
+C:\Users\Admin\AppData\Roaming\pyRevit\Extensions\ARC-dev.extension\00. Solution ARC\ARC\obj\Debug\ARC.Library.csproj.CoreCompileInputs.cache
+C:\Users\Admin\AppData\Roaming\pyRevit\Extensions\ARC-dev.extension\00. Solution ARC\ARC\obj\Debug\ARC.Libr.225AF3DB.Up2Date
+C:\Users\Admin\AppData\Roaming\pyRevit\Extensions\ARC-dev.extension\00. Solution ARC\ARC\obj\Debug\ARCLibrary.dll
+C:\Users\Admin\AppData\Roaming\pyRevit\Extensions\ARC-dev.extension\00. Solution ARC\ARC\obj\Debug\ARCLibrary.pdb
