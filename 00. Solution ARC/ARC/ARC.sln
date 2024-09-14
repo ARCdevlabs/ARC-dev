@@ -3,9 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35219.272
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ARC.Library", "ARC.Library.csproj", "{21D9627B-9E9A-48C3-BC61-91D1C42EB8E8}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JoinLgsWall", "..\JoinLgsWall\JoinLgsWall.csproj", "{DBE8B40D-1E3A-46CA-8802-189AB9C4626B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ARC Addin", "ARC Addin.csproj", "{21D9627B-9E9A-48C3-BC61-91D1C42EB8E8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -53,34 +51,6 @@ Global
 		{21D9627B-9E9A-48C3-BC61-91D1C42EB8E8}.Release R25|Any CPU.Build.0 = Release|Any CPU
 		{21D9627B-9E9A-48C3-BC61-91D1C42EB8E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{21D9627B-9E9A-48C3-BC61-91D1C42EB8E8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DBE8B40D-1E3A-46CA-8802-189AB9C4626B}.Debug R20|Any CPU.ActiveCfg = Debug|Any CPU
-		{DBE8B40D-1E3A-46CA-8802-189AB9C4626B}.Debug R20|Any CPU.Build.0 = Debug|Any CPU
-		{DBE8B40D-1E3A-46CA-8802-189AB9C4626B}.Debug R21|Any CPU.ActiveCfg = Debug|Any CPU
-		{DBE8B40D-1E3A-46CA-8802-189AB9C4626B}.Debug R21|Any CPU.Build.0 = Debug|Any CPU
-		{DBE8B40D-1E3A-46CA-8802-189AB9C4626B}.Debug R22|Any CPU.ActiveCfg = Debug|Any CPU
-		{DBE8B40D-1E3A-46CA-8802-189AB9C4626B}.Debug R22|Any CPU.Build.0 = Debug|Any CPU
-		{DBE8B40D-1E3A-46CA-8802-189AB9C4626B}.Debug R23|Any CPU.ActiveCfg = Debug|Any CPU
-		{DBE8B40D-1E3A-46CA-8802-189AB9C4626B}.Debug R23|Any CPU.Build.0 = Debug|Any CPU
-		{DBE8B40D-1E3A-46CA-8802-189AB9C4626B}.Debug R24|Any CPU.ActiveCfg = Debug|Any CPU
-		{DBE8B40D-1E3A-46CA-8802-189AB9C4626B}.Debug R24|Any CPU.Build.0 = Debug|Any CPU
-		{DBE8B40D-1E3A-46CA-8802-189AB9C4626B}.Debug R25|Any CPU.ActiveCfg = Debug|Any CPU
-		{DBE8B40D-1E3A-46CA-8802-189AB9C4626B}.Debug R25|Any CPU.Build.0 = Debug|Any CPU
-		{DBE8B40D-1E3A-46CA-8802-189AB9C4626B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DBE8B40D-1E3A-46CA-8802-189AB9C4626B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DBE8B40D-1E3A-46CA-8802-189AB9C4626B}.Release R20|Any CPU.ActiveCfg = Release|Any CPU
-		{DBE8B40D-1E3A-46CA-8802-189AB9C4626B}.Release R20|Any CPU.Build.0 = Release|Any CPU
-		{DBE8B40D-1E3A-46CA-8802-189AB9C4626B}.Release R21|Any CPU.ActiveCfg = Release|Any CPU
-		{DBE8B40D-1E3A-46CA-8802-189AB9C4626B}.Release R21|Any CPU.Build.0 = Release|Any CPU
-		{DBE8B40D-1E3A-46CA-8802-189AB9C4626B}.Release R22|Any CPU.ActiveCfg = Release|Any CPU
-		{DBE8B40D-1E3A-46CA-8802-189AB9C4626B}.Release R22|Any CPU.Build.0 = Release|Any CPU
-		{DBE8B40D-1E3A-46CA-8802-189AB9C4626B}.Release R23|Any CPU.ActiveCfg = Release|Any CPU
-		{DBE8B40D-1E3A-46CA-8802-189AB9C4626B}.Release R23|Any CPU.Build.0 = Release|Any CPU
-		{DBE8B40D-1E3A-46CA-8802-189AB9C4626B}.Release R24|Any CPU.ActiveCfg = Release|Any CPU
-		{DBE8B40D-1E3A-46CA-8802-189AB9C4626B}.Release R24|Any CPU.Build.0 = Release|Any CPU
-		{DBE8B40D-1E3A-46CA-8802-189AB9C4626B}.Release R25|Any CPU.ActiveCfg = Release|Any CPU
-		{DBE8B40D-1E3A-46CA-8802-189AB9C4626B}.Release R25|Any CPU.Build.0 = Release|Any CPU
-		{DBE8B40D-1E3A-46CA-8802-189AB9C4626B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DBE8B40D-1E3A-46CA-8802-189AB9C4626B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

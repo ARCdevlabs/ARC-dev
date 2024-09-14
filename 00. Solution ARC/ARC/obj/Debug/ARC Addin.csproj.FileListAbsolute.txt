@@ -1,0 +1,6 @@
+C:\Users\ADMIN\AppData\Roaming\pyRevit\Extensions\ARC-dev.extension\00. Solution ARC\ARC\obj\Debug\ARC Addin.csproj.AssemblyReference.cache
+C:\Users\ADMIN\AppData\Roaming\pyRevit\Extensions\ARC-dev.extension\00. Solution ARC\ARC\obj\Debug\ARC Addin.csproj.CoreCompileInputs.cache
+C:\Users\ADMIN\AppData\Roaming\pyRevit\Extensions\ARC-dev.extension\00. Solution ARC\ARC\bin\Debug\ARC.dll
+C:\Users\ADMIN\AppData\Roaming\pyRevit\Extensions\ARC-dev.extension\00. Solution ARC\ARC\bin\Debug\ARC.pdb
+C:\Users\ADMIN\AppData\Roaming\pyRevit\Extensions\ARC-dev.extension\00. Solution ARC\ARC\obj\Debug\ARC.dll
+C:\Users\ADMIN\AppData\Roaming\pyRevit\Extensions\ARC-dev.extension\00. Solution ARC\ARC\obj\Debug\ARC.pdb

@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<RevitAddIns>
+	<AddIn Type="Command">
+		<Assembly>C:\ProgramData\Autodesk\Revit\Addins\CreateTypesTool\CreateNewType.dll</Assembly>
+		<AddInId>aadd99af-8655-461a-8b01-c00697988038</AddInId>
+		<FullClassName>CreateNewType.Command</FullClassName>
+		<Text>Create Types</Text>
+		<VendorId>ADSK</VendorId>
+		<VendorDescription>www.autodesk.com</VendorDescription>
+	</AddIn>
+</RevitAddIns>

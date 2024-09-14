@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Users\\ADMIN\\AppData\\Roaming\\pyRevit\\Extensions\\ARC-dev.extension\\Create C# addin\\Leader Line\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{DDEF754D-F046-4351-BEE4-665459635274}|LeaderLine.csproj|c:\\users\\admin\\appdata\\roaming\\pyrevit\\extensions\\arc-dev.extension\\create c# addin\\leader line\\properties\\assemblyinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DDEF754D-F046-4351-BEE4-665459635274}|LeaderLine.csproj|solutionrelative:properties\\assemblyinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{DDEF754D-F046-4351-BEE4-665459635274}|LeaderLine.csproj|c:\\users\\admin\\appdata\\roaming\\pyrevit\\extensions\\arc-dev.extension\\create c# addin\\leader line\\classleaderlinefix.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{DDEF754D-F046-4351-BEE4-665459635274}|LeaderLine.csproj|solutionrelative:classleaderlinefix.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
@@ -19,12 +23,25 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "AssemblyInfo.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\AppData\\Roaming\\pyRevit\\Extensions\\ARC-dev.extension\\Create C# addin\\Leader Line\\Properties\\AssemblyInfo.cs",
+              "RelativeDocumentMoniker": "Properties\\AssemblyInfo.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\AppData\\Roaming\\pyRevit\\Extensions\\ARC-dev.extension\\Create C# addin\\Leader Line\\Properties\\AssemblyInfo.cs",
+              "RelativeToolTip": "Properties\\AssemblyInfo.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-14T01:08:38.358Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "classLeaderLineFix.cs",
               "DocumentMoniker": "C:\\Users\\ADMIN\\AppData\\Roaming\\pyRevit\\Extensions\\ARC-dev.extension\\Create C# addin\\Leader Line\\classLeaderLineFix.cs",
               "RelativeDocumentMoniker": "classLeaderLineFix.cs",
               "ToolTip": "C:\\Users\\ADMIN\\AppData\\Roaming\\pyRevit\\Extensions\\ARC-dev.extension\\Create C# addin\\Leader Line\\classLeaderLineFix.cs",
               "RelativeToolTip": "classLeaderLineFix.cs",
-              "ViewState": "AgIAAAQAAAAAAAAAAAAkwBQAAAAeAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-24T03:21:03.417Z",
               "EditorCaption": ""

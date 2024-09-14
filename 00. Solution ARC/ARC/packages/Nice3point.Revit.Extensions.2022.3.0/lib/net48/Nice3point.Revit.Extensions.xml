@@ -1,0 +1,2108 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Nice3point.Revit.Extensions</name>
+    </assembly>
+    <members>
+        <member name="T:Nice3point.Revit.Extensions.ApplicationExtensions">
+            <summary>
+                Extensions to simplify the interaction of custom windows with Revit
+            </summary>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.ApplicationExtensions.Show(System.Windows.Window,System.IntPtr)">
+            <summary>
+                Opens a window and returns without waiting for the newly opened window to close. Sets the owner of a child window
+            </summary>
+            <exception cref="T:System.InvalidOperationException">
+                <see cref="M:System.Windows.Window.Show" /> is called on a window that is closing (<see cref="E:System.Windows.Window.Closing" />) or has been closed (
+                <see cref="E:System.Windows.Window.Closed" />)
+            </exception>
+            <param name="window">Child window</param>
+            <param name="handle">Owner window handle</param>
+            <example>
+                <code>
+                    _view.Show(uiApplication.MainWindowHandle)
+                </code>
+            </example>
+        </member>
+        <member name="T:Nice3point.Revit.Extensions.CollectorExtensions">
+            <summary>
+                Revit FilteredElementCollector extensions
+            </summary>
+            <remarks>
+                <p>
+                    Developers can assign a variety of conditions to filter the elements that are returned.
+                    This class requires that at least one condition be set before making the attempt to access the elements.
+                </p>
+                <p>
+                    Revit will attempt to organize the filters in order to minimize expansion of elements regardless of
+                    the order in which conditions and filters are applied.
+                </p>
+                <p>
+                    There are three groups of methods that you can use on a given collector once you have applied filter(s)
+                    to it.  One group provides collections of all passing elements, a second finds the first match of the given
+                    filter(s), and a third provides an iterator that is evaluated lazily (each element is tested by the filter
+                    only when the iterator reaches it). You should only use
+                    one of the methods from these group at a time; the collector will reset if you call another method to
+                    extract elements.  Thus, if you have previously obtained an iterator, it will be stopped and traverse no more
+                    elements if you call another method to extract elements.
+                </p>
+                <p>
+                    In .NET, this class supports the IEnumerable interface for Elements.  You can use this class with
+                    LINQ queries and operations to process lists of elements.  Note that because the ElementFilters
+                    and the shortcut methods offered by this class process elements in native code before their
+                    managed wrappers are generated, better performance will be obtained by using as many native filters
+                    as possible on the collector before attempting to process the results using LINQ queries.
+                </p>
+                <p>
+                    One special consideration when using this class in .NET: the debugger will attempt
+                    to traverse the members of the collector because of its implementation of IEnumerable.  You may see strange
+                    results if you also attempt to extract the first element or all elements from the collector while the debugger
+                    is also looking at the contents of the collector.
+                </p>
+            </remarks>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.CollectorExtensions.GetElements(Autodesk.Revit.DB.Document)">
+            <summary>
+                Searches for elements in a document
+            </summary>
+            <param name="document">The document</param>
+            <returns>A new FilteredElementCollector that will search and filter the set of elements in a document</returns>
+            <exception cref="T:Autodesk.Revit.Exceptions.InvalidOperationException">
+                The collector does not have a filter applied. Extraction or iteration of elements is not permitted without a filter
+            </exception>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.CollectorExtensions.GetElements(Autodesk.Revit.DB.Document,Autodesk.Revit.DB.ElementId)">
+            <summary>
+                Searches for elements in a document
+            </summary>
+            <returns>A new FilteredElementCollector that will search and filter the visible elements in a view</returns>
+            <remarks>
+                <p>
+                    Elements that will be passed by the collector have graphics that may be visible in
+                    the input view. Some elements may still be hidden because they are obscured by other elements.
+                </p>
+                <p>
+                    For elements which are outside of a crop region, they may still be passed by the collector because
+                    Revit relies on later processing to eliminate the elements hidden by the crop.
+                    This effect may more easily occur for non-rectangular crop regions, but may also happen even for rectangular crops.
+                    You can compare the boundary of the region with the element's boundary if more precise results are required.
+                </p>
+                <p>
+                    Accessing these visible elements may require Revit to rebuild the geometry of the view.
+                    The first time your code constructs a collector for a given view, or the first time
+                    your code constructs a collector for a view whose display settings have just been changed,
+                    you may experience a significant performance degradation.
+                </p>
+            </remarks>
+            <param name="document">The document that owns the view</param>
+            <param name="viewId">The view id</param>
+            <exception cref="T:Autodesk.Revit.Exceptions.ArgumentException">
+                viewId is not valid for element iteration, because it has no way of representing drawn elements. Many view templates will fail this check.
+            </exception>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.CollectorExtensions.GetElements(Autodesk.Revit.DB.Document,System.Collections.Generic.ICollection{Autodesk.Revit.DB.ElementId})">
+            <summary>
+                Searches for elements in a document
+            </summary>
+            <param name="document">The document that owns the elements matching the element ids</param>
+            <returns>A new FilteredElementCollector that will search and filter a specified set of elements in a document</returns>
+            <param name="elementIds">The input set of element ids</param>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.CollectorExtensions.GetInstances(Autodesk.Revit.DB.Document,Autodesk.Revit.DB.BuiltInCategory)">
+            <summary>
+                Searches for elements in a document
+            </summary>
+            <param name="document">The document</param>
+            <param name="category">The category</param>
+            <returns>The complete set of elements</returns>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.CollectorExtensions.GetInstances(Autodesk.Revit.DB.Document,Autodesk.Revit.DB.BuiltInCategory,Autodesk.Revit.DB.ElementFilter)">
+            <summary>
+                Searches for elements in a document
+            </summary>
+            <param name="document">The document</param>
+            <param name="category">The category</param>
+            <param name="filter">Filter that accepts or rejects elements based upon criteria</param>
+            <returns>The complete set of elements</returns>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.CollectorExtensions.GetInstances(Autodesk.Revit.DB.Document,Autodesk.Revit.DB.BuiltInCategory,System.Collections.Generic.IEnumerable{Autodesk.Revit.DB.ElementFilter})">
+            <summary>
+                Searches for elements in a document
+            </summary>
+            <param name="document">The document</param>
+            <param name="category">The category</param>
+            <param name="filters">Filters that accepts or rejects elements based upon criteria</param>
+            <returns>The complete set of elements</returns>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.CollectorExtensions.GetInstances(Autodesk.Revit.DB.Document)">
+            <summary>
+                Searches for elements in a document
+            </summary>
+            <param name="document">The document</param>
+            <returns>The complete set of elements</returns>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.CollectorExtensions.GetInstances(Autodesk.Revit.DB.Document,Autodesk.Revit.DB.ElementFilter)">
+            <summary>
+                Searches for elements in a document
+            </summary>
+            <param name="document">The document</param>
+            <param name="filter">Filter that accepts or rejects elements based upon criteria</param>
+            <returns>The complete set of elements</returns>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.CollectorExtensions.GetInstances(Autodesk.Revit.DB.Document,System.Collections.Generic.IEnumerable{Autodesk.Revit.DB.ElementFilter})">
+            <summary>
+                Searches for elements in a document
+            </summary>
+            <param name="document">The document</param>
+            <param name="filters">Filters that accepts or rejects elements based upon criteria</param>
+            <returns>The complete set of elements</returns>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.CollectorExtensions.EnumerateInstances(Autodesk.Revit.DB.Document,Autodesk.Revit.DB.BuiltInCategory)">
+            <summary>
+                Searches for elements in a document
+            </summary>
+            <param name="document">The document</param>
+            <param name="category">The category</param>
+            <returns>The complete set of elements</returns>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.CollectorExtensions.EnumerateInstances(Autodesk.Revit.DB.Document,Autodesk.Revit.DB.BuiltInCategory,Autodesk.Revit.DB.ElementFilter)">
+            <summary>
+                Searches for elements in a document
+            </summary>
+            <param name="document">The document</param>
+            <param name="category">The category</param>
+            <param name="filter">Filter that accepts or rejects elements based upon criteria</param>
+            <returns>The complete set of elements</returns>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.CollectorExtensions.EnumerateInstances(Autodesk.Revit.DB.Document,Autodesk.Revit.DB.BuiltInCategory,System.Collections.Generic.IEnumerable{Autodesk.Revit.DB.ElementFilter})">
+            <summary>
+                Searches for elements in a document
+            </summary>
+            <param name="document">The document</param>
+            <param name="category">The category</param>
+            <param name="filters">Filters that accepts or rejects elements based upon criteria</param>
+            <returns>The complete set of elements</returns>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.CollectorExtensions.EnumerateInstances(Autodesk.Revit.DB.Document)">
+            <summary>
+                Searches for elements in a document
+            </summary>
+            <param name="document">The document</param>
+            <returns>The complete set of elements</returns>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.CollectorExtensions.EnumerateInstances(Autodesk.Revit.DB.Document,Autodesk.Revit.DB.ElementFilter)">
+            <summary>
+                Searches for elements in a document
+            </summary>
+            <param name="document">The document</param>
+            <param name="filter">Filter that accepts or rejects elements based upon criteria</param>
+            <returns>The complete set of elements</returns>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.CollectorExtensions.EnumerateInstances(Autodesk.Revit.DB.Document,System.Collections.Generic.IEnumerable{Autodesk.Revit.DB.ElementFilter})">
+            <summary>
+                Searches for elements in a document
+            </summary>
+            <param name="document">The document</param>
+            <param name="filters">Filters that accepts or rejects elements based upon criteria</param>
+            <returns>The complete set of elements</returns>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.CollectorExtensions.EnumerateInstances``1(Autodesk.Revit.DB.Document,Autodesk.Revit.DB.BuiltInCategory)">
+            <summary>
+                Searches for elements in a document by class of type T
+            </summary>
+            <param name="document">The document</param>
+            <param name="category">The category</param>
+            <returns>The complete set of elements</returns>
+            <typeparam name="T">Type inherited from <see cref="T:Autodesk.Revit.DB.Element"/></typeparam>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.CollectorExtensions.EnumerateInstances``1(Autodesk.Revit.DB.Document,Autodesk.Revit.DB.BuiltInCategory,Autodesk.Revit.DB.ElementFilter)">
+            <summary>
+                Searches for elements in a document by class of type T
+            </summary>
+            <param name="document">The document</param>
+            <param name="category">The category</param>
+            <param name="filter">Filter that accepts or rejects elements based upon criteria</param>
+            <returns>The complete set of elements</returns>
+            <typeparam name="T">Type inherited from <see cref="T:Autodesk.Revit.DB.Element"/></typeparam>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.CollectorExtensions.EnumerateInstances``1(Autodesk.Revit.DB.Document,Autodesk.Revit.DB.BuiltInCategory,System.Collections.Generic.IEnumerable{Autodesk.Revit.DB.ElementFilter})">
+            <summary>
+                Searches for elements in a document by class of type T
+            </summary>
+            <param name="document">The document</param>
+            <param name="category">The category</param>
+            <param name="filters">Filters that accepts or rejects elements based upon criteria</param>
+            <returns>The complete set of elements</returns>
+            <typeparam name="T">Type inherited from <see cref="T:Autodesk.Revit.DB.Element"/></typeparam>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.CollectorExtensions.EnumerateInstances``1(Autodesk.Revit.DB.Document)">
+            <summary>
+                Searches for elements in a document by class of type T
+            </summary>
+            <param name="document">The document</param>
+            <returns>The complete set of elements</returns>
+            <typeparam name="T">Type inherited from <see cref="T:Autodesk.Revit.DB.Element"/></typeparam>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.CollectorExtensions.EnumerateInstances``1(Autodesk.Revit.DB.Document,Autodesk.Revit.DB.ElementFilter)">
+            <summary>
+                Searches for elements in a document by class of type T
+            </summary>
+            <param name="document">The document</param>
+            <param name="filter">Filter that accepts or rejects elements based upon criteria</param>
+            <returns>The complete set of elements</returns>
+            <typeparam name="T">Type inherited from <see cref="T:Autodesk.Revit.DB.Element"/></typeparam>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.CollectorExtensions.EnumerateInstances``1(Autodesk.Revit.DB.Document,System.Collections.Generic.IEnumerable{Autodesk.Revit.DB.ElementFilter})">
+            <summary>
+                Searches for elements in a document by class of type T
+            </summary>
+            <param name="document">The document</param>
+            <param name="filters">Filters that accepts or rejects elements based upon criteria</param>
+            <returns>The complete set of elements</returns>
+            <typeparam name="T">Type inherited from <see cref="T:Autodesk.Revit.DB.Element"/></typeparam>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.CollectorExtensions.GetInstanceIds(Autodesk.Revit.DB.Document,Autodesk.Revit.DB.BuiltInCategory)">
+            <summary>
+                Searches for elements in a document
+            </summary>
+            <param name="document">The document</param>
+            <param name="category">The category</param>
+            <returns>The complete set of element ids</returns>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.CollectorExtensions.GetInstanceIds(Autodesk.Revit.DB.Document,Autodesk.Revit.DB.BuiltInCategory,Autodesk.Revit.DB.ElementFilter)">
+            <summary>
+                Searches for elements in a document
+            </summary>
+            <param name="document">The document</param>
+            <param name="category">The category</param>
+            <param name="filter">Filter that accepts or rejects elements based upon criteria</param>
+            <returns>The complete set of element ids</returns>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.CollectorExtensions.GetInstanceIds(Autodesk.Revit.DB.Document,Autodesk.Revit.DB.BuiltInCategory,System.Collections.Generic.IEnumerable{Autodesk.Revit.DB.ElementFilter})">
+            <summary>
+                Searches for elements in a document
+            </summary>
+            <param name="document">The document</param>
+            <param name="category">The category</param>
+            <param name="filters">Filters that accepts or rejects elements based upon criteria</param>
+            <returns>The complete set of element ids</returns>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.CollectorExtensions.GetInstanceIds(Autodesk.Revit.DB.Document)">
+            <summary>
+                Searches for elements in a document
+            </summary>
+            <param name="document">The document</param>
+            <returns>The complete set of element ids</returns>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.CollectorExtensions.GetInstanceIds(Autodesk.Revit.DB.Document,Autodesk.Revit.DB.ElementFilter)">
+            <summary>
+                Searches for elements in a document
+            </summary>
+            <param name="document">The document</param>
+            <param name="filter">Filter that accepts or rejects elements based upon criteria</param>
+            <returns>The complete set of element ids</returns>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.CollectorExtensions.GetInstanceIds(Autodesk.Revit.DB.Document,System.Collections.Generic.IEnumerable{Autodesk.Revit.DB.ElementFilter})">
+            <summary>
+                Searches for elements in a document
+            </summary>
+            <param name="document">The document</param>
+            <param name="filters">Filters that accepts or rejects elements based upon criteria</param>
+            <returns>The complete set of element ids</returns>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.CollectorExtensions.EnumerateInstanceIds(Autodesk.Revit.DB.Document,Autodesk.Revit.DB.BuiltInCategory)">
+            <summary>
+                Searches for elements in a document
+            </summary>
+            <param name="document">The document</param>
+            <param name="category">The category</param>
+            <returns>The complete set of element ids</returns>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.CollectorExtensions.EnumerateInstanceIds(Autodesk.Revit.DB.Document,Autodesk.Revit.DB.BuiltInCategory,Autodesk.Revit.DB.ElementFilter)">
+            <summary>
+                Searches for elements in a document
+            </summary>
+            <param name="document">The document</param>
+            <param name="category">The category</param>
+            <param name="filter">Filter that accepts or rejects elements based upon criteria</param>
+            <returns>The complete set of element ids</returns>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.CollectorExtensions.EnumerateInstanceIds(Autodesk.Revit.DB.Document,Autodesk.Revit.DB.BuiltInCategory,System.Collections.Generic.IEnumerable{Autodesk.Revit.DB.ElementFilter})">
+            <summary>
+                Searches for elements in a document
+            </summary>
+            <param name="document">The document</param>
+            <param name="category">The category</param>
+            <param name="filters">Filters that accepts or rejects elements based upon criteria</param>
+            <returns>The complete set of element ids</returns>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.CollectorExtensions.EnumerateInstanceIds(Autodesk.Revit.DB.Document)">
+            <summary>
+                Searches for elements in a document
+            </summary>
+            <param name="document">The document</param>
+            <returns>The complete set of element ids</returns>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.CollectorExtensions.EnumerateInstanceIds(Autodesk.Revit.DB.Document,Autodesk.Revit.DB.ElementFilter)">
+            <summary>
+                Searches for elements in a document
+            </summary>
+            <param name="document">The document</param>
+            <param name="filter">Filter that accepts or rejects elements based upon criteria</param>
+            <returns>The complete set of element ids</returns>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.CollectorExtensions.EnumerateInstanceIds(Autodesk.Revit.DB.Document,System.Collections.Generic.IEnumerable{Autodesk.Revit.DB.ElementFilter})">
+            <summary>
+                Searches for elements in a document
+            </summary>
+            <param name="document">The document</param>
+            <param name="filters">Filters that accepts or rejects elements based upon criteria</param>
+            <returns>The complete set of element ids</returns>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.CollectorExtensions.EnumerateInstanceIds``1(Autodesk.Revit.DB.Document,Autodesk.Revit.DB.BuiltInCategory)">
+            <summary>
+                Searches for elements in a document by class of type T
+            </summary>
+            <param name="document">The document</param>
+            <param name="category">The category</param>
+            <returns>The complete set of element ids</returns>
+            <typeparam name="T">Type inherited from <see cref="T:Autodesk.Revit.DB.Element"/></typeparam>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.CollectorExtensions.EnumerateInstanceIds``1(Autodesk.Revit.DB.Document,Autodesk.Revit.DB.BuiltInCategory,Autodesk.Revit.DB.ElementFilter)">
+            <summary>
+                Searches for elements in a document by class of type T
+            </summary>
+            <param name="document">The document</param>
+            <param name="category">The category</param>
+            <param name="filter">Filter that accepts or rejects elements based upon criteria</param>
+            <returns>The complete set of element ids</returns>
+            <typeparam name="T">Type inherited from <see cref="T:Autodesk.Revit.DB.Element"/></typeparam>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.CollectorExtensions.EnumerateInstanceIds``1(Autodesk.Revit.DB.Document,Autodesk.Revit.DB.BuiltInCategory,System.Collections.Generic.IEnumerable{Autodesk.Revit.DB.ElementFilter})">
+            <summary>
+                Searches for elements in a document by class of type T
+            </summary>
+            <param name="document">The document</param>
+            <param name="category">The category</param>
+            <param name="filters">Filters that accepts or rejects elements based upon criteria</param>
+            <returns>The complete set of element ids</returns>
+            <typeparam name="T">Type inherited from <see cref="T:Autodesk.Revit.DB.Element"/></typeparam>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.CollectorExtensions.EnumerateInstanceIds``1(Autodesk.Revit.DB.Document)">
+            <summary>
+                Searches for elements in a document by class of type T
+            </summary>
+            <param name="document">The document</param>
+            <returns>The complete set of element ids</returns>
+            <typeparam name="T">Type inherited from <see cref="T:Autodesk.Revit.DB.Element"/></typeparam>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.CollectorExtensions.EnumerateInstanceIds``1(Autodesk.Revit.DB.Document,Autodesk.Revit.DB.ElementFilter)">
+            <summary>
+                Searches for elements in a document by class of type T
+            </summary>
+            <param name="document">The document</param>
+            <param name="filter">Filter that accepts or rejects elements based upon criteria</param>
+            <returns>The complete set of element ids</returns>
+            <typeparam name="T">Type inherited from <see cref="T:Autodesk.Revit.DB.Element"/></typeparam>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.CollectorExtensions.EnumerateInstanceIds``1(Autodesk.Revit.DB.Document,System.Collections.Generic.IEnumerable{Autodesk.Revit.DB.ElementFilter})">
+            <summary>
+                Searches for elements in a document by class of type T
+            </summary>
+            <param name="document">The document</param>
+            <param name="filters">Filters that accepts or rejects elements based upon criteria</param>
+            <returns>The complete set of element ids</returns>
+            <typeparam name="T">Type inherited from <see cref="T:Autodesk.Revit.DB.Element"/></typeparam>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.CollectorExtensions.GetInstances(Autodesk.Revit.DB.Document,Autodesk.Revit.DB.ElementId,Autodesk.Revit.DB.BuiltInCategory)">
+            <summary>
+                Searches for elements in a document visible in view
+            </summary>
+            <param name="document">The document that owns the view</param>
+            <param name="viewId">The view id</param>
+            <param name="category">The category</param>
+            <returns>The complete set of elements</returns>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.CollectorExtensions.GetInstances(Autodesk.Revit.DB.Document,Autodesk.Revit.DB.ElementId,Autodesk.Revit.DB.BuiltInCategory,Autodesk.Revit.DB.ElementFilter)">
+            <summary>
+                Searches for elements in a document visible in view
+            </summary>
+            <param name="document">The document that owns the view</param>
+            <param name="viewId">The view id</param>
+            <param name="category">The category</param>
+            <param name="filter">Filter that accepts or rejects elements based upon criteria</param>
+            <returns>The complete set of elements</returns>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.CollectorExtensions.GetInstances(Autodesk.Revit.DB.Document,Autodesk.Revit.DB.ElementId,Autodesk.Revit.DB.BuiltInCategory,System.Collections.Generic.IEnumerable{Autodesk.Revit.DB.ElementFilter})">
+            <summary>
+                Searches for elements in a document visible in view
+            </summary>
+            <param name="document">The document that owns the view</param>
+            <param name="viewId">The view id</param>
+            <param name="category">The category</param>
+            <param name="filters">Filters that accepts or rejects elements based upon criteria</param>
+            <returns>The complete set of elements</returns>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.CollectorExtensions.GetInstances(Autodesk.Revit.DB.Document,Autodesk.Revit.DB.ElementId)">
+            <summary>
+                Searches for elements in a document visible in view
+            </summary>
+            <param name="document">The document that owns the view</param>
+            <param name="viewId">The view id</param>
+            <returns>The complete set of elements</returns>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.CollectorExtensions.GetInstances(Autodesk.Revit.DB.Document,Autodesk.Revit.DB.ElementId,Autodesk.Revit.DB.ElementFilter)">
+            <summary>
+                Searches for elements in a document visible in view
+            </summary>
+            <param name="document">The document that owns the view</param>
+            <param name="viewId">The view id</param>
+            <param name="filter">Filter that accepts or rejects elements based upon criteria</param>
+            <returns>The complete set of elements</returns>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.CollectorExtensions.GetInstances(Autodesk.Revit.DB.Document,Autodesk.Revit.DB.ElementId,System.Collections.Generic.IEnumerable{Autodesk.Revit.DB.ElementFilter})">
+            <summary>
+                Searches for elements in a document visible in view
+            </summary>
+            <param name="document">The document that owns the view</param>
+            <param name="viewId">The view id</param>
+            <param name="filters">Filters that accepts or rejects elements based upon criteria</param>
+            <returns>The complete set of elements</returns>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.CollectorExtensions.EnumerateInstances(Autodesk.Revit.DB.Document,Autodesk.Revit.DB.ElementId,Autodesk.Revit.DB.BuiltInCategory)">
+            <summary>
+                Searches for elements in a document visible in view
+            </summary>
+            <param name="document">The document that owns the view</param>
+            <param name="viewId">The view id</param>
+            <param name="category">The category</param>
+            <returns>The complete set of elements</returns>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.CollectorExtensions.EnumerateInstances(Autodesk.Revit.DB.Document,Autodesk.Revit.DB.ElementId,Autodesk.Revit.DB.BuiltInCategory,Autodesk.Revit.DB.ElementFilter)">
+            <summary>
+                Searches for elements in a document visible in view
+            </summary>
+            <param name="document">The document that owns the view</param>
+            <param name="viewId">The view id</param>
+            <param name="category">The category</param>
+            <param name="filter">Filter that accepts or rejects elements based upon criteria</param>
+            <returns>The complete set of elements</returns>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.CollectorExtensions.EnumerateInstances(Autodesk.Revit.DB.Document,Autodesk.Revit.DB.ElementId,Autodesk.Revit.DB.BuiltInCategory,System.Collections.Generic.IEnumerable{Autodesk.Revit.DB.ElementFilter})">
+            <summary>
+                Searches for elements in a document visible in view
+            </summary>
+            <param name="document">The document that owns the view</param>
+            <param name="viewId">The view id</param>
+            <param name="category">The category</param>
+            <param name="filters">Filters that accepts or rejects elements based upon criteria</param>
+            <returns>The complete set of elements</returns>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.CollectorExtensions.EnumerateInstances(Autodesk.Revit.DB.Document,Autodesk.Revit.DB.ElementId)">
+            <summary>
+                Searches for elements in a document visible in view
+            </summary>
+            <param name="document">The document that owns the view</param>
+            <param name="viewId">The view id</param>
+            <returns>The complete set of elements</returns>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.CollectorExtensions.EnumerateInstances(Autodesk.Revit.DB.Document,Autodesk.Revit.DB.ElementId,Autodesk.Revit.DB.ElementFilter)">
+            <summary>
+                Searches for elements in a document visible in view
+            </summary>
+            <param name="document">The document that owns the view</param>
+            <param name="viewId">The view id</param>
+            <param name="filter">Filter that accepts or rejects elements based upon criteria</param>
+            <returns>The complete set of elements</returns>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.CollectorExtensions.EnumerateInstances(Autodesk.Revit.DB.Document,Autodesk.Revit.DB.ElementId,System.Collections.Generic.IEnumerable{Autodesk.Revit.DB.ElementFilter})">
+            <summary>
+                Searches for elements in a document visible in view
+            </summary>
+            <param name="document">The document that owns the view</param>
+            <param name="viewId">The view id</param>
+            <param name="filters">Filters that accepts or rejects elements based upon criteria</param>
+            <returns>The complete set of elements</returns>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.CollectorExtensions.EnumerateInstances``1(Autodesk.Revit.DB.Document,Autodesk.Revit.DB.ElementId,Autodesk.Revit.DB.BuiltInCategory)">
+            <summary>
+                Searches for elements in a document visible in view by class of type T
+            </summary>
+            <param name="document">The document that owns the view</param>
+            <param name="viewId">The view id</param>
+            <param name="category">The category</param>
+            <returns>The complete set of elements</returns>
+            <typeparam name="T">Type inherited from <see cref="T:Autodesk.Revit.DB.Element"/></typeparam>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.CollectorExtensions.EnumerateInstances``1(Autodesk.Revit.DB.Document,Autodesk.Revit.DB.ElementId,Autodesk.Revit.DB.BuiltInCategory,Autodesk.Revit.DB.ElementFilter)">
+            <summary>
+                Searches for elements in a document visible in view by class of type T
+            </summary>
+            <param name="document">The document that owns the view</param>
+            <param name="viewId">The view id</param>
+            <param name="category">The category</param>
+            <param name="filter">Filter that accepts or rejects elements based upon criteria</param>
+            <returns>The complete set of elements</returns>
+            <typeparam name="T">Type inherited from <see cref="T:Autodesk.Revit.DB.Element"/></typeparam>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.CollectorExtensions.EnumerateInstances``1(Autodesk.Revit.DB.Document,Autodesk.Revit.DB.ElementId,Autodesk.Revit.DB.BuiltInCategory,System.Collections.Generic.IEnumerable{Autodesk.Revit.DB.ElementFilter})">
+            <summary>
+                Searches for elements in a document visible in view by class of type T
+            </summary>
+            <param name="document">The document that owns the view</param>
+            <param name="viewId">The view id</param>
+            <param name="category">The category</param>
+            <param name="filters">Filters that accepts or rejects elements based upon criteria</param>
+            <returns>The complete set of elements</returns>
+            <typeparam name="T">Type inherited from <see cref="T:Autodesk.Revit.DB.Element"/></typeparam>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.CollectorExtensions.EnumerateInstances``1(Autodesk.Revit.DB.Document,Autodesk.Revit.DB.ElementId)">
+            <summary>
+                Searches for elements in a document visible in view by class of type T
+            </summary>
+            <param name="document">The document that owns the view</param>
+            <param name="viewId">The view id</param>
+            <returns>The complete set of elements</returns>
+            <typeparam name="T">Type inherited from <see cref="T:Autodesk.Revit.DB.Element"/></typeparam>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.CollectorExtensions.EnumerateInstances``1(Autodesk.Revit.DB.Document,Autodesk.Revit.DB.ElementId,Autodesk.Revit.DB.ElementFilter)">
+            <summary>
+                Searches for elements in a document visible in view by class of type T
+            </summary>
+            <param name="document">The document that owns the view</param>
+            <param name="viewId">The view id</param>
+            <param name="filter">Filter that accepts or rejects elements based upon criteria</param>
+            <returns>The complete set of elements</returns>
+            <typeparam name="T">Type inherited from <see cref="T:Autodesk.Revit.DB.Element"/></typeparam>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.CollectorExtensions.EnumerateInstances``1(Autodesk.Revit.DB.Document,Autodesk.Revit.DB.ElementId,System.Collections.Generic.IEnumerable{Autodesk.Revit.DB.ElementFilter})">
+            <summary>
+                Searches for elements in a document visible in view by class of type T
+            </summary>
+            <param name="document">The document that owns the view</param>
+            <param name="viewId">The view id</param>
+            <param name="filters">Filters that accepts or rejects elements based upon criteria</param>
+            <returns>The complete set of elements</returns>
+            <typeparam name="T">Type inherited from <see cref="T:Autodesk.Revit.DB.Element"/></typeparam>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.CollectorExtensions.GetInstanceIds(Autodesk.Revit.DB.Document,Autodesk.Revit.DB.ElementId,Autodesk.Revit.DB.BuiltInCategory)">
+            <summary>
+                Searches for elements in a document visible in view
+            </summary>
+            <param name="document">The document that owns the view</param>
+            <param name="viewId">The view id</param>
+            <param name="category">The category</param>
+            <returns>The complete set of element ids</returns>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.CollectorExtensions.GetInstanceIds(Autodesk.Revit.DB.Document,Autodesk.Revit.DB.ElementId,Autodesk.Revit.DB.BuiltInCategory,Autodesk.Revit.DB.ElementFilter)">
+            <summary>
+                Searches for elements in a document visible in view
+            </summary>
+            <param name="document">The document that owns the view</param>
+            <param name="viewId">The view id</param>
+            <param name="category">The category</param>
+            <param name="filter">Filter that accepts or rejects elements based upon criteria</param>
+            <returns>The complete set of element ids</returns>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.CollectorExtensions.GetInstanceIds(Autodesk.Revit.DB.Document,Autodesk.Revit.DB.ElementId,Autodesk.Revit.DB.BuiltInCategory,System.Collections.Generic.IEnumerable{Autodesk.Revit.DB.ElementFilter})">
+            <summary>
+                Searches for elements in a document visible in view
+            </summary>
+            <param name="document">The document that owns the view</param>
+            <param name="viewId">The view id</param>
+            <param name="category">The category</param>
+            <param name="filters">Filters that accepts or rejects elements based upon criteria</param>
+            <returns>The complete set of element ids</returns>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.CollectorExtensions.GetInstanceIds(Autodesk.Revit.DB.Document,Autodesk.Revit.DB.ElementId)">
+            <summary>
+                Searches for elements in a document visible in view
+            </summary>
+            <param name="document">The document that owns the view</param>
+            <param name="viewId">The view id</param>
+            <returns>The complete set of element ids</returns>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.CollectorExtensions.GetInstanceIds(Autodesk.Revit.DB.Document,Autodesk.Revit.DB.ElementId,Autodesk.Revit.DB.ElementFilter)">
+            <summary>
+                Searches for elements in a document visible in view
+            </summary>
+            <param name="document">The document that owns the view</param>
+            <param name="viewId">The view id</param>
+            <param name="filter">Filter that accepts or rejects elements based upon criteria</param>
+            <returns>The complete set of element ids</returns>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.CollectorExtensions.GetInstanceIds(Autodesk.Revit.DB.Document,Autodesk.Revit.DB.ElementId,System.Collections.Generic.IEnumerable{Autodesk.Revit.DB.ElementFilter})">
+            <summary>
+                Searches for elements in a document visible in view
+            </summary>
+            <param name="document">The document that owns the view</param>
+            <param name="viewId">The view id</param>
+            <param name="filters">Filters that accepts or rejects elements based upon criteria</param>
+            <returns>The complete set of element ids</returns>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.CollectorExtensions.EnumerateInstanceIds(Autodesk.Revit.DB.Document,Autodesk.Revit.DB.ElementId,Autodesk.Revit.DB.BuiltInCategory)">
+            <summary>
+                Searches for elements in a document visible in view
+            </summary>
+            <param name="document">The document that owns the view</param>
+            <param name="viewId">The view id</param>
+            <param name="category">The category</param>
+            <returns>The complete set of element ids</returns>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.CollectorExtensions.EnumerateInstanceIds(Autodesk.Revit.DB.Document,Autodesk.Revit.DB.ElementId,Autodesk.Revit.DB.BuiltInCategory,Autodesk.Revit.DB.ElementFilter)">
+            <summary>
+                Searches for elements in a document visible in view
+            </summary>
+            <param name="document">The document that owns the view</param>
+            <param name="viewId">The view id</param>
+            <param name="category">The category</param>
+            <param name="filter">Filter that accepts or rejects elements based upon criteria</param>
+            <returns>The complete set of element ids</returns>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.CollectorExtensions.EnumerateInstanceIds(Autodesk.Revit.DB.Document,Autodesk.Revit.DB.ElementId,Autodesk.Revit.DB.BuiltInCategory,System.Collections.Generic.IEnumerable{Autodesk.Revit.DB.ElementFilter})">
+            <summary>
+                Searches for elements in a document visible in view
+            </summary>
+            <param name="document">The document that owns the view</param>
+            <param name="viewId">The view id</param>
+            <param name="category">The category</param>
+            <param name="filters">Filters that accepts or rejects elements based upon criteria</param>
+            <returns>The complete set of element ids</returns>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.CollectorExtensions.EnumerateInstanceIds(Autodesk.Revit.DB.Document,Autodesk.Revit.DB.ElementId)">
+            <summary>
+                Searches for elements in a document visible in view
+            </summary>
+            <param name="document">The document that owns the view</param>
+            <param name="viewId">The view id</param>
+            <returns>The complete set of element ids</returns>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.CollectorExtensions.EnumerateInstanceIds(Autodesk.Revit.DB.Document,Autodesk.Revit.DB.ElementId,Autodesk.Revit.DB.ElementFilter)">
+            <summary>
+                Searches for elements in a document visible in view
+            </summary>
+            <param name="document">The document that owns the view</param>
+            <param name="viewId">The view id</param>
+            <param name="filter">Filter that accepts or rejects elements based upon criteria</param>
+            <returns>The complete set of element ids</returns>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.CollectorExtensions.EnumerateInstanceIds(Autodesk.Revit.DB.Document,Autodesk.Revit.DB.ElementId,System.Collections.Generic.IEnumerable{Autodesk.Revit.DB.ElementFilter})">
+            <summary>
+                Searches for elements in a document visible in view
+            </summary>
+            <param name="document">The document that owns the view</param>
+            <param name="viewId">The view id</param>
+            <param name="filters">Filters that accepts or rejects elements based upon criteria</param>
+            <returns>The complete set of element ids</returns>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.CollectorExtensions.EnumerateInstanceIds``1(Autodesk.Revit.DB.Document,Autodesk.Revit.DB.ElementId,Autodesk.Revit.DB.BuiltInCategory)">
+            <summary>
+                Searches for elements in a document visible in view by class of type T
+            </summary>
+            <param name="document">The document that owns the view</param>
+            <param name="viewId">The view id</param>
+            <param name="category">The category</param>
+            <returns>The complete set of element ids</returns>
+            <typeparam name="T">Type inherited from <see cref="T:Autodesk.Revit.DB.Element"/></typeparam>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.CollectorExtensions.EnumerateInstanceIds``1(Autodesk.Revit.DB.Document,Autodesk.Revit.DB.ElementId,Autodesk.Revit.DB.BuiltInCategory,Autodesk.Revit.DB.ElementFilter)">
+            <summary>
+                Searches for elements in a document visible in view by class of type T
+            </summary>
+            <param name="document">The document that owns the view</param>
+            <param name="viewId">The view id</param>
+            <param name="category">The category</param>
+            <param name="filter">Filter that accepts or rejects elements based upon criteria</param>
+            <returns>The complete set of element ids</returns>
+            <typeparam name="T">Type inherited from <see cref="T:Autodesk.Revit.DB.Element"/></typeparam>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.CollectorExtensions.EnumerateInstanceIds``1(Autodesk.Revit.DB.Document,Autodesk.Revit.DB.ElementId,Autodesk.Revit.DB.BuiltInCategory,System.Collections.Generic.IEnumerable{Autodesk.Revit.DB.ElementFilter})">
+            <summary>
+                Searches for elements in a document visible in view by class of type T
+            </summary>
+            <param name="document">The document that owns the view</param>
+            <param name="viewId">The view id</param>
+            <param name="category">The category</param>
+            <param name="filters">Filters that accepts or rejects elements based upon criteria</param>
+            <returns>The complete set of element ids</returns>
+            <typeparam name="T">Type inherited from <see cref="T:Autodesk.Revit.DB.Element"/></typeparam>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.CollectorExtensions.EnumerateInstanceIds``1(Autodesk.Revit.DB.Document,Autodesk.Revit.DB.ElementId)">
+            <summary>
+                Searches for elements in a document visible in view by class of type T
+            </summary>
+            <param name="document">The document that owns the view</param>
+            <param name="viewId">The view id</param>
+            <returns>The complete set of element ids</returns>
+            <typeparam name="T">Type inherited from <see cref="T:Autodesk.Revit.DB.Element"/></typeparam>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.CollectorExtensions.EnumerateInstanceIds``1(Autodesk.Revit.DB.Document,Autodesk.Revit.DB.ElementId,Autodesk.Revit.DB.ElementFilter)">
+            <summary>
+                Searches for elements in a document visible in view by class of type T
+            </summary>
+            <param name="document">The document that owns the view</param>
+            <param name="viewId">The view id</param>
+            <param name="filter">Filter that accepts or rejects elements based upon criteria</param>
+            <returns>The complete set of element ids</returns>
+            <typeparam name="T">Type inherited from <see cref="T:Autodesk.Revit.DB.Element"/></typeparam>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.CollectorExtensions.EnumerateInstanceIds``1(Autodesk.Revit.DB.Document,Autodesk.Revit.DB.ElementId,System.Collections.Generic.IEnumerable{Autodesk.Revit.DB.ElementFilter})">
+            <summary>
+                Searches for elements in a document visible in view by class of type T
+            </summary>
+            <param name="document">The document that owns the view</param>
+            <param name="viewId">The view id</param>
+            <param name="filters">Filters that accepts or rejects elements based upon criteria</param>
+            <returns>The complete set of element ids</returns>
+            <typeparam name="T">Type inherited from <see cref="T:Autodesk.Revit.DB.Element"/></typeparam>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.CollectorExtensions.GetTypes(Autodesk.Revit.DB.Document,Autodesk.Revit.DB.BuiltInCategory)">
+            <summary>
+                Searches for elements in a document
+            </summary>
+            <param name="document">The document</param>
+            <param name="category">The category</param>
+            <returns>The complete set of elements</returns>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.CollectorExtensions.GetTypes(Autodesk.Revit.DB.Document,Autodesk.Revit.DB.BuiltInCategory,Autodesk.Revit.DB.ElementFilter)">
+            <summary>
+                Searches for elements in a document
+            </summary>
+            <param name="document">The document</param>
+            <param name="category">The category</param>
+            <param name="filter">Filter that accepts or rejects elements based upon criteria</param>
+            <returns>The complete set of elements</returns>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.CollectorExtensions.GetTypes(Autodesk.Revit.DB.Document,Autodesk.Revit.DB.BuiltInCategory,System.Collections.Generic.IEnumerable{Autodesk.Revit.DB.ElementFilter})">
+            <summary>
+                Searches for elements in a document
+            </summary>
+            <param name="document">The document</param>
+            <param name="category">The category</param>
+            <param name="filters">Filters that accepts or rejects elements based upon criteria</param>
+            <returns>The complete set of elements</returns>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.CollectorExtensions.GetTypes(Autodesk.Revit.DB.Document)">
+            <summary>
+                Searches for elements in a document
+            </summary>
+            <param name="document">The document</param>
+            <returns>The complete set of elements</returns>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.CollectorExtensions.GetTypes(Autodesk.Revit.DB.Document,Autodesk.Revit.DB.ElementFilter)">
+            <summary>
+                Searches for elements in a document
+            </summary>
+            <param name="document">The document</param>
+            <param name="filter">Filter that accepts or rejects elements based upon criteria</param>
+            <returns>The complete set of elements</returns>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.CollectorExtensions.GetTypes(Autodesk.Revit.DB.Document,System.Collections.Generic.IEnumerable{Autodesk.Revit.DB.ElementFilter})">
+            <summary>
+                Searches for elements in a document
+            </summary>
+            <param name="document">The document</param>
+            <param name="filters">Filters that accepts or rejects elements based upon criteria</param>
+            <returns>The complete set of elements</returns>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.CollectorExtensions.EnumerateTypes(Autodesk.Revit.DB.Document,Autodesk.Revit.DB.BuiltInCategory)">
+            <summary>
+                Searches for elements in a document
+            </summary>
+            <param name="document">The document</param>
+            <param name="category">The category</param>
+            <returns>The complete set of elements</returns>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.CollectorExtensions.EnumerateTypes(Autodesk.Revit.DB.Document,Autodesk.Revit.DB.BuiltInCategory,Autodesk.Revit.DB.ElementFilter)">
+            <summary>
+                Searches for elements in a document
+            </summary>
+            <param name="document">The document</param>
+            <param name="category">The category</param>
+            <param name="filter">Filter that accepts or rejects elements based upon criteria</param>
+            <returns>The complete set of elements</returns>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.CollectorExtensions.EnumerateTypes(Autodesk.Revit.DB.Document,Autodesk.Revit.DB.BuiltInCategory,System.Collections.Generic.IEnumerable{Autodesk.Revit.DB.ElementFilter})">
+            <summary>
+                Searches for elements in a document
+            </summary>
+            <param name="document">The document</param>
+            <param name="category">The category</param>
+            <param name="filters">Filters that accepts or rejects elements based upon criteria</param>
+            <returns>The complete set of elements</returns>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.CollectorExtensions.EnumerateTypes(Autodesk.Revit.DB.Document)">
+            <summary>
+                Searches for elements in a document
+            </summary>
+            <param name="document">The document</param>
+            <returns>The complete set of elements</returns>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.CollectorExtensions.EnumerateTypes(Autodesk.Revit.DB.Document,Autodesk.Revit.DB.ElementFilter)">
+            <summary>
+                Searches for elements in a document
+            </summary>
+            <param name="document">The document</param>
+            <param name="filter">Filter that accepts or rejects elements based upon criteria</param>
+            <returns>The complete set of elements</returns>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.CollectorExtensions.EnumerateTypes(Autodesk.Revit.DB.Document,System.Collections.Generic.IEnumerable{Autodesk.Revit.DB.ElementFilter})">
+            <summary>
+                Searches for elements in a document
+            </summary>
+            <param name="document">The document</param>
+            <param name="filters">Filters that accepts or rejects elements based upon criteria</param>
+            <returns>The complete set of elements</returns>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.CollectorExtensions.EnumerateTypes``1(Autodesk.Revit.DB.Document,Autodesk.Revit.DB.BuiltInCategory)">
+            <summary>
+                Searches for elements in a document by class of type T
+            </summary>
+            <param name="document">The document</param>
+            <param name="category">The category</param>
+            <returns>The complete set of elements</returns>
+            <typeparam name="T">Type inherited from <see cref="T:Autodesk.Revit.DB.Element"/></typeparam>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.CollectorExtensions.EnumerateTypes``1(Autodesk.Revit.DB.Document,Autodesk.Revit.DB.BuiltInCategory,Autodesk.Revit.DB.ElementFilter)">
+            <summary>
+                Searches for elements in a document by class of type T
+            </summary>
+            <param name="document">The document</param>
+            <param name="category">The category</param>
+            <param name="filter">Filter that accepts or rejects elements based upon criteria</param>
+            <returns>The complete set of elements</returns>
+            <typeparam name="T">Type inherited from <see cref="T:Autodesk.Revit.DB.Element"/></typeparam>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.CollectorExtensions.EnumerateTypes``1(Autodesk.Revit.DB.Document,Autodesk.Revit.DB.BuiltInCategory,System.Collections.Generic.IEnumerable{Autodesk.Revit.DB.ElementFilter})">
+            <summary>
+                Searches for elements in a document by class of type T
+            </summary>
+            <param name="document">The document</param>
+            <param name="category">The category</param>
+            <param name="filters">Filters that accepts or rejects elements based upon criteria</param>
+            <returns>The complete set of elements</returns>
+            <typeparam name="T">Type inherited from <see cref="T:Autodesk.Revit.DB.Element"/></typeparam>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.CollectorExtensions.EnumerateTypes``1(Autodesk.Revit.DB.Document)">
+            <summary>
+                Searches for elements in a document by class of type T
+            </summary>
+            <param name="document">The document</param>
+            <returns>The complete set of elements</returns>
+            <typeparam name="T">Type inherited from <see cref="T:Autodesk.Revit.DB.Element"/></typeparam>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.CollectorExtensions.EnumerateTypes``1(Autodesk.Revit.DB.Document,Autodesk.Revit.DB.ElementFilter)">
+            <summary>
+                Searches for elements in a document by class of type T
+            </summary>
+            <param name="document">The document</param>
+            <param name="filter">Filter that accepts or rejects elements based upon criteria</param>
+            <returns>The complete set of elements</returns>
+            <typeparam name="T">Type inherited from <see cref="T:Autodesk.Revit.DB.Element"/></typeparam>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.CollectorExtensions.EnumerateTypes``1(Autodesk.Revit.DB.Document,System.Collections.Generic.IEnumerable{Autodesk.Revit.DB.ElementFilter})">
+            <summary>
+                Searches for elements in a document by class of type T
+            </summary>
+            <param name="document">The document</param>
+            <param name="filters">Filters that accepts or rejects elements based upon criteria</param>
+            <returns>The complete set of elements</returns>
+            <typeparam name="T">Type inherited from <see cref="T:Autodesk.Revit.DB.Element"/></typeparam>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.CollectorExtensions.GetTypeIds(Autodesk.Revit.DB.Document,Autodesk.Revit.DB.BuiltInCategory)">
+            <summary>
+                Searches for elements in a document
+            </summary>
+            <param name="document">The document</param>
+            <param name="category">The category</param>
+            <returns>The complete set of element ids</returns>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.CollectorExtensions.GetTypeIds(Autodesk.Revit.DB.Document,Autodesk.Revit.DB.BuiltInCategory,Autodesk.Revit.DB.ElementFilter)">
+            <summary>
+                Searches for elements in a document
+            </summary>
+            <param name="document">The document</param>
+            <param name="category">The category</param>
+            <param name="filter">Filter that accepts or rejects elements based upon criteria</param>
+            <returns>The complete set of element ids</returns>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.CollectorExtensions.GetTypeIds(Autodesk.Revit.DB.Document,Autodesk.Revit.DB.BuiltInCategory,System.Collections.Generic.IEnumerable{Autodesk.Revit.DB.ElementFilter})">
+            <summary>
+                Searches for elements in a document
+            </summary>
+            <param name="document">The document</param>
+            <param name="category">The category</param>
+            <param name="filters">Filters that accepts or rejects elements based upon criteria</param>
+            <returns>The complete set of element ids</returns>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.CollectorExtensions.GetTypeIds(Autodesk.Revit.DB.Document)">
+            <summary>
+                Searches for elements in a document
+            </summary>
+            <param name="document">The document</param>
+            <returns>The complete set of element ids</returns>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.CollectorExtensions.GetTypeIds(Autodesk.Revit.DB.Document,Autodesk.Revit.DB.ElementFilter)">
+            <summary>
+                Searches for elements in a document
+            </summary>
+            <param name="document">The document</param>
+            <param name="filter">Filter that accepts or rejects elements based upon criteria</param>
+            <returns>The complete set of element ids</returns>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.CollectorExtensions.GetTypeIds(Autodesk.Revit.DB.Document,System.Collections.Generic.IEnumerable{Autodesk.Revit.DB.ElementFilter})">
+            <summary>
+                Searches for elements in a document
+            </summary>
+            <param name="document">The document</param>
+            <param name="filters">Filters that accepts or rejects elements based upon criteria</param>
+            <returns>The complete set of element ids</returns>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.CollectorExtensions.EnumerateTypeIds(Autodesk.Revit.DB.Document,Autodesk.Revit.DB.BuiltInCategory)">
+            <summary>
+                Searches for elements in a document
+            </summary>
+            <param name="document">The document</param>
+            <param name="category">The category</param>
+            <returns>The complete set of element ids</returns>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.CollectorExtensions.EnumerateTypeIds(Autodesk.Revit.DB.Document,Autodesk.Revit.DB.BuiltInCategory,Autodesk.Revit.DB.ElementFilter)">
+            <summary>
+                Searches for elements in a document
+            </summary>
+            <param name="document">The document</param>
+            <param name="category">The category</param>
+            <param name="filter">Filter that accepts or rejects elements based upon criteria</param>
+            <returns>The complete set of element ids</returns>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.CollectorExtensions.EnumerateTypeIds(Autodesk.Revit.DB.Document,Autodesk.Revit.DB.BuiltInCategory,System.Collections.Generic.IEnumerable{Autodesk.Revit.DB.ElementFilter})">
+            <summary>
+                Searches for elements in a document
+            </summary>
+            <param name="document">The document</param>
+            <param name="category">The category</param>
+            <param name="filters">Filters that accepts or rejects elements based upon criteria</param>
+            <returns>The complete set of element ids</returns>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.CollectorExtensions.EnumerateTypeIds(Autodesk.Revit.DB.Document)">
+            <summary>
+                Searches for elements in a document
+            </summary>
+            <param name="document">The document</param>
+            <returns>The complete set of element ids</returns>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.CollectorExtensions.EnumerateTypeIds(Autodesk.Revit.DB.Document,Autodesk.Revit.DB.ElementFilter)">
+            <summary>
+                Searches for elements in a document
+            </summary>
+            <param name="document">The document</param>
+            <param name="filter">Filter that accepts or rejects elements based upon criteria</param>
+            <returns>The complete set of element ids</returns>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.CollectorExtensions.EnumerateTypeIds(Autodesk.Revit.DB.Document,System.Collections.Generic.IEnumerable{Autodesk.Revit.DB.ElementFilter})">
+            <summary>
+                Searches for elements in a document
+            </summary>
+            <param name="document">The document</param>
+            <param name="filters">Filters that accepts or rejects elements based upon criteria</param>
+            <returns>The complete set of element ids</returns>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.CollectorExtensions.EnumerateTypeIds``1(Autodesk.Revit.DB.Document,Autodesk.Revit.DB.BuiltInCategory)">
+            <summary>
+                Searches for elements in a document by class of type T
+            </summary>
+            <param name="document">The document</param>
+            <param name="category">The category</param>
+            <returns>The complete set of element ids</returns>
+            <typeparam name="T">Type inherited from <see cref="T:Autodesk.Revit.DB.Element"/></typeparam>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.CollectorExtensions.EnumerateTypeIds``1(Autodesk.Revit.DB.Document,Autodesk.Revit.DB.BuiltInCategory,Autodesk.Revit.DB.ElementFilter)">
+            <summary>
+                Searches for elements in a document by class of type T
+            </summary>
+            <param name="document">The document</param>
+            <param name="category">The category</param>
+            <param name="filter">Filter that accepts or rejects elements based upon criteria</param>
+            <returns>The complete set of element ids</returns>
+            <typeparam name="T">Type inherited from <see cref="T:Autodesk.Revit.DB.Element"/></typeparam>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.CollectorExtensions.EnumerateTypeIds``1(Autodesk.Revit.DB.Document,Autodesk.Revit.DB.BuiltInCategory,System.Collections.Generic.IEnumerable{Autodesk.Revit.DB.ElementFilter})">
+            <summary>
+                Searches for elements in a document by class of type T
+            </summary>
+            <param name="document">The document</param>
+            <param name="category">The category</param>
+            <param name="filters">Filters that accepts or rejects elements based upon criteria</param>
+            <returns>The complete set of element ids</returns>
+            <typeparam name="T">Type inherited from <see cref="T:Autodesk.Revit.DB.Element"/></typeparam>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.CollectorExtensions.EnumerateTypeIds``1(Autodesk.Revit.DB.Document)">
+            <summary>
+                Searches for elements in a document by class of type T
+            </summary>
+            <param name="document">The document</param>
+            <returns>The complete set of element ids</returns>
+            <typeparam name="T">Type inherited from <see cref="T:Autodesk.Revit.DB.Element"/></typeparam>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.CollectorExtensions.EnumerateTypeIds``1(Autodesk.Revit.DB.Document,Autodesk.Revit.DB.ElementFilter)">
+            <summary>
+                Searches for elements in a document by class of type T
+            </summary>
+            <param name="document">The document</param>
+            <param name="filter">Filter that accepts or rejects elements based upon criteria</param>
+            <returns>The complete set of element ids</returns>
+            <typeparam name="T">Type inherited from <see cref="T:Autodesk.Revit.DB.Element"/></typeparam>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.CollectorExtensions.EnumerateTypeIds``1(Autodesk.Revit.DB.Document,System.Collections.Generic.IEnumerable{Autodesk.Revit.DB.ElementFilter})">
+            <summary>
+                Searches for elements in a document by class of type T
+            </summary>
+            <param name="document">The document</param>
+            <param name="filters">Filters that accepts or rejects elements based upon criteria</param>
+            <returns>The complete set of element ids</returns>
+            <typeparam name="T">Type inherited from <see cref="T:Autodesk.Revit.DB.Element"/></typeparam>
+        </member>
+        <member name="T:Nice3point.Revit.Extensions.ElementExtensions">
+            <summary>
+                Revit Element Extensions
+            </summary>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.ElementExtensions.Cast``1(Autodesk.Revit.DB.Element)">
+            <summary>
+                Cast the element to the specified type
+            </summary>
+            <typeparam name="T">A type derived from Element</typeparam>
+            <exception cref="T:System.InvalidCastException">Element cannot be cast to type T</exception>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.ElementExtensions.GetParameter(Autodesk.Revit.DB.Element,Autodesk.Revit.DB.ForgeTypeId,System.Boolean)">
+            <summary>
+                Retrieves a parameter from the instance or symbol given identifier
+            </summary>
+            <param name="element">The element</param>
+            <param name="parameter">Identifier of the built-in parameter</param>
+            <param name="snoopType">True if you want to snoop the symbol parameter</param>
+            <exception cref="T:Autodesk.Revit.Exceptions.ArgumentException">
+                ForgeTypeId does not identify a built-in parameter. See Parameter.IsBuiltInParameter(ForgeTypeId) and Parameter.GetParameterTypeId(BuiltInParameter).
+            </exception>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.ElementExtensions.GetParameter(Autodesk.Revit.DB.Element,Autodesk.Revit.DB.BuiltInParameter)">
+            <summary>
+                Retrieves a parameter from the instance or symbol given identifier
+            </summary>
+            <param name="element">The element</param>
+            <param name="parameter">The built-in parameter ID</param>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.ElementExtensions.GetParameter(Autodesk.Revit.DB.Element,System.String)">
+            <summary>
+                Retrieves a parameter from the instance or symbol given identifier
+            </summary>
+            <param name="element">The element</param>
+            <param name="parameter">The name of the parameter to be retrieved</param>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.ElementExtensions.FindParameter(Autodesk.Revit.DB.Element,Autodesk.Revit.DB.ForgeTypeId)">
+            <summary>
+                Find a parameter in the instance or symbol by identifier
+            </summary>
+            <param name="element">The element</param>
+            <param name="parameter">Identifier of the built-in parameter</param>
+            <exception cref="T:Autodesk.Revit.Exceptions.ArgumentException">
+                ForgeTypeId does not identify a built-in parameter. See Parameter.IsBuiltInParameter(ForgeTypeId) and Parameter.GetParameterTypeId(BuiltInParameter).
+            </exception>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.ElementExtensions.FindParameter(Autodesk.Revit.DB.Element,Autodesk.Revit.DB.BuiltInParameter)">
+            <summary>
+                Find a parameter in the instance or symbol by identifier
+            </summary>
+            <param name="element">The element</param>
+            <param name="parameter">The built-in parameter ID</param>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.ElementExtensions.FindParameter(Autodesk.Revit.DB.Element,Autodesk.Revit.DB.Definition)">
+            <summary>
+                Find a parameter in the instance or symbol by identifier
+            </summary>
+            <param name="element">The element</param>
+            <param name="definition">The internal or external definition of the parameter</param>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.ElementExtensions.FindParameter(Autodesk.Revit.DB.Element,System.Guid)">
+            <summary>
+                Find a parameter in the instance or symbol by identifier
+            </summary>
+            <param name="element">The element</param>
+            <param name="guid">The unique id associated with the shared parameter</param>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.ElementExtensions.FindParameter(Autodesk.Revit.DB.Element,System.String)">
+            <summary>
+                Find a parameter in the instance or symbol by identifier
+            </summary>
+            <param name="element">The element</param>
+            <param name="parameter">The name of the parameter to be found</param>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.ElementExtensions.Copy(Autodesk.Revit.DB.Element,System.Double,System.Double,System.Double)">
+            <summary>
+                Copies an element and places the copy at a location indicated by a given transformation
+            </summary>
+            <param name="element">The element to copy</param>
+            <param name="deltaX">Offset along the X axis</param>
+            <param name="deltaY">Offset along the Y axis</param>
+            <param name="deltaZ">Offset along the Z axis</param>
+            <returns>The ids of the newly created copied elements. More than one element may be created due to dependencies</returns>
+            <exception cref="T:Autodesk.Revit.Exceptions.InvalidOperationException">
+                If we are not able to copy the element
+            </exception>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.ElementExtensions.Copy(Autodesk.Revit.DB.Element,Autodesk.Revit.DB.XYZ)">
+            <summary>
+                Copies an element and places the copy at a location indicated by a given transformation
+            </summary>
+            <param name="element">The element to copy</param>
+            <param name="vector">The translation vector for the new element</param>
+            <returns>The ids of the newly created copied elements. More than one element may be created due to dependencies</returns>
+            <exception cref="T:Autodesk.Revit.Exceptions.InvalidOperationException">
+                If we are not able to copy the element
+            </exception>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.ElementExtensions.Mirror(Autodesk.Revit.DB.Element,Autodesk.Revit.DB.Plane)">
+            <summary>Creates a mirrored copy of an element about a given plane</summary>
+            <param name="element">The element to mirror</param>
+            <param name="plane">The mirror plane</param>
+            <exception cref="T:Autodesk.Revit.Exceptions.ArgumentException">
+                Element cannot be mirrored or element does not exist in the document
+            </exception>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.ElementExtensions.Move(Autodesk.Revit.DB.Element,System.Double,System.Double,System.Double)">
+            <summary>
+                Moves the element by the specified offset
+            </summary>
+            <param name="element">The element to move</param>
+            <param name="deltaX">Offset along the X axis</param>
+            <param name="deltaY">Offset along the Y axis</param>
+            <param name="deltaZ">Offset along the Z axis</param>
+            <exception cref="T:Autodesk.Revit.Exceptions.InvalidOperationException">
+                If we are not able to move the element (for example, if it is pinned) or move operation failed
+            </exception>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.ElementExtensions.Move(Autodesk.Revit.DB.Element,Autodesk.Revit.DB.XYZ)">
+            <summary>
+                Moves the element by the specified vector
+            </summary>
+            <param name="element">The element to move</param>
+            <param name="vector">The translation vector for the elements</param>
+            <exception cref="T:Autodesk.Revit.Exceptions.InvalidOperationException">
+                If we are not able to move the element (for example, if it is pinned) or move operation failed
+            </exception>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.ElementExtensions.Rotate(Autodesk.Revit.DB.Element,Autodesk.Revit.DB.Line,System.Double)">
+            <summary>Rotates an element about the given axis and angle</summary>
+            <param name="element">The element to rotate</param>
+            <param name="axis">The axis of rotation</param>
+            <param name="angle">The angle of rotation in radians</param>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.ElementExtensions.CanBeMirrored(Autodesk.Revit.DB.Element)">
+            <summary>Determines whether element can be mirrored</summary>
+            <returns>True if the element can be mirrored</returns>
+        </member>
+        <member name="T:Nice3point.Revit.Extensions.ElementIdExtensions">
+            <summary>
+                Revit Element Extensions
+            </summary>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.ElementIdExtensions.ToElement(Autodesk.Revit.DB.ElementId,Autodesk.Revit.DB.Document)">
+            <summary>
+                Gets the Element referenced by the input ElementId
+            </summary>
+            <param name="document">Document associated with Element</param>
+            <param name="id">
+                The ElementId, whose referenced Element will be retrieved from the model.
+            </param>
+            <returns>The element referenced by the input argument</returns>
+            <remarks>
+                <see langword="null" /> will be returned if the input ElementId doesn't reference to a valid Element.
+            </remarks>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.ElementIdExtensions.ToElement``1(Autodesk.Revit.DB.ElementId,Autodesk.Revit.DB.Document)">
+            <summary>
+                Gets the Element referenced by the input ElementId and cast to type T
+            </summary>
+            <param name="document">Document associated with Element</param>
+            <param name="id">
+                The ElementId, whose referenced Element will be retrieved from the model
+            </param>
+            <typeparam name="T">A type derived from Element</typeparam>
+            <returns>The element referenced by the input argument, casted to type T</returns>
+            <remarks>
+                <see langword="null" /> will be returned if the input ElementId doesn't reference to a valid Element.
+            </remarks>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.ElementIdExtensions.AreEquals(Autodesk.Revit.DB.ElementId,Autodesk.Revit.DB.BuiltInCategory)">
+            <summary>
+                Checks if ElementID is a category identifier
+            </summary>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.ElementIdExtensions.AreEquals(Autodesk.Revit.DB.ElementId,Autodesk.Revit.DB.BuiltInParameter)">
+            <summary>
+                Checks if ElementID is a parameter identifier
+            </summary>
+        </member>
+        <member name="T:Nice3point.Revit.Extensions.GeometryExtensions">
+            <summary>
+                Revit Geometry Extensions
+            </summary>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.GeometryExtensions.Distance(Autodesk.Revit.DB.Line,Autodesk.Revit.DB.Line)">
+            <summary>
+                Returns the distance between Lines. The Lines are considered to be endless
+            </summary>
+            <returns>Distance between lines. Returns 0 if the lines intersect</returns>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.GeometryExtensions.JoinGeometry(Autodesk.Revit.DB.Element,Autodesk.Revit.DB.Element)">
+            <summary>
+                Creates clean joins between two elements that share a common face
+            </summary>
+            <remarks>
+               The visible edge between joined elements is removed. The joined elements then share the same line weight and fill pattern.
+               This functionality is not available for family documents.
+            </remarks>
+            <param name="firstElement">The first element to be joined</param>
+            <param name="secondElement">
+               The second element to be joined. This element must not be joined to the first element
+            </param>
+            <exception cref="T:Autodesk.Revit.Exceptions.ArgumentException">
+               The element secondElement was not found in the firstElement document<br />
+               The elements are already joined<br />
+               The elements cannot be joined<br />
+            </exception>
+            <exception cref="T:Autodesk.Revit.Exceptions.InvalidOperationException">
+               Please remove or add segments on curtain grids instead of joining or unjoining geometry of the panels
+            </exception>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.GeometryExtensions.UnjoinGeometry(Autodesk.Revit.DB.Element,Autodesk.Revit.DB.Element)">
+            <summary>
+                Removes a join between two elements
+            </summary>
+            <remarks>This functionality is not available for family documents</remarks>
+            <param name="firstElement">The first element to be unjoined</param>
+            <param name="secondElement">
+               The second element to be unjoined. This element must be joined to the fist element
+            </param>
+            <exception cref="T:Autodesk.Revit.Exceptions.ArgumentException">
+               The element secondElement was not found in the firstElement document<br />
+               The elements are not joined<br />
+               The elements cannot be unjoined
+            </exception>
+            <exception cref="T:Autodesk.Revit.Exceptions.InvalidOperationException">
+               Please remove or add segments on curtain grids instead of joining or unjoining geometry of the panels
+            </exception>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.GeometryExtensions.AreElementsJoined(Autodesk.Revit.DB.Element,Autodesk.Revit.DB.Element)">
+            <summary>
+                Determines whether two elements are joined
+            </summary>
+            <remarks>This functionality is not available for family documents</remarks>
+            <param name="firstElement">The first element</param>
+            <param name="secondElement">The second element</param>
+            <returns>True if the two elements are joined</returns>
+            <exception cref="T:Autodesk.Revit.Exceptions.ArgumentException">
+               The element secondElement was not found in the firstElement document
+            </exception>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.GeometryExtensions.GetJoinedElements(Autodesk.Revit.DB.Element)">
+            <summary>
+                Returns all elements joined to given element
+            </summary>
+            <remarks>This functionality is not available for family documents</remarks>
+            <param name="element">The element</param>
+            <returns>The set of elements that are joined to the given element</returns>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.GeometryExtensions.SwitchJoinOrder(Autodesk.Revit.DB.Element,Autodesk.Revit.DB.Element)">
+            <summary>
+                Reverses the order in which two elements are joined
+            </summary>
+            <remarks>
+               The cutting element becomes the cut element and vice versa after the join order is switched
+               This functionality is not available for family documents
+            </remarks>
+            <param name="firstElement">The first element</param>
+            <param name="secondElement">
+               The second element. This element must be joined to the first element
+            </param>
+            <exception cref="T:Autodesk.Revit.Exceptions.ArgumentException">
+               The element secondElement was not found in the firstElement document<br />
+               The elements are not joined<br />
+               The elements cannot be joined
+            </exception>
+            <exception cref="T:Autodesk.Revit.Exceptions.InvalidOperationException">
+               Unable to switch the join order of these elements
+            </exception>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.GeometryExtensions.IsCuttingElementInJoin(Autodesk.Revit.DB.Element,Autodesk.Revit.DB.Element)">
+            <summary>
+               Determines whether the first of two joined elements is cutting the second element
+            </summary>
+            <remarks>This functionality is not available for family documents</remarks>
+            <param name="firstElement">The first element</param>
+            <param name="secondElement">The second element</param>
+            <returns>
+               True if the secondElement is cut by the firstElement, false if the secondElement is cut by the firstElement
+            </returns>
+            <exception cref="T:Autodesk.Revit.Exceptions.ArgumentException">
+               The element secondElement was not found in the firstElement document<br />
+               The elements are not joined
+            </exception>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.GeometryExtensions.SetCoordinateX(Autodesk.Revit.DB.Line,System.Double)">
+            <summary>
+                Creates an instance of a curve with a new coordinate
+            </summary>
+            <param name="line">Initial curve</param>
+            <param name="x">New coordinate</param>
+            <returns>The new bound line</returns>
+            <exception cref="T:Autodesk.Revit.Exceptions.ArgumentsInconsistentException">
+               Curve length is too small for Revit's tolerance (as identified by Application.ShortCurveTolerance)
+            </exception>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.GeometryExtensions.SetCoordinateY(Autodesk.Revit.DB.Line,System.Double)">
+            <summary>
+                Creates an instance of a curve with a new coordinate
+            </summary>
+            <param name="line">Initial curve</param>
+            <param name="y">New coordinate</param>
+            <returns>The new bound line</returns>
+            <exception cref="T:Autodesk.Revit.Exceptions.ArgumentsInconsistentException">
+               Curve length is too small for Revit's tolerance (as identified by Application.ShortCurveTolerance)
+            </exception>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.GeometryExtensions.SetCoordinateZ(Autodesk.Revit.DB.Line,System.Double)">
+            <summary>
+                Creates an instance of a curve with a new coordinate
+            </summary>
+            <param name="line">Initial curve</param>
+            <param name="z">New coordinate</param>
+            <returns>The new bound line</returns>
+            <exception cref="T:Autodesk.Revit.Exceptions.ArgumentsInconsistentException">
+               Curve length is too small for Revit's tolerance (as identified by Application.ShortCurveTolerance)
+            </exception>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.GeometryExtensions.SetCoordinateX(Autodesk.Revit.DB.Arc,System.Double)">
+            <summary>
+                Creates an instance of a curve with a new coordinate
+            </summary>
+            <param name="arc">Initial curve</param>
+            <param name="x">New coordinate</param>
+            <returns>The new bound line</returns>
+            <exception cref="T:Autodesk.Revit.Exceptions.ArgumentsInconsistentException">
+               Curve length is too small for Revit's tolerance (as identified by Application.ShortCurveTolerance)
+            </exception>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.GeometryExtensions.SetCoordinateY(Autodesk.Revit.DB.Arc,System.Double)">
+            <summary>
+                Creates an instance of a curve with a new coordinate
+            </summary>
+            <param name="arc">Initial curve</param>
+            <param name="y">New coordinate</param>
+            <returns>The new bound line</returns>
+            <exception cref="T:Autodesk.Revit.Exceptions.ArgumentsInconsistentException">
+               Curve length is too small for Revit's tolerance (as identified by Application.ShortCurveTolerance)
+            </exception>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.GeometryExtensions.SetCoordinateZ(Autodesk.Revit.DB.Arc,System.Double)">
+            <summary>
+                Creates an instance of a curve with a new coordinate
+            </summary>
+            <param name="arc">Initial curve</param>
+            <param name="z">New coordinate</param>
+            <returns>The new bound line</returns>
+            <exception cref="T:Autodesk.Revit.Exceptions.ArgumentsInconsistentException">
+               Curve length is too small for Revit's tolerance (as identified by Application.ShortCurveTolerance)
+            </exception>
+        </member>
+        <member name="T:Nice3point.Revit.Extensions.HostExtensions">
+            <summary>
+                Revit Host Extensions
+            </summary>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.HostExtensions.GetBottomFaces(Autodesk.Revit.DB.HostObject)">
+            <summary>Returns the bottom faces for this host object</summary>
+            <remarks>
+                This utility supports host objects whose bottom faces represent one of the boundaries of CompoundStructure (such as roofs, floors or ceilings)
+            </remarks>
+            <param name="host">The host object</param>
+            <returns>
+                An array of references to the faces which are at the bottom of this element
+            </returns>
+            <exception cref="T:Autodesk.Revit.Exceptions.ArgumentException">
+                This host object does not support access to top or bottom faces
+            </exception>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.HostExtensions.GetSideFaces(Autodesk.Revit.DB.HostObject,Autodesk.Revit.DB.ShellLayerType)">
+            <summary>
+                Returns the major side faces for this host object
+            </summary>
+            <remarks>
+                This utility supports host objects whose CompoundStructure is nominally oriented vertically.
+                It outputs faces which are at the boundary of the CompoundStructure (such as Walls and FaceWalls)
+            </remarks>
+            <param name="host">The host object</param>
+            <param name="side">The side of the host object</param>
+            <returns>
+                An array of references to the faces which are on the given side of this element
+            </returns>
+            <exception cref="T:Autodesk.Revit.Exceptions.ArgumentException">
+                This host object does not support access to side faces
+            </exception>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.HostExtensions.GetTopFaces(Autodesk.Revit.DB.HostObject)">
+            <summary>
+                Returns the top faces for this host object
+            </summary>
+            <remarks>
+                This utility supports host objects whose top faces represent one of the boundaries of CompoundStructure (such as roofs, floors or ceilings)
+            </remarks>
+            <param name="host">The host object</param>
+            <returns>An array of references to the faces which are at the top of this element</returns>
+            <exception cref="T:Autodesk.Revit.Exceptions.ArgumentException">
+                This host object does not support access to top or bottom faces
+            </exception>
+        </member>
+        <member name="T:Nice3point.Revit.Extensions.ImperialExtensions">
+            <summary>
+                Imperial Units Extensions
+            </summary>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.ImperialExtensions.ToFraction(System.Double,System.Int32)">
+            <summary>
+                Converts a number to text representation for the Imperial system with denominator 32
+            </summary>
+            <param name="source">Feet value</param>
+            <param name="denominator">Rounding. Denominator must be greater than or equal to 1</param>
+            <example>
+                1 will be converted to 1'-0"<br />
+                0.0123 will be converted to 0 5/32"<br />
+                25.231 will be converted to 25'-2 25/32"
+            </example>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.ImperialExtensions.ToFraction(System.Double)">
+            <summary>
+                Converts a number to text representation for the Imperial system
+            </summary>
+            <param name="source">Feet value</param>
+            <example>
+                1 will be converted to 1'-0"<br />
+                0.0123 will be converted to 0 5/32"<br />
+                25.231 will be converted to 25'-2 25/32"
+            </example>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.ImperialExtensions.FromFraction(System.String,System.Double@)">
+            <summary>
+                Converts the textual representation of the Imperial system number to double
+            </summary>
+            <param name="source">Imperial number</param>
+            <param name="value">Feet value</param>
+            <returns>True if conversion is successful</returns>
+            <example>
+                1' will be converted to 1<br />
+                1/8" will be converted to 0.010<br />
+                1'-3/32" will be converted to 1.007<br />
+                1'1.75" will be converted to 1.145
+            </example>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.ImperialExtensions.TryFromFraction(System.String,System.Double@)">
+            <summary>
+                Converts the textual representation of the Imperial system number to double
+            </summary>
+            <param name="source">Imperial number</param>
+            <param name="value">Feet value</param>
+            <returns>True if conversion is successful</returns>
+            <example>
+                1' will be converted to 1<br />
+                1/8" will be converted to 0.010<br />
+                1'-3/32" will be converted to 1.007<br />
+                1'1.75" will be converted to 1.145
+            </example>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.ImperialExtensions.FromFraction(System.String)">
+            <summary>
+                Converts the textual representation of the Imperial system number to double
+            </summary>
+            <param name="source">Imperial number</param>
+            <returns>Feet value</returns>
+            <exception cref="T:System.FormatException">Invalid number format</exception>
+            <example>
+                1' will be converted to 1<br />
+                1/8" will be converted to 0.010<br />
+                1'-3/32" will be converted to 1.007<br />
+                1'1.75" will be converted to 1.145
+            </example>
+        </member>
+        <member name="T:Nice3point.Revit.Extensions.LabelExtensions">
+            <summary>
+                Revit Label Extensions
+            </summary>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.LabelExtensions.ToLabel(Autodesk.Revit.DB.BuiltInParameter)">
+            <summary>
+                Gets the user-visible name for a BuiltInParameter
+            </summary>
+            <param name="source">The BuiltInParameter to get the user-visible name</param>
+            <exception cref="T:Autodesk.Revit.Exceptions.InvalidOperationException">
+                Thrown when the BuiltInParameter cannot be found
+            </exception>
+            <remarks>The name is obtained in the current Revit language</remarks>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.LabelExtensions.ToLabel(Autodesk.Revit.DB.BuiltInParameter,Autodesk.Revit.ApplicationServices.LanguageType)">
+            <summary>
+                Gets the user-visible name for a BuiltInParameter in a specific LanguageType
+            </summary>
+            <param name="source">The BuiltInParameter to get the user-visible name</param>
+            <param name="language">The desired LanguageType to get the user-visible name in</param>
+            <returns>The BuiltInParameter name in the desired LanguageType</returns>
+            <exception cref="T:Autodesk.Revit.Exceptions.InvalidOperationException">
+                Thrown when the BuiltInParameter cannot be found
+            </exception>
+            <exception cref="T:Autodesk.Revit.Exceptions.InvalidOperationException">
+                Thrown when the desired LanguageType cannot be found for the BuiltInParameter name
+            </exception>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.LabelExtensions.ToLabel(Autodesk.Revit.DB.BuiltInParameterGroup)">
+            <summary>
+                Gets the user-visible name for a BuiltInParameterGroup
+            </summary>
+            <param name="source">The BuiltInParameterGroup to get the user-visible name</param>
+            <remarks>The name is obtained in the current Revit language</remarks>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.LabelExtensions.ToLabel(Autodesk.Revit.DB.BuiltInCategory)">
+            <summary>
+                Gets the user-visible name for a BuiltInCategory
+            </summary>
+            <param name="source">The BuiltInCategory to get the user-visible name</param>
+            <exception cref="T:Autodesk.Revit.Exceptions.InvalidOperationException">
+                Thrown when the builtin category is not valid
+            </exception>
+            <remarks>The name is obtained in the current Revit language</remarks>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.LabelExtensions.ToLabel(Autodesk.Revit.DB.ParameterType)">
+            <summary>
+                Gets the user-visible name for a ParameterType
+            </summary>
+            <param name="source">The ParameterType to get the user-visible name</param>
+            <exception cref="T:Autodesk.Revit.Exceptions.InvalidOperationException">
+                Thrown when failed to get user-visible name for the input ParameterType
+            </exception>
+            <remarks>The name is obtained in the current Revit language</remarks>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.LabelExtensions.ToLabel(Autodesk.Revit.DB.ForgeTypeId)">
+            <summary>
+                Gets the user-visible name for a ForgeTypeId
+            </summary>
+            <param name="source">The ForgeTypeId to get the user-visible name</param>
+            <exception cref="T:Autodesk.Revit.Exceptions.ArgumentException">
+                The ForgeTypeId is not valid in the context of the current API version
+            </exception>
+            <remarks>The name is obtained in the current Revit language</remarks>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.LabelExtensions.ToDisciplineLabel(Autodesk.Revit.DB.ForgeTypeId)">
+            <summary>
+                Gets the user-visible name for a discipline
+            </summary>
+            <param name="source">Identifier of the discipline</param>
+            <exception cref="T:Autodesk.Revit.Exceptions.ArgumentException">
+                Discipline must have a definition
+            </exception>
+            <exception cref="T:Autodesk.Revit.Exceptions.ArgumentNullException">
+                A non-optional argument was null
+            </exception>
+            <remarks>The name is obtained in the current Revit language</remarks>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.LabelExtensions.ToGroupLabel(Autodesk.Revit.DB.ForgeTypeId)">
+            <summary>
+                Gets the user-visible name for a built-in parameter group
+            </summary>
+            <param name="source">The identifier of the parameter group to get the user-visible name</param>
+            <remarks>
+                The name is obtained in the current Revit language
+            </remarks>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.LabelExtensions.ToSpecLabel(Autodesk.Revit.DB.ForgeTypeId)">
+            <summary>
+                Gets the user-visible name for a spec
+            </summary>
+            <param name="source">Identifier of the spec to get the user-visible name</param>
+            <exception cref="T:Autodesk.Revit.Exceptions.ArgumentException">
+                The given identifier is neither a spec nor a category
+            </exception>
+            <remarks>
+                The name is obtained in the current Revit language.
+                If the given identifier is a category, this method returns the name of the Family Type spec with that category, e.g. "Family Type: Walls"
+            </remarks>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.LabelExtensions.ToSymbolLabel(Autodesk.Revit.DB.ForgeTypeId)">
+            <summary>
+                Gets the user-visible name for a symbol
+            </summary>
+            <param name="source">Identifier of the symbol to get the user-visible name</param>
+            <exception cref="T:Autodesk.Revit.Exceptions.ArgumentException">
+                Symbol must have a definition
+            </exception>
+            <exception cref="T:Autodesk.Revit.Exceptions.ArgumentNullException">
+                A non-optional argument was null
+            </exception>
+            <remarks>The name is obtained in the current Revit language</remarks>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.LabelExtensions.ToUnitLabel(Autodesk.Revit.DB.ForgeTypeId)">
+            <summary>
+                Gets the user-visible name for a unit
+            </summary>
+            <param name="source">Identifier of the unit to get the user-visible name</param>
+            <exception cref="T:Autodesk.Revit.Exceptions.ArgumentException">
+                Cannot find DisplayUnitTypeInfo for the given unit identifier
+            </exception>
+            <exception cref="T:Autodesk.Revit.Exceptions.ArgumentNullException">
+                A non-optional argument was null
+            </exception>
+            <remarks>The name is obtained in the current Revit language</remarks>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.LabelExtensions.ToParameterLabel(Autodesk.Revit.DB.ForgeTypeId)">
+            <summary>
+                Gets the user-visible name for a built-in parameter
+            </summary>
+            <param name="source">Identifier of the built-in parameter to get the user-visible name</param>
+            <exception cref="T:Autodesk.Revit.Exceptions.InvalidOperationException">
+                Thrown when the built-in parameter cannot be found
+            </exception>
+            <remarks>The name is obtained in the current Revit language</remarks>
+        </member>
+        <member name="T:Nice3point.Revit.Extensions.ParameterExtensions">
+            <summary>
+                Revit Parameter Extensions
+            </summary>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.ParameterExtensions.AsBool(Autodesk.Revit.DB.Parameter)">
+            <summary>Provides access to the boolean value within the parameter</summary>
+            <param name="parameter">The parameter</param>
+            <returns>The bool value contained in the parameter</returns>
+            <remarks>The AsBool method should only be used if the StorageType property returns that the internal contents of the parameter is an integer</remarks>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.ParameterExtensions.AsColor(Autodesk.Revit.DB.Parameter)">
+            <summary>Provides access to the Color within the parameter</summary>
+            <param name="parameter">The parameter</param>
+            <returns>The Color value contained in the parameter</returns>
+            <remarks>The AsColor method should only be used if the StorageType property returns that the internal contents of the parameter is an integer</remarks>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.ParameterExtensions.AsElement(Autodesk.Revit.DB.Parameter)">
+            <summary>Provides access to the Element within the parameter</summary>
+            <param name="parameter">The parameter</param>
+            <returns>The element contained in the parameter as an ElementId</returns>
+            <remarks>The AsElement method should only be used if the StorageType property returns that the internal contents of the parameter is an ElementId</remarks>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.ParameterExtensions.AsElement``1(Autodesk.Revit.DB.Parameter)">
+            <summary>Provides access to the Element within the parameter</summary>
+            <param name="parameter">The parameter</param>
+            <returns>The element contained in the parameter as an ElementId</returns>
+            <remarks>The AsElement method should only be used if the StorageType property returns that the internal contents of the parameter is an ElementId</remarks>
+            <typeparam name="T">Type inherited from <see cref="T:Autodesk.Revit.DB.Element" /></typeparam>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.ParameterExtensions.Set(Autodesk.Revit.DB.Parameter,System.Boolean)">
+            <summary>Sets the parameter to a new bool value</summary>
+            <param name="parameter">The parameter</param>
+            <param name="value">The new bool value to which the parameter is to be set</param>
+            <returns>The Set method will return True if the parameter was successfully set to the new value, otherwise false</returns>
+            <remarks>You should only use this method if the StorageType property reports the type of the parameter as an integer</remarks>
+            <exception cref="T:Autodesk.Revit.Exceptions.InvalidOperationException">The parameter is read-only</exception>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.ParameterExtensions.Set(Autodesk.Revit.DB.Parameter,Autodesk.Revit.DB.Color)">
+            <summary>Sets the parameter to a new color</summary>
+            <param name="parameter">The parameter</param>
+            <param name="value">The new color to which the parameter is to be set</param>
+            <returns>The Set method will return True if the parameter was successfully set to the new value, otherwise false</returns>
+            <remarks>You should only use this method if the StorageType property reports the type of the parameter as an integer</remarks>
+            <exception cref="T:Autodesk.Revit.Exceptions.InvalidOperationException">The parameter is read-only</exception>
+        </member>
+        <member name="T:Nice3point.Revit.Extensions.RibbonExtensions">
+            <summary>
+                Revit Ribbon Extensions
+            </summary>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.RibbonExtensions.CreatePanel(Autodesk.Revit.UI.UIControlledApplication,System.String)">
+            <summary>
+                Creates a panel in the "Add-ins" tab
+            </summary>
+            <returns>New or existing Ribbon panel</returns>
+            <exception cref="T:Autodesk.Revit.Exceptions.ArgumentException">panelName is Empty</exception>
+            <exception cref="T:Autodesk.Revit.Exceptions.InvalidOperationException">If more than 100 panels were created</exception>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.RibbonExtensions.CreatePanel(Autodesk.Revit.UI.UIControlledApplication,System.String,System.String)">
+            <summary>
+                Creates a panel in the specified tab
+            </summary>
+            <returns>New or existing Ribbon panel</returns>
+            <exception cref="T:Autodesk.Revit.Exceptions.ArgumentException">panelName or tabName is Empty</exception>
+            <exception cref="T:Autodesk.Revit.Exceptions.InvalidOperationException">If more than 100 panels were created</exception>
+            <exception cref="T:Autodesk.Revit.Exceptions.InvalidOperationException">Too many custom tabs have been created in this session. (Maximum is 20)</exception>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.RibbonExtensions.AddPushButton(Autodesk.Revit.UI.RibbonPanel,System.Type,System.String)">
+            <summary>
+                Adds a PushButton to the Ribbon
+            </summary>
+            <returns>The added PushButton</returns>
+            <exception cref="T:Autodesk.Revit.Exceptions.ArgumentException">Thrown when a PushButton already exists in the panel</exception>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.RibbonExtensions.AddPushButton``1(Autodesk.Revit.UI.RibbonPanel,System.String)">
+            <summary>
+                Adds a PushButton to the Ribbon
+            </summary>
+            <returns>The added PushButton</returns>
+            <exception cref="T:Autodesk.Revit.Exceptions.ArgumentException">Thrown when a PushButton already exists in the panel</exception>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.RibbonExtensions.AddPullDownButton(Autodesk.Revit.UI.RibbonPanel,System.String,System.String)">
+            <summary>
+                Adds a PullDownButton to the Ribbon
+            </summary>
+            <returns>The added PullDownButton</returns>
+            <exception cref="T:Autodesk.Revit.Exceptions.ArgumentException">Thrown when a PullDownButton already exists in the panel</exception>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.RibbonExtensions.AddSplitButton(Autodesk.Revit.UI.RibbonPanel,System.String,System.String)">
+            <summary>
+                Adds a SplitButton to the Ribbon
+            </summary>
+            <returns>The added SplitButton</returns>
+            <exception cref="T:Autodesk.Revit.Exceptions.ArgumentException">Thrown when a SplitButton already exists in the panel</exception>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.RibbonExtensions.AddRadioButtonGroup(Autodesk.Revit.UI.RibbonPanel,System.String)">
+            <summary>
+                Adds a RadioButtonGroup to the Ribbon
+            </summary>
+            <returns>The added RadioButtonGroup</returns>
+            <exception cref="T:Autodesk.Revit.Exceptions.ArgumentException">Thrown when a RadioButtonGroup already exists in the panel</exception>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.RibbonExtensions.AddComboBox(Autodesk.Revit.UI.RibbonPanel,System.String)">
+            <summary>
+                Adds a ComboBox to the Ribbon
+            </summary>
+            <returns>The added ComboBox</returns>
+            <exception cref="T:Autodesk.Revit.Exceptions.ArgumentException">Thrown when a ComboBox already exists in the panel</exception>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.RibbonExtensions.AddTextBox(Autodesk.Revit.UI.RibbonPanel,System.String)">
+            <summary>
+                Adds a TextBox to the Ribbon
+            </summary>
+            <returns>The added TextBox</returns>
+            <exception cref="T:Autodesk.Revit.Exceptions.ArgumentException">Thrown when a TextBox already exists in the panel</exception>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.RibbonExtensions.AddPushButton(Autodesk.Revit.UI.PulldownButton,System.Type,System.String)">
+            <summary>
+                Adds a PushButton to the PullDownButton
+            </summary>
+            <returns>The newly added PushButton</returns>
+            <exception cref="T:Autodesk.Revit.Exceptions.ArgumentException">Thrown when a PushButton already exists in the PushButton</exception>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.RibbonExtensions.AddPushButton``1(Autodesk.Revit.UI.PulldownButton,System.String)">
+            <summary>
+                Adds a PushButton to the PullDownButton
+            </summary>
+            <returns>The newly added PushButton</returns>
+            <exception cref="T:Autodesk.Revit.Exceptions.ArgumentException">Thrown when a PushButton already exists in the PushButton</exception>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.RibbonExtensions.SetImage(Autodesk.Revit.UI.RibbonButton,System.String)">
+            <summary>
+                Adds a 16x16px-96dpi image from the URI source
+            </summary>
+            <param name="button">Button to which the icon will be added</param>
+            <param name="uri">Relative or Absolute path to the icon</param>
+            <example>button.SetImage("/RevitAddIn;component/Resources/Icons/RibbonIcon16.png")</example>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.RibbonExtensions.SetLargeImage(Autodesk.Revit.UI.RibbonButton,System.String)">
+            <summary>
+                Adds a 32x32px-96dpi image from the URI source
+            </summary>
+            <param name="button">Button to which the icon will be added</param>
+            <param name="uri">Relative or Absolute path to the icon</param>
+            <example>button.SetLargeImage("/RevitAddIn;component/Resources/Icons/RibbonIcon32.png")</example>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.RibbonExtensions.SetAvailabilityController``1(Autodesk.Revit.UI.PushButton)">
+            <summary>
+                Specifies the class that decides the availability of push button
+            </summary>
+            <param name="button">The button that will be restricted on the ribbon</param>
+            <typeparam name="T">Type inherited from <see cref="T:Autodesk.Revit.UI.IExternalCommandAvailability"/></typeparam>
+            <remarks>Class T should share the same assembly with add-in External Command</remarks>
+        </member>
+        <member name="T:Nice3point.Revit.Extensions.SchemaExtensions">
+            <summary>
+                Revit schema extensions
+            </summary>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.SchemaExtensions.SaveEntity``1(Autodesk.Revit.DB.Element,Autodesk.Revit.DB.ExtensibleStorage.Schema,``0,System.String)">
+            <summary>
+               Stores data in the element. Existing data is overwritten
+            </summary>
+            <param name="element">The element that will store the data</param>
+            <param name="schema">Existing schema</param>
+            <param name="data">Type of data</param>
+            <param name="fieldName">The Field name</param>
+            <typeparam name="T">The type of data to be stored in the schema. The type must match the type of data specified in the SchemaBuilder</typeparam>
+            <returns>True if entity save succeeded</returns>
+            <example>
+                <code>
+                    document.ProjectInformation.SaveEntity(schema, "data", "schemaField")
+                </code>
+            </example>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.SchemaExtensions.LoadEntity``1(Autodesk.Revit.DB.Element,Autodesk.Revit.DB.ExtensibleStorage.Schema,System.String)">
+            <summary>
+                Retrieves the value stored in the schema from the element
+            </summary>
+            <param name="element">The element that stores the data</param>
+            <param name="schema">Existing schema</param>
+            <param name="fieldName">The Field name</param>
+            <typeparam name="T">The type of data to be stored in the schema. The type must match the type of data specified in the SchemaBuilder</typeparam>
+            <returns>Data stored in the element. null will be returned if the field does not exist or the data has not been saved before</returns>
+            <example>
+                <code>
+                    document.ProjectInformation.LoadEntity&lt;string&lt;(schema, "schemaField")
+                </code>
+            </example>
+        </member>
+        <member name="T:Nice3point.Revit.Extensions.SolidExtensions">
+            <summary>
+                Revit Solid Extensions
+            </summary>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.SolidExtensions.Clone(Autodesk.Revit.DB.Solid)">
+            <summary>Creates a new Solid which is a copy of the input Solid</summary>
+            <param name="solid">The input solid to be copied</param>
+            <returns>The newly created Solid</returns>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.SolidExtensions.CreateTransformed(Autodesk.Revit.DB.Solid,Autodesk.Revit.DB.Transform)">
+            <summary>Creates a new Solid which is the transformation of the input Solid</summary>
+            <param name="solid">The input solid to be transformed</param>
+            <param name="transform">The transform (which must be conformal)</param>
+            <returns>The newly created Solid</returns>
+            <exception cref="T:Autodesk.Revit.Exceptions.ArgumentOutOfRangeException">
+               Transform is not conformal.
+               Or transform has a scale that is negative or zero
+            </exception>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.SolidExtensions.SplitVolumes(Autodesk.Revit.DB.Solid)">
+            <summary>Splits a solid geometry into several separate solids</summary>
+            <remarks>
+               If no splitting is done, a copy of the input solid will be returned in the output array
+            </remarks>
+            <param name="solid">The solid</param>
+            <returns>The split solid geometries</returns>
+            <exception cref="T:Autodesk.Revit.Exceptions.InvalidOperationException">
+               Failed to split the solid geometry
+            </exception>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.SolidExtensions.IsValidForTessellation(Autodesk.Revit.DB.Solid)">
+            <summary>Tests if the input solid or shell is valid for tessellation</summary>
+            <param name="solid">The solid or shell</param>
+            <returns>True if the solid or shell is valid for tessellation, false otherwise</returns>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.SolidExtensions.TessellateSolidOrShell(Autodesk.Revit.DB.Solid,Autodesk.Revit.DB.SolidOrShellTessellationControls)">
+            <summary>
+               This function facets (i.e., triangulates) a solid or an open shell. Each boundary
+               component of the solid or shell is represented by a single triangulated structure
+            </summary>
+            <remarks>
+               Every point on the triangulation of a boundary component of the solid (or
+               shell) should lie within the 3D distance specified by the "accuracy" input of some
+               point on the triangulation, and vice-versa. In some cases, this constraint may be
+               implemented heuristically (not rigorously)
+            </remarks>
+            <param name="solid">The solid or shell to be faceted</param>
+            <param name="tessellationControls">
+               This input controls various aspects of the triangulation
+            </param>
+            <returns>
+               The triangulated structures corresponding to the boundary components of the
+               input solid or the components of the input shell
+            </returns>
+            <exception cref="T:Autodesk.Revit.Exceptions.ArgumentException">
+               solidOrShell is not valid for triangulation (for example, it contains no faces)
+            </exception>
+            <exception cref="T:Autodesk.Revit.Exceptions.InvalidOperationException">
+               Unable to triangulate the solid or shell
+            </exception>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.SolidExtensions.FindAllEdgeEndPointsAtVertex(Autodesk.Revit.DB.EdgeEndPoint)">
+            <summary>Find all EdgeEndPoints at a vertex identified by the input EdgeEndPoint</summary>
+            <param name="edgeEndPoint">The input EdgeEndPoint that identifies the vertex</param>
+            <returns>All EdgeEndPoints at the vertex. The input EdgeEndPoint is also included</returns>
+            <exception cref="T:Autodesk.Revit.Exceptions.InvalidOperationException">
+               Failed to find all EdgeEndPoints at a vertex identified by the input EdgeEndPoint
+            </exception>
+        </member>
+        <member name="T:Nice3point.Revit.Extensions.StringExtensions">
+            <summary>
+                System.String Extensions
+            </summary>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.StringExtensions.Round(System.Double)">
+            <summary>
+                Rounds a value within the minimum allowed by Revit
+            </summary>
+            <param name="source">A double-precision floating-point number to be rounded</param>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.StringExtensions.Round(System.Double,System.Int32)">
+            <summary>
+                Rounds a decimal value to a specified number of fractional digits, and rounds midpoint values to the nearest even number
+            </summary>
+            <param name="source">A double-precision floating-point number to be rounded</param>
+            <param name="digits">The number of fractional digits in the return value</param>
+            <exception cref="T:System.ArgumentOutOfRangeException">Digits is less than 0 or greater than 15</exception>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.StringExtensions.IsAlmostEqual(System.Double,System.Double)">
+            <summary>
+                Compares a decimal value within the minimum allowed by Revit
+            </summary>
+            <returns>True if equal</returns>
+            <example>1e-15.IsAlmostEqual(0)</example>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.StringExtensions.IsAlmostEqual(System.Double,System.Double,System.Double)">
+            <summary>
+                Compares the decimal value to the specified tolerance
+            </summary>
+            <returns>True if equal</returns>
+            <example>0.09999.IsAlmostEqual(0.1, 1e-3)</example>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.StringExtensions.IsNullOrEmpty(System.String)">
+            <summary>
+                Indicates whether the specified string is null or an empty string ("")
+            </summary>
+            <returns>True if the value parameter is null or an empty string (""); otherwise, false</returns>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.StringExtensions.IsNullOrWhiteSpace(System.String)">
+            <summary>
+                Indicates whether a specified string is null, empty, or consists only of white-space characters
+            </summary>
+            <returns>True if the value parameter is null or Empty, or if value consists exclusively of white-space characters</returns>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.StringExtensions.AppendPath(System.String,System.String)">
+            <summary>
+                Combines strings into a path
+            </summary>
+            <returns>The combined paths</returns>
+            <exception cref="T:System.ArgumentException">
+                source or path contains one or more of the invalid characters defined in <see cref="M:System.IO.Path.GetInvalidPathChars" />
+            </exception>
+            <exception cref="T:System.ArgumentNullException">source or path is null</exception>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.StringExtensions.AppendPath(System.String,System.String[])">
+            <summary>
+                Combines strings into a path
+            </summary>
+            <returns>The combined paths</returns>
+            <exception cref="T:System.ArgumentException">
+                source or path contains one or more of the invalid characters defined in <see cref="M:System.IO.Path.GetInvalidPathChars" />
+            </exception>
+            <exception cref="T:System.ArgumentNullException">source or path is null</exception>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.StringExtensions.Contains(System.String,System.String,System.StringComparison)">
+            <summary>
+                Returns a value indicating whether a specified substring occurs within this string.
+            </summary>
+            <param name="source">Source string</param>
+            <param name="value">The string to seek</param>
+            <param name="comparison">One of the enumeration values that specifies the rules for the search</param>
+            <returns>True if the value parameter occurs within this string, or if value is the empty string (""); otherwise, false</returns>
+        </member>
+        <member name="T:Nice3point.Revit.Extensions.UnitExtensions">
+            <summary>
+                Revit Unit Extensions
+            </summary>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.UnitExtensions.FromUnit(System.Double,Autodesk.Revit.DB.ForgeTypeId)">
+            <summary>
+                Converts the specified unit to internal Revit format
+            </summary>
+            <returns>The converted value</returns>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.UnitExtensions.ToUnit(System.Double,Autodesk.Revit.DB.ForgeTypeId)">
+            <summary>
+                Converts a Revit internal format value to the specified unit
+            </summary>
+            <returns>The converted value</returns>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.UnitExtensions.FromMillimeters(System.Double)">
+            <summary>
+                Converts millimeters to internal Revit format
+            </summary>
+            <returns>Value in feet</returns>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.UnitExtensions.ToMillimeters(System.Double)">
+            <summary>
+                Converts a Revit internal format value to millimeters
+            </summary>
+            <returns>Value in millimeters</returns>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.UnitExtensions.FromMeters(System.Double)">
+            <summary>
+                Converts meters to internal Revit format
+            </summary>
+            <returns>Value in feet</returns>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.UnitExtensions.ToMeters(System.Double)">
+            <summary>
+                Converts a Revit internal format value to meters
+            </summary>
+            <returns>Value in meters</returns>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.UnitExtensions.FromInches(System.Double)">
+            <summary>
+                Converts inches to internal Revit format
+            </summary>
+            <returns>Value in feet</returns>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.UnitExtensions.ToInches(System.Double)">
+            <summary>
+                Converts a Revit internal format value to inches
+            </summary>
+            <returns>Value in inches</returns>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.UnitExtensions.FromDegrees(System.Double)">
+            <summary>
+                Converts degrees to internal Revit format
+            </summary>
+            <returns>Value in radians</returns>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.UnitExtensions.ToDegrees(System.Double)">
+            <summary>
+                Converts a Revit internal format value to degrees
+            </summary>
+            <returns>Value in radians</returns>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.UnitExtensions.FormatUnit(Autodesk.Revit.DB.Document,Autodesk.Revit.DB.ForgeTypeId,System.Double,System.Boolean)">
+            <summary>Formats a number with units into a string</summary>
+            <param name="document">Document that stores units</param>
+            <param name="specTypeId">Identifier of the spec of the value to format</param>
+            <param name="value">The value to format, in Revit's internal units</param>
+            <param name="forEditing">
+                True if the formatting should be modified as necessary so that the formatted string can be successfully parsed, for example by suppressing digit grouping.
+                False if unmodified settings should be used, suitable for display only
+            </param>
+            <returns>The formatted string</returns>
+            <exception cref="T:Autodesk.Revit.Exceptions.ArgumentException">
+                specTypeId is not a measurable spec identifier. See UnitUtils.IsMeasurableSpec(ForgeTypeId).
+                Or the given value for value is not finite
+            </exception>
+        </member>
+        <member name="M:Nice3point.Revit.Extensions.UnitExtensions.FormatUnit(Autodesk.Revit.DB.Document,Autodesk.Revit.DB.ForgeTypeId,System.Double,System.Boolean,Autodesk.Revit.DB.FormatValueOptions)">
+            <summary>Formats a number with units into a string</summary>
+            <param name="document">Document that stores units</param>
+            <param name="specTypeId">Identifier of the spec of the value to format</param>
+            <param name="value">The value to format, in Revit's internal units</param>
+            <param name="forEditing">
+                True if the formatting should be modified as necessary so that the formatted string can be successfully parsed, for example by suppressing digit grouping.
+                False if unmodified settings should be used, suitable for display only
+            </param>
+            <param name="options">Additional formatting options</param>
+            <returns>The formatted string</returns>
+            <exception cref="T:Autodesk.Revit.Exceptions.ArgumentException">
+                specTypeId is not a measurable spec identifier. See UnitUtils.IsMeasurableSpec(ForgeTypeId).
+                Or the given value for value is not finite.
+                Or the unit in the FormatOptions in formatValueOptions is not a valid unit for specTypeId.
+                See UnitUtils.IsValidUnit(ForgeTypeId, ForgeTypeId) and UnitUtils.GetValidUnits(ForgeTypeId)
+            </exception>
+        </member>
+    </members>
+</doc>
