@@ -37,7 +37,7 @@ namespace ARC
                         try
                         {
                             //Parameter dimLeaderParam = pickElement.get_Parameter(BuiltInParameter.DIM_LEADER);
-                            Parameter dimLeaderParam = pickElement.FindParameter(BuiltInParameter.DIM_LEADER);
+                            Parameter dimLeaderParam = pickElement.get_Parameter(BuiltInParameter.DIM_LEADER);
 
                             int leaderLineValue = dimLeaderParam.AsInteger();
 

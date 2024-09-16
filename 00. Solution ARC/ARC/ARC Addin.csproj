@@ -31,21 +31,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="JetBrains.Annotations, Version=4242.42.42.42, Culture=neutral, PublicKeyToken=1010a0d8d6380325, processorArchitecture=MSIL">
-      <HintPath>packages\JetBrains.Annotations.2023.3.0\lib\net20\JetBrains.Annotations.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Nice3point.Revit.Extensions, Version=2022.3.0.0, Culture=neutral, processorArchitecture=AMD64">
-      <HintPath>packages\Nice3point.Revit.Extensions.2022.3.0\lib\net48\Nice3point.Revit.Extensions.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="RevitAPI">
       <HintPath>..\..\..\..\..\..\..\..\..\Program Files\Autodesk\Revit 2022\RevitAPI.dll</HintPath>
       <Private>False</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
     <Reference Include="RevitAPIUI">
       <HintPath>..\..\..\..\..\..\..\..\..\Program Files\Autodesk\Revit 2022\RevitAPIUI.dll</HintPath>
       <Private>False</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -59,7 +53,7 @@
   <ItemGroup>
     <Compile Include="ARCLibrary.cs" />
     <Compile Include="ARCTransform.cs" />
-    <Compile Include="SampleCommand_LeaderLine.cs" />
+    <None Include="SampleCommand_LeaderLine.cs" />
     <Compile Include="Command_JoinLGSWall.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

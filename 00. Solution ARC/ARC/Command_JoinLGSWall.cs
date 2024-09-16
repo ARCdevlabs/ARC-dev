@@ -3,7 +3,6 @@ using Autodesk.Revit.UI;
 using Autodesk.Revit.DB;
 using System.Collections.Generic;
 using Autodesk.Revit.Attributes;
-using Nice3point.Revit.Extensions;
 using System.Linq.Expressions;
 using System.Xml.Linq;
 
@@ -117,7 +116,7 @@ namespace ARC
                                     locationCurve.Curve = newWallLine;
                                     
                                 }
-                                    Parameter lengthParameter = wall.FindParameter(BuiltInParameter.CURVE_ELEM_LENGTH);
+                                    Parameter lengthParameter = wall.get_Parameter(BuiltInParameter.CURVE_ELEM_LENGTH);
                                     double wallLength = lengthParameter.AsDouble();
                                     if (wallLength > 1000)
                                     {

@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using Autodesk.Revit.UI;
 using Autodesk.Revit.DB;
 using Autodesk.Revit.UI.Selection;
-using Nice3point.Revit.Extensions;
 
 namespace ARC
 {
