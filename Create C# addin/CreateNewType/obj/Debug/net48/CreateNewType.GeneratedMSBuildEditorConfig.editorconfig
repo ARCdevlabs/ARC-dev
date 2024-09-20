@@ -6,6 +6,6 @@ build_property.ApplicationHighDpiMode =
 build_property.ApplicationUseCompatibleTextRendering = 
 build_property.ApplicationVisualStyles = 
 build_property.RootNamespace = CreateNewType
-build_property.ProjectDir = C:\Users\ADMIN\AppData\Roaming\pyRevit\Extensions\ARC-dev.extension\Create C# addin\CreateNewType\
+build_property.ProjectDir = C:\Users\Admin\AppData\Roaming\pyRevit\Extensions\ARC-dev.extension\Create C# addin\CreateNewType\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 

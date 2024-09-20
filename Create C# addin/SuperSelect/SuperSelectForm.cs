@@ -35,9 +35,9 @@ public class SelectFilterForm : System.Windows.Forms.Form
 
     private string searchEnd = "Ends with";
 
-    private int excelRow = 1;
+    //private int excelRow = 1;
 
-    private bool advanced = false;
+    //private bool advanced = false;
 
     private IContainer components = null;
 
@@ -223,7 +223,7 @@ public class SelectFilterForm : System.Windows.Forms.Form
     {
         foreach (TreeNode node in nodes)
         {
-            Console.WriteLine(node.Text);
+            //Console.WriteLine(node.Text);
             if (node.Nodes.Count != 0)
             {
                 GetCheckedNodes(node.Nodes, treeNodes);
