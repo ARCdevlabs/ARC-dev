@@ -295,7 +295,7 @@ class UI(forms.WPFWindow, forms.Reactive):
         self.list_lb.ItemsSource = ObservableCollection[int](list_test)
         self.search_tb.TextChanged += self.search_tb_TextChanged      
 
-        self.set_image_source(self.image_chu_thich, 'pepe.JPG')
+        # self.set_image_source(self.gif_bua, 'pepe.JPG')
         self.taglist.ItemsSource = self.vm.tags
 
     
