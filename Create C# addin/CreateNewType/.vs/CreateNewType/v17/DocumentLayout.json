@@ -7,11 +7,27 @@
       "RelativeMoniker": "D:0:0:{CB6A3548-F246-4FA4-A506-8F0A2DB55B21}|CreateNewType.csproj|solutionrelative:createnewtype\\command.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{CB6A3548-F246-4FA4-A506-8F0A2DB55B21}|CreateNewType.csproj|c:\\users\\admin\\appdata\\roaming\\pyrevit\\extensions\\arc-dev.extension\\create c# addin\\createnewtype\\properties\\assemblyinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CB6A3548-F246-4FA4-A506-8F0A2DB55B21}|CreateNewType.csproj|solutionrelative:properties\\assemblyinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CB6A3548-F246-4FA4-A506-8F0A2DB55B21}|CreateNewType.csproj|c:\\users\\admin\\appdata\\roaming\\pyrevit\\extensions\\arc-dev.extension\\create c# addin\\createnewtype\\createnewtype.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
+      "RelativeMoniker": "D:0:0:{CB6A3548-F246-4FA4-A506-8F0A2DB55B21}|CreateNewType.csproj|solutionrelative:createnewtype.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CB6A3548-F246-4FA4-A506-8F0A2DB55B21}|CreateNewType.csproj|c:\\users\\admin\\appdata\\roaming\\pyrevit\\extensions\\arc-dev.extension\\create c# addin\\createnewtype\\createnewtype\\choosecategoryform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CB6A3548-F246-4FA4-A506-8F0A2DB55B21}|CreateNewType.csproj|solutionrelative:createnewtype\\choosecategoryform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{CB6A3548-F246-4FA4-A506-8F0A2DB55B21}|CreateNewType.csproj|C:\\Users\\ADMIN\\AppData\\Roaming\\pyRevit\\Extensions\\ARC-dev.extension\\Create C# addin\\CreateNewType\\createnewtype\\choosecategoryform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{CB6A3548-F246-4FA4-A506-8F0A2DB55B21}|CreateNewType.csproj|solutionrelative:createnewtype\\choosecategoryform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CB6A3548-F246-4FA4-A506-8F0A2DB55B21}|CreateNewType.csproj|c:\\users\\admin\\appdata\\roaming\\pyrevit\\extensions\\arc-dev.extension\\create c# addin\\createnewtype\\microsoft.office.interop.excel\\workbookevents_event.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CB6A3548-F246-4FA4-A506-8F0A2DB55B21}|CreateNewType.csproj|solutionrelative:microsoft.office.interop.excel\\workbookevents_event.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{CB6A3548-F246-4FA4-A506-8F0A2DB55B21}|CreateNewType.csproj|c:\\users\\admin\\appdata\\roaming\\pyrevit\\extensions\\arc-dev.extension\\create c# addin\\createnewtype\\createnewtype\\createtypesform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -20,22 +36,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{CB6A3548-F246-4FA4-A506-8F0A2DB55B21}|CreateNewType.csproj|C:\\Users\\ADMIN\\AppData\\Roaming\\pyRevit\\Extensions\\ARC-dev.extension\\Create C# addin\\CreateNewType\\createnewtype\\createtypesform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{CB6A3548-F246-4FA4-A506-8F0A2DB55B21}|CreateNewType.csproj|solutionrelative:createnewtype\\createtypesform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CB6A3548-F246-4FA4-A506-8F0A2DB55B21}|CreateNewType.csproj|c:\\users\\admin\\appdata\\roaming\\pyrevit\\extensions\\arc-dev.extension\\create c# addin\\createnewtype\\createnewtype.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
-      "RelativeMoniker": "D:0:0:{CB6A3548-F246-4FA4-A506-8F0A2DB55B21}|CreateNewType.csproj|solutionrelative:createnewtype.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CB6A3548-F246-4FA4-A506-8F0A2DB55B21}|CreateNewType.csproj|c:\\users\\admin\\appdata\\roaming\\pyrevit\\extensions\\arc-dev.extension\\create c# addin\\createnewtype\\createnewtype\\choosecategoryform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CB6A3548-F246-4FA4-A506-8F0A2DB55B21}|CreateNewType.csproj|solutionrelative:createnewtype\\choosecategoryform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CB6A3548-F246-4FA4-A506-8F0A2DB55B21}|CreateNewType.csproj|c:\\users\\admin\\appdata\\roaming\\pyrevit\\extensions\\arc-dev.extension\\create c# addin\\createnewtype\\microsoft.office.interop.excel\\_workbook.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CB6A3548-F246-4FA4-A506-8F0A2DB55B21}|CreateNewType.csproj|solutionrelative:microsoft.office.interop.excel\\_workbook.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CB6A3548-F246-4FA4-A506-8F0A2DB55B21}|CreateNewType.csproj|c:\\users\\admin\\appdata\\roaming\\pyrevit\\extensions\\arc-dev.extension\\create c# addin\\createnewtype\\microsoft.office.interop.excel\\workbookevents_event.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CB6A3548-F246-4FA4-A506-8F0A2DB55B21}|CreateNewType.csproj|solutionrelative:microsoft.office.interop.excel\\workbookevents_event.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -49,77 +49,78 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 2,
               "Title": "CreateNewType",
               "DocumentMoniker": "C:\\Users\\ADMIN\\AppData\\Roaming\\pyRevit\\Extensions\\ARC-dev.extension\\Create C# addin\\CreateNewType\\CreateNewType.csproj",
               "RelativeDocumentMoniker": "CreateNewType.csproj",
               "ToolTip": "C:\\Users\\ADMIN\\AppData\\Roaming\\pyRevit\\Extensions\\ARC-dev.extension\\Create C# addin\\CreateNewType\\CreateNewType.csproj",
               "RelativeToolTip": "CreateNewType.csproj",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2024-09-22T03:51:36.086Z",
+              "WhenOpened": "2024-09-22T05:11:11.111Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Microsoft.Common.CurrentVersion.targets",
-              "DocumentMoniker": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets",
-              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\..\\..\\..\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets",
-              "ToolTip": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets",
-              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\..\\..\\..\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets",
-              "ViewState": "AgIAAEwJAAAAAAAAAAASwGsJAAAEAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003801|",
-              "WhenOpened": "2024-09-14T07:19:27.927Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 6,
               "Title": "WorkbookEvents_Event.cs",
               "DocumentMoniker": "C:\\Users\\ADMIN\\AppData\\Roaming\\pyRevit\\Extensions\\ARC-dev.extension\\Create C# addin\\CreateNewType\\Microsoft.Office.Interop.Excel\\WorkbookEvents_Event.cs",
               "RelativeDocumentMoniker": "Microsoft.Office.Interop.Excel\\WorkbookEvents_Event.cs",
               "ToolTip": "C:\\Users\\ADMIN\\AppData\\Roaming\\pyRevit\\Extensions\\ARC-dev.extension\\Create C# addin\\CreateNewType\\Microsoft.Office.Interop.Excel\\WorkbookEvents_Event.cs",
               "RelativeToolTip": "Microsoft.Office.Interop.Excel\\WorkbookEvents_Event.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-14T07:19:26.492Z"
+              "WhenOpened": "2024-09-22T05:09:14.656Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "_Workbook.cs",
-              "DocumentMoniker": "C:\\Users\\ADMIN\\AppData\\Roaming\\pyRevit\\Extensions\\ARC-dev.extension\\Create C# addin\\CreateNewType\\Microsoft.Office.Interop.Excel\\_Workbook.cs",
-              "RelativeDocumentMoniker": "Microsoft.Office.Interop.Excel\\_Workbook.cs",
-              "ToolTip": "C:\\Users\\ADMIN\\AppData\\Roaming\\pyRevit\\Extensions\\ARC-dev.extension\\Create C# addin\\CreateNewType\\Microsoft.Office.Interop.Excel\\_Workbook.cs",
-              "RelativeToolTip": "Microsoft.Office.Interop.Excel\\_Workbook.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-14T07:03:58.613Z"
+              "DocumentIndex": 3,
+              "Title": "Microsoft.Common.CurrentVersion.targets",
+              "DocumentMoniker": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\..\\..\\..\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets",
+              "ToolTip": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\..\\..\\..\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets",
+              "ViewState": "AgIAABIAAAAAAAAAAAAAAAoAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003801|",
+              "WhenOpened": "2024-09-22T05:08:29.343Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 4,
               "Title": "ChooseCategoryForm.cs",
               "DocumentMoniker": "C:\\Users\\ADMIN\\AppData\\Roaming\\pyRevit\\Extensions\\ARC-dev.extension\\Create C# addin\\CreateNewType\\CreateNewType\\ChooseCategoryForm.cs",
               "RelativeDocumentMoniker": "CreateNewType\\ChooseCategoryForm.cs",
               "ToolTip": "C:\\Users\\ADMIN\\AppData\\Roaming\\pyRevit\\Extensions\\ARC-dev.extension\\Create C# addin\\CreateNewType\\CreateNewType\\ChooseCategoryForm.cs",
               "RelativeToolTip": "CreateNewType\\ChooseCategoryForm.cs",
-              "ViewState": "AgIAAGMAAAAAAAAAAAAQwJIAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAgAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-14T07:02:16.455Z",
+              "WhenOpened": "2024-09-22T05:08:12.11Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 7,
               "Title": "CreateTypesForm.cs",
               "DocumentMoniker": "C:\\Users\\ADMIN\\AppData\\Roaming\\pyRevit\\Extensions\\ARC-dev.extension\\Create C# addin\\CreateNewType\\CreateNewType\\CreateTypesForm.cs",
               "RelativeDocumentMoniker": "CreateNewType\\CreateTypesForm.cs",
               "ToolTip": "C:\\Users\\ADMIN\\AppData\\Roaming\\pyRevit\\Extensions\\ARC-dev.extension\\Create C# addin\\CreateNewType\\CreateNewType\\CreateTypesForm.cs",
               "RelativeToolTip": "CreateNewType\\CreateTypesForm.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAwAAAANAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-14T07:01:46.996Z",
+              "WhenOpened": "2024-09-22T05:08:07.677Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AssemblyInfo.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\AppData\\Roaming\\pyRevit\\Extensions\\ARC-dev.extension\\Create C# addin\\CreateNewType\\Properties\\AssemblyInfo.cs",
+              "RelativeDocumentMoniker": "Properties\\AssemblyInfo.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\AppData\\Roaming\\pyRevit\\Extensions\\ARC-dev.extension\\Create C# addin\\CreateNewType\\Properties\\AssemblyInfo.cs",
+              "RelativeToolTip": "Properties\\AssemblyInfo.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-22T05:07:40.016Z",
               "EditorCaption": ""
             },
             {
@@ -128,35 +129,39 @@
               "Title": "Command.cs",
               "DocumentMoniker": "C:\\Users\\ADMIN\\AppData\\Roaming\\pyRevit\\Extensions\\ARC-dev.extension\\Create C# addin\\CreateNewType\\CreateNewType\\Command.cs",
               "RelativeDocumentMoniker": "CreateNewType\\Command.cs",
-              "ToolTip": "C:\\Users\\ADMIN\\AppData\\Roaming\\pyRevit\\Extensions\\ARC-dev.extension\\Create C# addin\\CreateNewType\\CreateNewType\\Command.cs*",
-              "RelativeToolTip": "CreateNewType\\Command.cs*",
-              "ViewState": "AgIAAKoAAAAAAAAAAAAAAMgAAAAxAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\ADMIN\\AppData\\Roaming\\pyRevit\\Extensions\\ARC-dev.extension\\Create C# addin\\CreateNewType\\CreateNewType\\Command.cs",
+              "RelativeToolTip": "CreateNewType\\Command.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-09-14T06:54:40.18Z",
               "EditorCaption": ""
             },
             {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{269a02dc-6af8-11d3-bdc4-00c04f688e50}"
+            },
+            {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 8,
               "Title": "CreateTypesForm.cs [Design]",
               "DocumentMoniker": "C:\\Users\\ADMIN\\AppData\\Roaming\\pyRevit\\Extensions\\ARC-dev.extension\\Create C# addin\\CreateNewType\\CreateNewType\\CreateTypesForm.cs",
               "RelativeDocumentMoniker": "CreateNewType\\CreateTypesForm.cs",
               "ToolTip": "C:\\Users\\ADMIN\\AppData\\Roaming\\pyRevit\\Extensions\\ARC-dev.extension\\Create C# addin\\CreateNewType\\CreateNewType\\CreateTypesForm.cs [Design]",
               "RelativeToolTip": "CreateNewType\\CreateTypesForm.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-14T07:03:53.041Z",
+              "WhenOpened": "2024-09-22T05:08:04.953Z",
               "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
               "Title": "ChooseCategoryForm.cs [Design]",
               "DocumentMoniker": "C:\\Users\\ADMIN\\AppData\\Roaming\\pyRevit\\Extensions\\ARC-dev.extension\\Create C# addin\\CreateNewType\\CreateNewType\\ChooseCategoryForm.cs",
               "RelativeDocumentMoniker": "CreateNewType\\ChooseCategoryForm.cs",
               "ToolTip": "C:\\Users\\ADMIN\\AppData\\Roaming\\pyRevit\\Extensions\\ARC-dev.extension\\Create C# addin\\CreateNewType\\CreateNewType\\ChooseCategoryForm.cs [Design]",
               "RelativeToolTip": "CreateNewType\\ChooseCategoryForm.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-14T07:02:13.424Z",
+              "WhenOpened": "2024-09-22T05:07:43.378Z",
               "EditorCaption": " [Design]"
             }
           ]
