@@ -1,0 +1,70 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\ADMIN\\AppData\\Roaming\\pyRevit\\Extensions\\ARC-dev.extension\\Create C# addin\\00. WPFLearning\\AutoJoinGeometry\\AutoJoinGeometry.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\ADMIN\\AppData\\Roaming\\pyRevit\\Extensions\\ARC-dev.extension\\Create C# addin\\00. WPFLearning\\AutoJoinGeometry\\AutoJoinGeometry.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\ADMIN\\AppData\\Roaming\\pyRevit\\Extensions\\ARC-dev.extension\\Create C# addin\\00. WPFLearning\\AutoJoinGeometry\\AutoJoinGeometry.csproj",
+        "projectName": "AutoJoinGeometry",
+        "projectPath": "C:\\Users\\ADMIN\\AppData\\Roaming\\pyRevit\\Extensions\\ARC-dev.extension\\Create C# addin\\00. WPFLearning\\AutoJoinGeometry\\AutoJoinGeometry.csproj",
+        "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ADMIN\\AppData\\Roaming\\pyRevit\\Extensions\\ARC-dev.extension\\Create C# addin\\00. WPFLearning\\AutoJoinGeometry\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\ADMIN\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net480"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net48": {
+            "targetAlias": "net480",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net48": {
+          "targetAlias": "net480",
+          "dependencies": {
+            "PresentationFramework": {
+              "target": "Package",
+              "version": "[4.6.0, )"
+            },
+            "PresentationFramework.Aero2": {
+              "target": "Package",
+              "version": "[1.0.1, )"
+            },
+            "System.Runtime": {
+              "target": "Package",
+              "version": "[4.3.1, )"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files (x86)\\dotnet\\sdk\\8.0.107\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

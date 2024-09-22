@@ -1,0 +1,9 @@
+layout:
+  - ButtonA
+#       - ">>>>>" #Hủy cái này để tránh bị lỗi
+  - ButtonB
+
+background:
+  title: '#E2A000'
+  panel: '#BB005591'
+  # slideout: '#E25200'

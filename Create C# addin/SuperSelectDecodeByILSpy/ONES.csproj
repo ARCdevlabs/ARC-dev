@@ -1,0 +1,702 @@
+<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+  <PropertyGroup>
+    <AssemblyName>ONES</AssemblyName>
+    <GenerateAssemblyInfo>False</GenerateAssemblyInfo>
+    <UseWindowsForms>True</UseWindowsForms>
+    <TargetFramework>net48</TargetFramework>
+  </PropertyGroup>
+  <PropertyGroup>
+    <LangVersion>11.0</LangVersion>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>app.ico</ApplicationIcon>
+    <RootNamespace />
+  </PropertyGroup>
+  <ItemGroup>
+    <None Remove="iconssummer\match16.png" />
+    <None Remove="icons\healthcheck.png" />
+    <None Remove="icons\logreport16.png" />
+    <None Remove="icons\plugin16.png" />
+    <None Remove="icons\view.png" />
+    <None Remove="icons\alignright16.png" />
+    <None Remove="iconssummer\warnings16.png" />
+    <None Remove="icons\zoomelements.png" />
+    <None Remove="icons\collapse16.png" />
+    <None Remove="icons\zoomelements16.png" />
+    <None Remove="icons\floorgenerate16.png" />
+    <None Remove="icons\helmet.png" />
+    <None Remove="iconssummer\worksharing.png" />
+    <None Remove="icons\purge.png" />
+    <None Remove="iconssummer\uncheckall16.png" />
+    <None Remove="ONES\Ultil.cs_huy" />
+    <None Remove="toolbarimage\removefilters.png" />
+    <None Remove="icons\analytical16.png" />
+    <None Remove="iconssummer\exportlayers16.png" />
+    <None Remove="icons\hideownedelements16.png" />
+    <None Remove="icons\help16.png" />
+    <None Remove="icons\colorfilter.png" />
+    <None Remove="icons\alignleft16.png" />
+    <None Remove="iconssummer\paraedit.png" />
+    <None Remove="icons\dimension.png" />
+    <None Remove="iconssummer\unjoin.png" />
+    <None Remove="icons\match16.png" />
+    <None Remove="iconssummer\door16.png" />
+    <None Remove="iconssummer\window.png" />
+    <None Remove="iconssummer\view.png" />
+    <None Remove="icons\mread16.png" />
+    <None Remove="icons\colorlayers16.png" />
+    <None Remove="icons\plugin.png" />
+    <None Remove="iconssummer\analytical16.png" />
+    <None Remove="iconssummer\tools16.png" />
+    <None Remove="icons\settings.png" />
+    <None Remove="icons\deselect_all.png" />
+    <None Remove="iconssummer\update16.png" />
+    <None Remove="iconssummer\help.png" />
+    <None Remove="icons\minecraft16.png" />
+    <None Remove="toolbarimage\overridereset.png" />
+    <None Remove="iconssummer\addid.png" />
+    <None Remove="iconssummer\filterremove16.png" />
+    <None Remove="iconssummer\databasecheck.png" />
+    <None Remove="icons\exportschedules16.png" />
+    <None Remove="icons\mread24.png" />
+    <None Remove="iconssummer\gaugemeter.png" />
+    <None Remove="iconssummer\logreport.png" />
+    <None Remove="iconssummer\join16.png" />
+    <None Remove="iconssummer\colorfilter16.png" />
+    <None Remove="iconssummer\exportschedules16.png" />
+    <None Remove="iconssummer\unpin.png" />
+    <None Remove="icons\overridetransparent16.png" />
+    <None Remove="icons\id.png" />
+    <None Remove="iconssummer\reset16.png" />
+    <None Remove="icons\logreport.png" />
+    <None Remove="icons\reset.png" />
+    <None Remove="icons\ceilinggenerate.png" />
+    <None Remove="icons\building.png" />
+    <None Remove="icons\updatenew16.png" />
+    <None Remove="icons\20-2096.png" />
+    <None Remove="iconssummer\sharingan.png" />
+    <None Remove="iconssummer\ceilinggenerate.png" />
+    <None Remove="iconssummer\mminus24.png" />
+    <None Remove="icons\settings16.png" />
+    <None Remove="icons\selectowned16.png" />
+    <None Remove="icons\selectfilter16.png" />
+    <None Remove="icons\overridegray16.png" />
+    <None Remove="icons\unhide16.png" />
+    <None Remove="iconssummer\expand16.png" />
+    <None Remove="icons\wallgenerate.png" />
+    <None Remove="icons\addid.png" />
+    <None Remove="iconssummer\misc.png" />
+    <None Remove="iconssummer\plugin.png" />
+    <None Remove="icons\folder16.png" />
+    <None Remove="icons\about16.png" />
+    <None Remove="icons\change16.png" />
+    <None Remove="icons\colormatch16.png" />
+    <None Remove="icons\uid16.png" />
+    <None Remove="iconssummer\mplus24.png" />
+    <None Remove="icons\floor16.png" />
+    <None Remove="iconssummer\filter.png" />
+    <None Remove="icons\form.png" />
+    <None Remove="iconssummer\mplus16.png" />
+    <None Remove="iconssummer\hideownedelements.png" />
+    <None Remove="iconssummer\mminus16.png" />
+    <None Remove="icons\50-2096.png" />
+    <None Remove="icons\colorlegend.png" />
+    <None Remove="icons\unpin.png" />
+    <None Remove="iconssummer\paraedit16.png" />
+    <None Remove="iconssummer\mread24.png" />
+    <None Remove="iconssummer\folder16.png" />
+    <None Remove="iconssummer\overridecustom16.png" />
+    <None Remove="iconssummer\mread16.png" />
+    <None Remove="icons\expand16.png" />
+    <None Remove="iconssummer\selectfilter16.png" />
+    <None Remove="iconssummer\dimension.png" />
+    <None Remove="iconssummer\folder.png" />
+    <None Remove="iconssummer\id.png" />
+    <None Remove="icons\calculate.png" />
+    <None Remove="icons\copyfilter.png" />
+    <None Remove="icons\update16.png" />
+    <None Remove="icons\databaseadd.png" />
+    <None Remove="iconssummer\overrideyellow16.png" />
+    <None Remove="iconssummer\calculate.png" />
+    <None Remove="iconssummer\alignmiddle16.png" />
+    <None Remove="iconssummer\alignbottom16.png" />
+    <None Remove="icons\sheetdouble16.png" />
+    <None Remove="toolbarimage\whodid.png" />
+    <None Remove="iconssummer\colorlayers.png" />
+    <None Remove="iconssummer\updatenew16.png" />
+    <None Remove="icons\warnings16.png" />
+    <None Remove="iconssummer\wallgenerate.png" />
+    <None Remove="iconssummer\match.png" />
+    <None Remove="iconssummer\modelsize16.png" />
+    <None Remove="icons\worksharing.png" />
+    <None Remove="iconssummer\overridetransparent16.png" />
+    <None Remove="icons\pin16.png" />
+    <None Remove="icons\overriderainbow16.png" />
+    <None Remove="icons\paraedit.png" />
+    <None Remove="icons\sharingan.png" />
+    <None Remove="icons\overrideyellow16.png" />
+    <None Remove="icons\match.png" />
+    <None Remove="icons\dictionary16.png" />
+    <None Remove="iconssummer\about16.png" />
+    <None Remove="iconssummer\help16.png" />
+    <None Remove="icons\whodid16.png" />
+    <None Remove="iconssummer\floorgenerate16.png" />
+    <None Remove="iconssummer\unhide.png" />
+    <None Remove="icons\filterremove16.png" />
+    <None Remove="icons\overridecustom16.png" />
+    <None Remove="icons\warnings.png" />
+    <None Remove="iconssummer\overridecustom.png" />
+    <None Remove="iconssummer\dimension16.png" />
+    <None Remove="iconssummer\about.png" />
+    <None Remove="iconssummer\floorgenerate.png" />
+    <None Remove="icons\unjoin16.png" />
+    <None Remove="iconssummer\plugin16.png" />
+    <None Remove="iconssummer\section.png" />
+    <None Remove="icons\checkall16.png" />
+    <None Remove="iconssummer\alignright16.png" />
+    <None Remove="icons\floor.png" />
+    <None Remove="iconssummer\clash16.png" />
+    <None Remove="iconssummer\deselect_all.png" />
+    <None Remove="iconssummer\copyfilter.png" />
+    <None Remove="icons\mplus16.png" />
+    <None Remove="iconssummer\gauge.png" />
+    <None Remove="icons\tools16.png" />
+    <None Remove="iconssummer\coffee16.png" />
+    <None Remove="icons\sheetdouble.png" />
+    <None Remove="iconssummer\zoomelements.png" />
+    <None Remove="icons\ceiling.png" />
+    <None Remove="icons\reset16.png" />
+    <None Remove="icons\uncheckall16.png" />
+    <None Remove="iconssummer\overriderainbow16.png" />
+    <None Remove="icons\copyfilter16.png" />
+    <None Remove="icons\colorlayers.png" />
+    <None Remove="icons\modelsize.png" />
+    <None Remove="icons\30-2096.png" />
+    <None Remove="icons\wall16.png" />
+    <None Remove="iconssummer\pin16.png" />
+    <None Remove="icons\mplus24.png" />
+    <None Remove="iconssummer\aligncenter16.png" />
+    <None Remove="iconssummer\unhide16.png" />
+    <None Remove="icons\expand.png" />
+    <None Remove="iconssummer\colorlegend.png" />
+    <None Remove="toolbarimage\selectcategory.png" />
+    <None Remove="iconssummer\mclear16.png" />
+    <None Remove="icons\mclear24.png" />
+    <None Remove="icons\mminus24.png" />
+    <None Remove="iconssummer\settings16.png" />
+    <None Remove="iconssummer\mclear24.png" />
+    <None Remove="icons\about.png" />
+    <None Remove="icons\mclear16.png" />
+    <None Remove="icons\door.png" />
+    <None Remove="iconssummer\exportlayers.png" />
+    <None Remove="iconssummer\ceiling.png" />
+    <None Remove="icons\aligntop16.png" />
+    <None Remove="toolbarimage\override.png" />
+    <None Remove="icons\mminus16.png" />
+    <None Remove="icons\colormatch.png" />
+    <None Remove="icons\filter16.png" />
+    <None Remove="icons\floorgenerate.png" />
+    <None Remove="icons\section.png" />
+    <None Remove="iconssummer\hideownedelements16.png" />
+    <None Remove="iconssummer\sheet.png" />
+    <None Remove="icons\aligncenter16.png" />
+    <None Remove="iconssummer\colormatch.png" />
+    <None Remove="icons\filter.png" />
+    <None Remove="icons\gaugemeter.png" />
+    <None Remove="iconssummer\healthcheck.png" />
+    <None Remove="icons\analytical.png" />
+    <None Remove="icons\change.png" />
+    <None Remove="iconssummer\wall.png" />
+    <None Remove="iconssummer\helmet.png" />
+    <None Remove="icons\select_all.png" />
+    <None Remove="icons\inspect16.png" />
+    <None Remove="icons\excel.png" />
+    <None Remove="icons\overrideblue16.png" />
+    <None Remove="icons\window.png" />
+    <None Remove="icons\help.png" />
+    <None Remove="icons\80-2096.png" />
+    <None Remove="iconssummer\notepad16.png" />
+    <None Remove="iconssummer\overridered16.png" />
+    <None Remove="icons\exportschedules.png" />
+    <None Remove="iconssummer\zoomelements16.png" />
+    <None Remove="iconssummer\onlineusers16.png" />
+    <None Remove="icons\overridegreen16.png" />
+    <None Remove="icons\filterremove.png" />
+    <None Remove="iconssummer\purge.png" />
+    <None Remove="iconssummer\settings.png" />
+    <None Remove="iconssummer\building.png" />
+    <None Remove="iconssummer\sheetdouble16.png" />
+    <None Remove="icons\selectfilter.png" />
+    <None Remove="iconssummer\select_all.png" />
+    <None Remove="icons\dimension16.png" />
+    <None Remove="iconssummer\change.png" />
+    <None Remove="iconssummer\building16.png" />
+    <None Remove="iconssummer\overridegreen16.png" />
+    <None Remove="icons\building16.png" />
+    <None Remove="iconssummer\collapse.png" />
+    <None Remove="iconssummer\colorfilter.png" />
+    <None Remove="icons\60-2096.png" />
+    <None Remove="iconssummer\inspect16.png" />
+    <None Remove="iconssummer\selectowned16.png" />
+    <None Remove="icons\clash16.png" />
+    <None Remove="icons\gauge.png" />
+    <None Remove="icons\section16.png" />
+    <None Remove="iconssummer\colorlegend16.png" />
+    <None Remove="iconssummer\aligntop16.png" />
+    <None Remove="iconssummer\pin.png" />
+    <None Remove="icons\clash.png" />
+    <None Remove="icons\coffee16.png" />
+    <None Remove="icons\100-20128.png" />
+    <None Remove="icons\collapse.png" />
+    <None Remove="icons\whodid.png" />
+    <None Remove="icons\healthcheck16.png" />
+    <None Remove="iconssummer\select16.png" />
+    <None Remove="iconssummer\alignleft16.png" />
+    <None Remove="iconssummer\door.png" />
+    <None Remove="icons\uid.png" />
+    <None Remove="iconssummer\tools.png" />
+    <None Remove="icons\door16.png" />
+    <None Remove="iconssummer\filter16.png" />
+    <None Remove="icons\join.png" />
+    <None Remove="icons\select16.png" />
+    <None Remove="iconssummer\reset.png" />
+    <None Remove="icons\alignmiddle16.png" />
+    <None Remove="icons\overridered16.png" />
+    <None Remove="iconssummer\analytical.png" />
+    <None Remove="icons\exportlayers16.png" />
+    <None Remove="iconssummer\exportschedules.png" />
+    <None Remove="icons\modelsize16.png" />
+    <None Remove="icons\overridecustom.png" />
+    <None Remove="iconssummer\section16.png" />
+    <None Remove="icons\window16.png" />
+    <None Remove="icons\folder.png" />
+    <None Remove="iconssummer\form.png" />
+    <None Remove="iconssummer\sheet16.png" />
+    <None Remove="iconssummer\overrideblue16.png" />
+    <None Remove="iconssummer\unpin16.png" />
+    <None Remove="icons\dog.png" />
+    <None Remove="icons\pin.png" />
+    <None Remove="icons\worksharing16.png" />
+    <None Remove="iconssummer\floor16.png" />
+    <None Remove="iconssummer\purge16.png" />
+    <None Remove="iconssummer\filterremove.png" />
+    <None Remove="icons\notepad16.png" />
+    <None Remove="icons\select.png" />
+    <None Remove="icons\10-2096.png" />
+    <None Remove="iconssummer\excel.png" />
+    <None Remove="icons\hideownedelements.png" />
+    <None Remove="iconssummer\warnings.png" />
+    <None Remove="icons\colorlegend16.png" />
+    <None Remove="icons\90-2096.png" />
+    <None Remove="iconssummer\onlineusers.png" />
+    <None Remove="iconssummer\uid.png" />
+    <None Remove="icons\wincalc16.png" />
+    <None Remove="icons\misc.png" />
+    <None Remove="icons\unpin16.png" />
+    <None Remove="icons\alignbottom16.png" />
+    <None Remove="icons\join16.png" />
+    <None Remove="iconssummer\floor.png" />
+    <None Remove="iconssummer\wall16.png" />
+    <None Remove="iconssummer\logreport16.png" />
+    <None Remove="iconssummer\checkall16.png" />
+    <None Remove="iconssummer\colorlayers16.png" />
+    <None Remove="iconssummer\healthcheck16.png" />
+    <None Remove="iconssummer\dictionary.png" />
+    <None Remove="iconssummer\sheetdouble.png" />
+    <None Remove="iconssummer\copyfilter16.png" />
+    <None Remove="iconssummer\clash.png" />
+    <None Remove="iconssummer\selectfilter.png" />
+    <None Remove="icons\wall.png" />
+    <None Remove="icons\70-2096.png" />
+    <None Remove="iconssummer\change16.png" />
+    <None Remove="iconssummer\calculate16.png" />
+    <None Remove="iconssummer\colormatch16.png" />
+    <None Remove="icons\100-2096.png" />
+    <None Remove="iconssummer\select.png" />
+    <None Remove="icons\exportlayers.png" />
+    <None Remove="icons\onlineusers16.png" />
+    <None Remove="icons\unhide.png" />
+    <None Remove="iconssummer\expand.png" />
+    <None Remove="iconssummer\databaseadd.png" />
+    <None Remove="icons\paraedit16.png" />
+    <None Remove="icons\onlineusers.png" />
+    <None Remove="icons\minecraft.png" />
+    <None Remove="toolbarimage\selecttype.png" />
+    <None Remove="toolbarimage\copyfilter.png" />
+    <None Remove="iconssummer\dictionary16.png" />
+    <None Remove="iconssummer\aboutapp.png" />
+    <None Remove="iconssummer\whodid.png" />
+    <None Remove="iconssummer\whodid16.png" />
+    <None Remove="iconssummer\window16.png" />
+    <None Remove="icons\colorfilter16.png" />
+    <None Remove="icons\databasecheck.png" />
+    <None Remove="iconssummer\join.png" />
+    <None Remove="iconssummer\modelsize.png" />
+    <None Remove="icons\dictionary.png" />
+    <None Remove="icons\sheet16.png" />
+    <None Remove="iconssummer\worksharing16.png" />
+    <None Remove="iconssummer\wincalc16.png" />
+    <None Remove="icons\tools.png" />
+    <None Remove="iconssummer\unjoin16.png" />
+    <None Remove="iconssummer\overridegray16.png" />
+    <None Remove="icons\unjoin.png" />
+    <None Remove="icons\40-2096.png" />
+    <None Remove="icons\sheet.png" />
+    <None Remove="iconssummer\uid16.png" />
+    <None Remove="iconssummer\collapse16.png" />
+    <None Remove="iconssummer\dog.png" />
+    <None Remove="icons\calculate16.png" />
+    <None Remove="icons\purge16.png" />
+    <Compile Include="ONES\Ultil.cs_huy" />
+    <EmbeddedResource Include="iconssummer\match16.png" LogicalName="iconssummer/match16.png" />
+    <EmbeddedResource Include="icons\healthcheck.png" LogicalName="icons/healthcheck.png" />
+    <EmbeddedResource Include="icons\logreport16.png" LogicalName="icons/logreport16.png" />
+    <EmbeddedResource Include="icons\plugin16.png" LogicalName="icons/plugin16.png" />
+    <EmbeddedResource Include="icons\view.png" LogicalName="icons/view.png" />
+    <EmbeddedResource Include="icons\alignright16.png" LogicalName="icons/alignright16.png" />
+    <EmbeddedResource Include="iconssummer\warnings16.png" LogicalName="iconssummer/warnings16.png" />
+    <EmbeddedResource Include="icons\zoomelements.png" LogicalName="icons/zoomelements.png" />
+    <EmbeddedResource Include="icons\collapse16.png" LogicalName="icons/collapse16.png" />
+    <EmbeddedResource Include="icons\zoomelements16.png" LogicalName="icons/zoomelements16.png" />
+    <EmbeddedResource Include="icons\floorgenerate16.png" LogicalName="icons/floorgenerate16.png" />
+    <EmbeddedResource Include="icons\helmet.png" LogicalName="icons/helmet.png" />
+    <EmbeddedResource Include="iconssummer\worksharing.png" LogicalName="iconssummer/worksharing.png" />
+    <EmbeddedResource Include="icons\purge.png" LogicalName="icons/purge.png" />
+    <EmbeddedResource Include="iconssummer\uncheckall16.png" LogicalName="iconssummer/uncheckall16.png" />
+    <EmbeddedResource Include="toolbarimage\removefilters.png" LogicalName="toolbarimage/removefilters.png" />
+    <EmbeddedResource Include="icons\analytical16.png" LogicalName="icons/analytical16.png" />
+    <EmbeddedResource Include="iconssummer\exportlayers16.png" LogicalName="iconssummer/exportlayers16.png" />
+    <EmbeddedResource Include="icons\hideownedelements16.png" LogicalName="icons/hideownedelements16.png" />
+    <EmbeddedResource Include="icons\help16.png" LogicalName="icons/help16.png" />
+    <EmbeddedResource Include="icons\colorfilter.png" LogicalName="icons/colorfilter.png" />
+    <EmbeddedResource Include="icons\alignleft16.png" LogicalName="icons/alignleft16.png" />
+    <EmbeddedResource Include="iconssummer\paraedit.png" LogicalName="iconssummer/paraedit.png" />
+    <EmbeddedResource Include="icons\dimension.png" LogicalName="icons/dimension.png" />
+    <EmbeddedResource Include="iconssummer\unjoin.png" LogicalName="iconssummer/unjoin.png" />
+    <EmbeddedResource Include="icons\match16.png" LogicalName="icons/match16.png" />
+    <EmbeddedResource Include="iconssummer\door16.png" LogicalName="iconssummer/door16.png" />
+    <EmbeddedResource Include="iconssummer\window.png" LogicalName="iconssummer/window.png" />
+    <EmbeddedResource Include="iconssummer\view.png" LogicalName="iconssummer/view.png" />
+    <EmbeddedResource Include="icons\mread16.png" LogicalName="icons/mread16.png" />
+    <EmbeddedResource Include="icons\colorlayers16.png" LogicalName="icons/colorlayers16.png" />
+    <EmbeddedResource Include="icons\plugin.png" LogicalName="icons/plugin.png" />
+    <EmbeddedResource Include="iconssummer\analytical16.png" LogicalName="iconssummer/analytical16.png" />
+    <EmbeddedResource Include="iconssummer\tools16.png" LogicalName="iconssummer/tools16.png" />
+    <EmbeddedResource Include="icons\settings.png" LogicalName="icons/settings.png" />
+    <EmbeddedResource Include="icons\deselect_all.png" LogicalName="icons/deselect_all.png" />
+    <EmbeddedResource Include="iconssummer\update16.png" LogicalName="iconssummer/update16.png" />
+    <EmbeddedResource Include="iconssummer\help.png" LogicalName="iconssummer/help.png" />
+    <EmbeddedResource Include="icons\minecraft16.png" LogicalName="icons/minecraft16.png" />
+    <EmbeddedResource Include="toolbarimage\overridereset.png" LogicalName="toolbarimage/overridereset.png" />
+    <EmbeddedResource Include="iconssummer\addid.png" LogicalName="iconssummer/addid.png" />
+    <EmbeddedResource Include="iconssummer\filterremove16.png" LogicalName="iconssummer/filterremove16.png" />
+    <EmbeddedResource Include="iconssummer\databasecheck.png" LogicalName="iconssummer/databasecheck.png" />
+    <EmbeddedResource Include="icons\exportschedules16.png" LogicalName="icons/exportschedules16.png" />
+    <EmbeddedResource Include="icons\mread24.png" LogicalName="icons/mread24.png" />
+    <EmbeddedResource Include="iconssummer\gaugemeter.png" LogicalName="iconssummer/gaugemeter.png" />
+    <EmbeddedResource Include="iconssummer\logreport.png" LogicalName="iconssummer/logreport.png" />
+    <EmbeddedResource Include="iconssummer\join16.png" LogicalName="iconssummer/join16.png" />
+    <EmbeddedResource Include="iconssummer\colorfilter16.png" LogicalName="iconssummer/colorfilter16.png" />
+    <EmbeddedResource Include="iconssummer\exportschedules16.png" LogicalName="iconssummer/exportschedules16.png" />
+    <EmbeddedResource Include="iconssummer\unpin.png" LogicalName="iconssummer/unpin.png" />
+    <EmbeddedResource Include="icons\overridetransparent16.png" LogicalName="icons/overridetransparent16.png" />
+    <EmbeddedResource Include="icons\id.png" LogicalName="icons/id.png" />
+    <EmbeddedResource Include="iconssummer\reset16.png" LogicalName="iconssummer/reset16.png" />
+    <EmbeddedResource Include="icons\logreport.png" LogicalName="icons/logreport.png" />
+    <EmbeddedResource Include="icons\reset.png" LogicalName="icons/reset.png" />
+    <EmbeddedResource Include="icons\ceilinggenerate.png" LogicalName="icons/ceilinggenerate.png" />
+    <EmbeddedResource Include="icons\building.png" LogicalName="icons/building.png" />
+    <EmbeddedResource Include="icons\updatenew16.png" LogicalName="icons/updatenew16.png" />
+    <EmbeddedResource Include="icons\20-2096.png" LogicalName="icons/20%2096.png" />
+    <EmbeddedResource Include="iconssummer\sharingan.png" LogicalName="iconssummer/sharingan.png" />
+    <EmbeddedResource Include="iconssummer\ceilinggenerate.png" LogicalName="iconssummer/ceilinggenerate.png" />
+    <EmbeddedResource Include="iconssummer\mminus24.png" LogicalName="iconssummer/mminus24.png" />
+    <EmbeddedResource Include="icons\settings16.png" LogicalName="icons/settings16.png" />
+    <EmbeddedResource Include="icons\selectowned16.png" LogicalName="icons/selectowned16.png" />
+    <EmbeddedResource Include="icons\selectfilter16.png" LogicalName="icons/selectfilter16.png" />
+    <EmbeddedResource Include="icons\overridegray16.png" LogicalName="icons/overridegray16.png" />
+    <EmbeddedResource Include="icons\unhide16.png" LogicalName="icons/unhide16.png" />
+    <EmbeddedResource Include="iconssummer\expand16.png" LogicalName="iconssummer/expand16.png" />
+    <EmbeddedResource Include="icons\wallgenerate.png" LogicalName="icons/wallgenerate.png" />
+    <EmbeddedResource Include="icons\addid.png" LogicalName="icons/addid.png" />
+    <EmbeddedResource Include="iconssummer\misc.png" LogicalName="iconssummer/misc.png" />
+    <EmbeddedResource Include="iconssummer\plugin.png" LogicalName="iconssummer/plugin.png" />
+    <EmbeddedResource Include="icons\folder16.png" LogicalName="icons/folder16.png" />
+    <EmbeddedResource Include="icons\about16.png" LogicalName="icons/about16.png" />
+    <EmbeddedResource Include="icons\change16.png" LogicalName="icons/change16.png" />
+    <EmbeddedResource Include="icons\colormatch16.png" LogicalName="icons/colormatch16.png" />
+    <EmbeddedResource Include="icons\uid16.png" LogicalName="icons/uid16.png" />
+    <EmbeddedResource Include="iconssummer\mplus24.png" LogicalName="iconssummer/mplus24.png" />
+    <EmbeddedResource Include="icons\floor16.png" LogicalName="icons/floor16.png" />
+    <EmbeddedResource Include="iconssummer\filter.png" LogicalName="iconssummer/filter.png" />
+    <EmbeddedResource Include="icons\form.png" LogicalName="icons/form.png" />
+    <EmbeddedResource Include="iconssummer\mplus16.png" LogicalName="iconssummer/mplus16.png" />
+    <EmbeddedResource Include="iconssummer\hideownedelements.png" LogicalName="iconssummer/hideownedelements.png" />
+    <EmbeddedResource Include="iconssummer\mminus16.png" LogicalName="iconssummer/mminus16.png" />
+    <EmbeddedResource Include="icons\50-2096.png" LogicalName="icons/50%2096.png" />
+    <EmbeddedResource Include="icons\colorlegend.png" LogicalName="icons/colorlegend.png" />
+    <EmbeddedResource Include="icons\unpin.png" LogicalName="icons/unpin.png" />
+    <EmbeddedResource Include="iconssummer\paraedit16.png" LogicalName="iconssummer/paraedit16.png" />
+    <EmbeddedResource Include="iconssummer\mread24.png" LogicalName="iconssummer/mread24.png" />
+    <EmbeddedResource Include="iconssummer\folder16.png" LogicalName="iconssummer/folder16.png" />
+    <EmbeddedResource Include="iconssummer\overridecustom16.png" LogicalName="iconssummer/overridecustom16.png" />
+    <EmbeddedResource Include="iconssummer\mread16.png" LogicalName="iconssummer/mread16.png" />
+    <EmbeddedResource Include="icons\expand16.png" LogicalName="icons/expand16.png" />
+    <EmbeddedResource Include="iconssummer\selectfilter16.png" LogicalName="iconssummer/selectfilter16.png" />
+    <EmbeddedResource Include="iconssummer\dimension.png" LogicalName="iconssummer/dimension.png" />
+    <EmbeddedResource Include="iconssummer\folder.png" LogicalName="iconssummer/folder.png" />
+    <EmbeddedResource Include="iconssummer\id.png" LogicalName="iconssummer/id.png" />
+    <EmbeddedResource Include="icons\calculate.png" LogicalName="icons/calculate.png" />
+    <EmbeddedResource Include="icons\copyfilter.png" LogicalName="icons/copyfilter.png" />
+    <EmbeddedResource Include="icons\update16.png" LogicalName="icons/update16.png" />
+    <EmbeddedResource Include="icons\databaseadd.png" LogicalName="icons/databaseadd.png" />
+    <EmbeddedResource Include="iconssummer\overrideyellow16.png" LogicalName="iconssummer/overrideyellow16.png" />
+    <EmbeddedResource Include="iconssummer\calculate.png" LogicalName="iconssummer/calculate.png" />
+    <EmbeddedResource Include="iconssummer\alignmiddle16.png" LogicalName="iconssummer/alignmiddle16.png" />
+    <EmbeddedResource Include="iconssummer\alignbottom16.png" LogicalName="iconssummer/alignbottom16.png" />
+    <EmbeddedResource Include="icons\sheetdouble16.png" LogicalName="icons/sheetdouble16.png" />
+    <EmbeddedResource Include="toolbarimage\whodid.png" LogicalName="toolbarimage/whodid.png" />
+    <EmbeddedResource Include="iconssummer\colorlayers.png" LogicalName="iconssummer/colorlayers.png" />
+    <EmbeddedResource Include="iconssummer\updatenew16.png" LogicalName="iconssummer/updatenew16.png" />
+    <EmbeddedResource Include="icons\warnings16.png" LogicalName="icons/warnings16.png" />
+    <EmbeddedResource Include="iconssummer\wallgenerate.png" LogicalName="iconssummer/wallgenerate.png" />
+    <EmbeddedResource Include="iconssummer\match.png" LogicalName="iconssummer/match.png" />
+    <EmbeddedResource Include="iconssummer\modelsize16.png" LogicalName="iconssummer/modelsize16.png" />
+    <EmbeddedResource Include="icons\worksharing.png" LogicalName="icons/worksharing.png" />
+    <EmbeddedResource Include="iconssummer\overridetransparent16.png" LogicalName="iconssummer/overridetransparent16.png" />
+    <EmbeddedResource Include="icons\pin16.png" LogicalName="icons/pin16.png" />
+    <EmbeddedResource Include="icons\overriderainbow16.png" LogicalName="icons/overriderainbow16.png" />
+    <EmbeddedResource Include="icons\paraedit.png" LogicalName="icons/paraedit.png" />
+    <EmbeddedResource Include="icons\sharingan.png" LogicalName="icons/sharingan.png" />
+    <EmbeddedResource Include="icons\overrideyellow16.png" LogicalName="icons/overrideyellow16.png" />
+    <EmbeddedResource Include="icons\match.png" LogicalName="icons/match.png" />
+    <EmbeddedResource Include="icons\dictionary16.png" LogicalName="icons/dictionary16.png" />
+    <EmbeddedResource Include="iconssummer\about16.png" LogicalName="iconssummer/about16.png" />
+    <EmbeddedResource Include="iconssummer\help16.png" LogicalName="iconssummer/help16.png" />
+    <EmbeddedResource Include="icons\whodid16.png" LogicalName="icons/whodid16.png" />
+    <EmbeddedResource Include="iconssummer\floorgenerate16.png" LogicalName="iconssummer/floorgenerate16.png" />
+    <EmbeddedResource Include="iconssummer\unhide.png" LogicalName="iconssummer/unhide.png" />
+    <EmbeddedResource Include="icons\filterremove16.png" LogicalName="icons/filterremove16.png" />
+    <EmbeddedResource Include="icons\overridecustom16.png" LogicalName="icons/overridecustom16.png" />
+    <EmbeddedResource Include="icons\warnings.png" LogicalName="icons/warnings.png" />
+    <EmbeddedResource Include="iconssummer\overridecustom.png" LogicalName="iconssummer/overridecustom.png" />
+    <EmbeddedResource Include="iconssummer\dimension16.png" LogicalName="iconssummer/dimension16.png" />
+    <EmbeddedResource Include="iconssummer\about.png" LogicalName="iconssummer/about.png" />
+    <EmbeddedResource Include="iconssummer\floorgenerate.png" LogicalName="iconssummer/floorgenerate.png" />
+    <EmbeddedResource Include="icons\unjoin16.png" LogicalName="icons/unjoin16.png" />
+    <EmbeddedResource Include="iconssummer\plugin16.png" LogicalName="iconssummer/plugin16.png" />
+    <EmbeddedResource Include="iconssummer\section.png" LogicalName="iconssummer/section.png" />
+    <EmbeddedResource Include="icons\checkall16.png" LogicalName="icons/checkall16.png" />
+    <EmbeddedResource Include="iconssummer\alignright16.png" LogicalName="iconssummer/alignright16.png" />
+    <EmbeddedResource Include="icons\floor.png" LogicalName="icons/floor.png" />
+    <EmbeddedResource Include="iconssummer\clash16.png" LogicalName="iconssummer/clash16.png" />
+    <EmbeddedResource Include="iconssummer\deselect_all.png" LogicalName="iconssummer/deselect_all.png" />
+    <EmbeddedResource Include="iconssummer\copyfilter.png" LogicalName="iconssummer/copyfilter.png" />
+    <EmbeddedResource Include="icons\mplus16.png" LogicalName="icons/mplus16.png" />
+    <EmbeddedResource Include="iconssummer\gauge.png" LogicalName="iconssummer/gauge.png" />
+    <EmbeddedResource Include="icons\tools16.png" LogicalName="icons/tools16.png" />
+    <EmbeddedResource Include="iconssummer\coffee16.png" LogicalName="iconssummer/coffee16.png" />
+    <EmbeddedResource Include="icons\sheetdouble.png" LogicalName="icons/sheetdouble.png" />
+    <EmbeddedResource Include="iconssummer\zoomelements.png" LogicalName="iconssummer/zoomelements.png" />
+    <EmbeddedResource Include="icons\ceiling.png" LogicalName="icons/ceiling.png" />
+    <EmbeddedResource Include="icons\reset16.png" LogicalName="icons/reset16.png" />
+    <EmbeddedResource Include="icons\uncheckall16.png" LogicalName="icons/uncheckall16.png" />
+    <EmbeddedResource Include="iconssummer\overriderainbow16.png" LogicalName="iconssummer/overriderainbow16.png" />
+    <EmbeddedResource Include="icons\copyfilter16.png" LogicalName="icons/copyfilter16.png" />
+    <EmbeddedResource Include="icons\colorlayers.png" LogicalName="icons/colorlayers.png" />
+    <EmbeddedResource Include="icons\modelsize.png" LogicalName="icons/modelsize.png" />
+    <EmbeddedResource Include="icons\30-2096.png" LogicalName="icons/30%2096.png" />
+    <EmbeddedResource Include="icons\wall16.png" LogicalName="icons/wall16.png" />
+    <EmbeddedResource Include="iconssummer\pin16.png" LogicalName="iconssummer/pin16.png" />
+    <EmbeddedResource Include="icons\mplus24.png" LogicalName="icons/mplus24.png" />
+    <EmbeddedResource Include="iconssummer\aligncenter16.png" LogicalName="iconssummer/aligncenter16.png" />
+    <EmbeddedResource Include="iconssummer\unhide16.png" LogicalName="iconssummer/unhide16.png" />
+    <EmbeddedResource Include="icons\expand.png" LogicalName="icons/expand.png" />
+    <EmbeddedResource Include="iconssummer\colorlegend.png" LogicalName="iconssummer/colorlegend.png" />
+    <EmbeddedResource Include="toolbarimage\selectcategory.png" LogicalName="toolbarimage/selectcategory.png" />
+    <EmbeddedResource Include="iconssummer\mclear16.png" LogicalName="iconssummer/mclear16.png" />
+    <EmbeddedResource Include="icons\mclear24.png" LogicalName="icons/mclear24.png" />
+    <EmbeddedResource Include="icons\mminus24.png" LogicalName="icons/mminus24.png" />
+    <EmbeddedResource Include="iconssummer\settings16.png" LogicalName="iconssummer/settings16.png" />
+    <EmbeddedResource Include="iconssummer\mclear24.png" LogicalName="iconssummer/mclear24.png" />
+    <EmbeddedResource Include="icons\about.png" LogicalName="icons/about.png" />
+    <EmbeddedResource Include="icons\mclear16.png" LogicalName="icons/mclear16.png" />
+    <EmbeddedResource Include="icons\door.png" LogicalName="icons/door.png" />
+    <EmbeddedResource Include="iconssummer\exportlayers.png" LogicalName="iconssummer/exportlayers.png" />
+    <EmbeddedResource Include="iconssummer\ceiling.png" LogicalName="iconssummer/ceiling.png" />
+    <EmbeddedResource Include="icons\aligntop16.png" LogicalName="icons/aligntop16.png" />
+    <EmbeddedResource Include="toolbarimage\override.png" LogicalName="toolbarimage/override.png" />
+    <EmbeddedResource Include="icons\mminus16.png" LogicalName="icons/mminus16.png" />
+    <EmbeddedResource Include="icons\colormatch.png" LogicalName="icons/colormatch.png" />
+    <EmbeddedResource Include="icons\filter16.png" LogicalName="icons/filter16.png" />
+    <EmbeddedResource Include="icons\floorgenerate.png" LogicalName="icons/floorgenerate.png" />
+    <EmbeddedResource Include="icons\section.png" LogicalName="icons/section.png" />
+    <EmbeddedResource Include="iconssummer\hideownedelements16.png" LogicalName="iconssummer/hideownedelements16.png" />
+    <EmbeddedResource Include="iconssummer\sheet.png" LogicalName="iconssummer/sheet.png" />
+    <EmbeddedResource Include="icons\aligncenter16.png" LogicalName="icons/aligncenter16.png" />
+    <EmbeddedResource Include="iconssummer\colormatch.png" LogicalName="iconssummer/colormatch.png" />
+    <EmbeddedResource Include="icons\filter.png" LogicalName="icons/filter.png" />
+    <EmbeddedResource Include="icons\gaugemeter.png" LogicalName="icons/gaugemeter.png" />
+    <EmbeddedResource Include="iconssummer\healthcheck.png" LogicalName="iconssummer/healthcheck.png" />
+    <EmbeddedResource Include="icons\analytical.png" LogicalName="icons/analytical.png" />
+    <EmbeddedResource Include="icons\change.png" LogicalName="icons/change.png" />
+    <EmbeddedResource Include="iconssummer\wall.png" LogicalName="iconssummer/wall.png" />
+    <EmbeddedResource Include="iconssummer\helmet.png" LogicalName="iconssummer/helmet.png" />
+    <EmbeddedResource Include="icons\select_all.png" LogicalName="icons/select_all.png" />
+    <EmbeddedResource Include="icons\inspect16.png" LogicalName="icons/inspect16.png" />
+    <EmbeddedResource Include="icons\excel.png" LogicalName="icons/excel.png" />
+    <EmbeddedResource Include="icons\overrideblue16.png" LogicalName="icons/overrideblue16.png" />
+    <EmbeddedResource Include="icons\window.png" LogicalName="icons/window.png" />
+    <EmbeddedResource Include="icons\help.png" LogicalName="icons/help.png" />
+    <EmbeddedResource Include="icons\80-2096.png" LogicalName="icons/80%2096.png" />
+    <EmbeddedResource Include="iconssummer\notepad16.png" LogicalName="iconssummer/notepad16.png" />
+    <EmbeddedResource Include="iconssummer\overridered16.png" LogicalName="iconssummer/overridered16.png" />
+    <EmbeddedResource Include="icons\exportschedules.png" LogicalName="icons/exportschedules.png" />
+    <EmbeddedResource Include="iconssummer\zoomelements16.png" LogicalName="iconssummer/zoomelements16.png" />
+    <EmbeddedResource Include="iconssummer\onlineusers16.png" LogicalName="iconssummer/onlineusers16.png" />
+    <EmbeddedResource Include="icons\overridegreen16.png" LogicalName="icons/overridegreen16.png" />
+    <EmbeddedResource Include="icons\filterremove.png" LogicalName="icons/filterremove.png" />
+    <EmbeddedResource Include="iconssummer\purge.png" LogicalName="iconssummer/purge.png" />
+    <EmbeddedResource Include="iconssummer\settings.png" LogicalName="iconssummer/settings.png" />
+    <EmbeddedResource Include="iconssummer\building.png" LogicalName="iconssummer/building.png" />
+    <EmbeddedResource Include="iconssummer\sheetdouble16.png" LogicalName="iconssummer/sheetdouble16.png" />
+    <EmbeddedResource Include="icons\selectfilter.png" LogicalName="icons/selectfilter.png" />
+    <EmbeddedResource Include="iconssummer\select_all.png" LogicalName="iconssummer/select_all.png" />
+    <EmbeddedResource Include="icons\dimension16.png" LogicalName="icons/dimension16.png" />
+    <EmbeddedResource Include="iconssummer\change.png" LogicalName="iconssummer/change.png" />
+    <EmbeddedResource Include="iconssummer\building16.png" LogicalName="iconssummer/building16.png" />
+    <EmbeddedResource Include="iconssummer\overridegreen16.png" LogicalName="iconssummer/overridegreen16.png" />
+    <EmbeddedResource Include="icons\building16.png" LogicalName="icons/building16.png" />
+    <EmbeddedResource Include="iconssummer\collapse.png" LogicalName="iconssummer/collapse.png" />
+    <EmbeddedResource Include="iconssummer\colorfilter.png" LogicalName="iconssummer/colorfilter.png" />
+    <EmbeddedResource Include="icons\60-2096.png" LogicalName="icons/60%2096.png" />
+    <EmbeddedResource Include="iconssummer\inspect16.png" LogicalName="iconssummer/inspect16.png" />
+    <EmbeddedResource Include="iconssummer\selectowned16.png" LogicalName="iconssummer/selectowned16.png" />
+    <EmbeddedResource Include="icons\clash16.png" LogicalName="icons/clash16.png" />
+    <EmbeddedResource Include="icons\gauge.png" LogicalName="icons/gauge.png" />
+    <EmbeddedResource Include="icons\section16.png" LogicalName="icons/section16.png" />
+    <EmbeddedResource Include="iconssummer\colorlegend16.png" LogicalName="iconssummer/colorlegend16.png" />
+    <EmbeddedResource Include="iconssummer\aligntop16.png" LogicalName="iconssummer/aligntop16.png" />
+    <EmbeddedResource Include="iconssummer\pin.png" LogicalName="iconssummer/pin.png" />
+    <EmbeddedResource Include="icons\clash.png" LogicalName="icons/clash.png" />
+    <EmbeddedResource Include="icons\coffee16.png" LogicalName="icons/coffee16.png" />
+    <EmbeddedResource Include="icons\100-20128.png" LogicalName="icons/100%20128.png" />
+    <EmbeddedResource Include="icons\collapse.png" LogicalName="icons/collapse.png" />
+    <EmbeddedResource Include="icons\whodid.png" LogicalName="icons/whodid.png" />
+    <EmbeddedResource Include="icons\healthcheck16.png" LogicalName="icons/healthcheck16.png" />
+    <EmbeddedResource Include="iconssummer\select16.png" LogicalName="iconssummer/select16.png" />
+    <EmbeddedResource Include="iconssummer\alignleft16.png" LogicalName="iconssummer/alignleft16.png" />
+    <EmbeddedResource Include="iconssummer\door.png" LogicalName="iconssummer/door.png" />
+    <EmbeddedResource Include="icons\uid.png" LogicalName="icons/uid.png" />
+    <EmbeddedResource Include="iconssummer\tools.png" LogicalName="iconssummer/tools.png" />
+    <EmbeddedResource Include="icons\door16.png" LogicalName="icons/door16.png" />
+    <EmbeddedResource Include="iconssummer\filter16.png" LogicalName="iconssummer/filter16.png" />
+    <EmbeddedResource Include="icons\join.png" LogicalName="icons/join.png" />
+    <EmbeddedResource Include="icons\select16.png" LogicalName="icons/select16.png" />
+    <EmbeddedResource Include="iconssummer\reset.png" LogicalName="iconssummer/reset.png" />
+    <EmbeddedResource Include="icons\alignmiddle16.png" LogicalName="icons/alignmiddle16.png" />
+    <EmbeddedResource Include="icons\overridered16.png" LogicalName="icons/overridered16.png" />
+    <EmbeddedResource Include="iconssummer\analytical.png" LogicalName="iconssummer/analytical.png" />
+    <EmbeddedResource Include="icons\exportlayers16.png" LogicalName="icons/exportlayers16.png" />
+    <EmbeddedResource Include="iconssummer\exportschedules.png" LogicalName="iconssummer/exportschedules.png" />
+    <EmbeddedResource Include="icons\modelsize16.png" LogicalName="icons/modelsize16.png" />
+    <EmbeddedResource Include="icons\overridecustom.png" LogicalName="icons/overridecustom.png" />
+    <EmbeddedResource Include="iconssummer\section16.png" LogicalName="iconssummer/section16.png" />
+    <EmbeddedResource Include="icons\window16.png" LogicalName="icons/window16.png" />
+    <EmbeddedResource Include="icons\folder.png" LogicalName="icons/folder.png" />
+    <EmbeddedResource Include="iconssummer\form.png" LogicalName="iconssummer/form.png" />
+    <EmbeddedResource Include="iconssummer\sheet16.png" LogicalName="iconssummer/sheet16.png" />
+    <EmbeddedResource Include="iconssummer\overrideblue16.png" LogicalName="iconssummer/overrideblue16.png" />
+    <EmbeddedResource Include="iconssummer\unpin16.png" LogicalName="iconssummer/unpin16.png" />
+    <EmbeddedResource Include="icons\dog.png" LogicalName="icons/dog.png" />
+    <EmbeddedResource Include="icons\pin.png" LogicalName="icons/pin.png" />
+    <EmbeddedResource Include="icons\worksharing16.png" LogicalName="icons/worksharing16.png" />
+    <EmbeddedResource Include="iconssummer\floor16.png" LogicalName="iconssummer/floor16.png" />
+    <EmbeddedResource Include="iconssummer\purge16.png" LogicalName="iconssummer/purge16.png" />
+    <EmbeddedResource Include="iconssummer\filterremove.png" LogicalName="iconssummer/filterremove.png" />
+    <EmbeddedResource Include="icons\notepad16.png" LogicalName="icons/notepad16.png" />
+    <EmbeddedResource Include="icons\select.png" LogicalName="icons/select.png" />
+    <EmbeddedResource Include="icons\10-2096.png" LogicalName="icons/10%2096.png" />
+    <EmbeddedResource Include="iconssummer\excel.png" LogicalName="iconssummer/excel.png" />
+    <EmbeddedResource Include="icons\hideownedelements.png" LogicalName="icons/hideownedelements.png" />
+    <EmbeddedResource Include="iconssummer\warnings.png" LogicalName="iconssummer/warnings.png" />
+    <EmbeddedResource Include="icons\colorlegend16.png" LogicalName="icons/colorlegend16.png" />
+    <EmbeddedResource Include="icons\90-2096.png" LogicalName="icons/90%2096.png" />
+    <EmbeddedResource Include="iconssummer\onlineusers.png" LogicalName="iconssummer/onlineusers.png" />
+    <EmbeddedResource Include="iconssummer\uid.png" LogicalName="iconssummer/uid.png" />
+    <EmbeddedResource Include="icons\wincalc16.png" LogicalName="icons/wincalc16.png" />
+    <EmbeddedResource Include="icons\misc.png" LogicalName="icons/misc.png" />
+    <EmbeddedResource Include="icons\unpin16.png" LogicalName="icons/unpin16.png" />
+    <EmbeddedResource Include="icons\alignbottom16.png" LogicalName="icons/alignbottom16.png" />
+    <EmbeddedResource Include="icons\join16.png" LogicalName="icons/join16.png" />
+    <EmbeddedResource Include="iconssummer\floor.png" LogicalName="iconssummer/floor.png" />
+    <EmbeddedResource Include="iconssummer\wall16.png" LogicalName="iconssummer/wall16.png" />
+    <EmbeddedResource Include="iconssummer\logreport16.png" LogicalName="iconssummer/logreport16.png" />
+    <EmbeddedResource Include="iconssummer\checkall16.png" LogicalName="iconssummer/checkall16.png" />
+    <EmbeddedResource Include="iconssummer\colorlayers16.png" LogicalName="iconssummer/colorlayers16.png" />
+    <EmbeddedResource Include="iconssummer\healthcheck16.png" LogicalName="iconssummer/healthcheck16.png" />
+    <EmbeddedResource Include="iconssummer\dictionary.png" LogicalName="iconssummer/dictionary.png" />
+    <EmbeddedResource Include="iconssummer\sheetdouble.png" LogicalName="iconssummer/sheetdouble.png" />
+    <EmbeddedResource Include="iconssummer\copyfilter16.png" LogicalName="iconssummer/copyfilter16.png" />
+    <EmbeddedResource Include="iconssummer\clash.png" LogicalName="iconssummer/clash.png" />
+    <EmbeddedResource Include="iconssummer\selectfilter.png" LogicalName="iconssummer/selectfilter.png" />
+    <EmbeddedResource Include="icons\wall.png" LogicalName="icons/wall.png" />
+    <EmbeddedResource Include="icons\70-2096.png" LogicalName="icons/70%2096.png" />
+    <EmbeddedResource Include="iconssummer\change16.png" LogicalName="iconssummer/change16.png" />
+    <EmbeddedResource Include="iconssummer\calculate16.png" LogicalName="iconssummer/calculate16.png" />
+    <EmbeddedResource Include="iconssummer\colormatch16.png" LogicalName="iconssummer/colormatch16.png" />
+    <EmbeddedResource Include="icons\100-2096.png" LogicalName="icons/100%2096.png" />
+    <EmbeddedResource Include="iconssummer\select.png" LogicalName="iconssummer/select.png" />
+    <EmbeddedResource Include="icons\exportlayers.png" LogicalName="icons/exportlayers.png" />
+    <EmbeddedResource Include="icons\onlineusers16.png" LogicalName="icons/onlineusers16.png" />
+    <EmbeddedResource Include="icons\unhide.png" LogicalName="icons/unhide.png" />
+    <EmbeddedResource Include="iconssummer\expand.png" LogicalName="iconssummer/expand.png" />
+    <EmbeddedResource Include="iconssummer\databaseadd.png" LogicalName="iconssummer/databaseadd.png" />
+    <EmbeddedResource Include="icons\paraedit16.png" LogicalName="icons/paraedit16.png" />
+    <EmbeddedResource Include="icons\onlineusers.png" LogicalName="icons/onlineusers.png" />
+    <EmbeddedResource Include="icons\minecraft.png" LogicalName="icons/minecraft.png" />
+    <EmbeddedResource Include="toolbarimage\selecttype.png" LogicalName="toolbarimage/selecttype.png" />
+    <EmbeddedResource Include="toolbarimage\copyfilter.png" LogicalName="toolbarimage/copyfilter.png" />
+    <EmbeddedResource Include="iconssummer\dictionary16.png" LogicalName="iconssummer/dictionary16.png" />
+    <EmbeddedResource Include="iconssummer\aboutapp.png" LogicalName="iconssummer/aboutapp.png" />
+    <EmbeddedResource Include="iconssummer\whodid.png" LogicalName="iconssummer/whodid.png" />
+    <EmbeddedResource Include="iconssummer\whodid16.png" LogicalName="iconssummer/whodid16.png" />
+    <EmbeddedResource Include="iconssummer\window16.png" LogicalName="iconssummer/window16.png" />
+    <EmbeddedResource Include="icons\colorfilter16.png" LogicalName="icons/colorfilter16.png" />
+    <EmbeddedResource Include="icons\databasecheck.png" LogicalName="icons/databasecheck.png" />
+    <EmbeddedResource Include="iconssummer\join.png" LogicalName="iconssummer/join.png" />
+    <EmbeddedResource Include="iconssummer\modelsize.png" LogicalName="iconssummer/modelsize.png" />
+    <EmbeddedResource Include="icons\dictionary.png" LogicalName="icons/dictionary.png" />
+    <EmbeddedResource Include="icons\sheet16.png" LogicalName="icons/sheet16.png" />
+    <EmbeddedResource Include="iconssummer\worksharing16.png" LogicalName="iconssummer/worksharing16.png" />
+    <EmbeddedResource Include="iconssummer\wincalc16.png" LogicalName="iconssummer/wincalc16.png" />
+    <EmbeddedResource Include="icons\tools.png" LogicalName="icons/tools.png" />
+    <EmbeddedResource Include="iconssummer\unjoin16.png" LogicalName="iconssummer/unjoin16.png" />
+    <EmbeddedResource Include="iconssummer\overridegray16.png" LogicalName="iconssummer/overridegray16.png" />
+    <EmbeddedResource Include="icons\unjoin.png" LogicalName="icons/unjoin.png" />
+    <EmbeddedResource Include="icons\40-2096.png" LogicalName="icons/40%2096.png" />
+    <EmbeddedResource Include="icons\sheet.png" LogicalName="icons/sheet.png" />
+    <EmbeddedResource Include="iconssummer\uid16.png" LogicalName="iconssummer/uid16.png" />
+    <EmbeddedResource Include="iconssummer\collapse16.png" LogicalName="iconssummer/collapse16.png" />
+    <EmbeddedResource Include="iconssummer\dog.png" LogicalName="iconssummer/dog.png" />
+    <EmbeddedResource Include="icons\calculate16.png" LogicalName="icons/calculate16.png" />
+    <EmbeddedResource Include="icons\purge16.png" LogicalName="icons/purge16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Identity.Client" Version="4.64.0" />
+    <PackageReference Include="Revit.AdWindows.x64" Version="2023.0.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="RevitAPI">
+      <HintPath>..\..\..\..\..\..\..\Desktop\RevitAPI.dll</HintPath>
+    </Reference>
+    <Reference Include="RevitAPIUI">
+      <HintPath>..\..\..\..\..\..\..\Desktop\RevitAPIUI.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Core" />
+    <Reference Include="AdWindows" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="Microsoft.CSharp" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,59 @@
+﻿
+
+// ONES, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null
+// ONES.Utils
+#define DEBUG
+using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Diagnostics;
+using System.IO;
+using System.Linq;
+using System.Reflection;
+using System.Runtime.InteropServices;
+using System.Windows.Forms;
+using Autodesk.Revit.ApplicationServices;
+using Autodesk.Revit.DB;
+using Autodesk.Revit.UI;
+using Autodesk.Revit.UI.Selection;
+using Autodesk.Windows;
+using Microsoft.Office.Interop.Excel;
+using ONES;
+
+public class Utils
+{
+
+    //
+    public static Worksheet ExcelWorksheet(string name, bool visible = false)
+    {
+        Microsoft.Office.Interop.Excel.Application application = (Microsoft.Office.Interop.Excel.Application)Activator.CreateInstance(Marshal.GetTypeFromCLSID(new Guid("00024500-0000-0000-C000-000000000046")));
+        if (application == null)
+        {
+            Autodesk.Revit.UI.TaskDialog.Show("Excel Error", "Failed to get or start Excel");
+            return null;
+        }
+        application.Visible = visible;
+        Workbook workbook = application.Workbooks.Add(Missing.Value);
+        Worksheet worksheet;
+        if (true)
+        {
+            worksheet = workbook.Sheets.get_Item((object)1) as Worksheet;
+            bool flag = false;
+        }
+        else
+        {
+            worksheet = application.Worksheets.Add(Missing.Value, Missing.Value, Missing.Value, Missing.Value) as Worksheet;
+        }
+        worksheet.Name = name;
+        return worksheet;
+    }
+
+    public static void ExcelTitleStyle(Worksheet worksheet, bool visible = true)
+    {
+        Range range = worksheet.get_Range("A1", "Z1");
+        range.Font.Bold = true;
+        range.EntireColumn.AutoFit();
+        worksheet.Application.Visible = visible;
+    }
+
+}

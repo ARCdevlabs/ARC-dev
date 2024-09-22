@@ -1,0 +1,6 @@
+C:\Users\ADMIN\AppData\Roaming\pyRevit\Extensions\ARC-dev.extension\Create C# addin\Leader Line\bin\Debug\Leader Line.dll
+C:\Users\ADMIN\AppData\Roaming\pyRevit\Extensions\ARC-dev.extension\Create C# addin\Leader Line\bin\Debug\Leader Line.pdb
+C:\Users\ADMIN\AppData\Roaming\pyRevit\Extensions\ARC-dev.extension\Create C# addin\Leader Line\obj\Debug\Leader Line.csproj.AssemblyReference.cache
+C:\Users\ADMIN\AppData\Roaming\pyRevit\Extensions\ARC-dev.extension\Create C# addin\Leader Line\obj\Debug\Leader Line.csproj.CoreCompileInputs.cache
+C:\Users\ADMIN\AppData\Roaming\pyRevit\Extensions\ARC-dev.extension\Create C# addin\Leader Line\obj\Debug\Leader Line.dll
+C:\Users\ADMIN\AppData\Roaming\pyRevit\Extensions\ARC-dev.extension\Create C# addin\Leader Line\obj\Debug\Leader Line.pdb

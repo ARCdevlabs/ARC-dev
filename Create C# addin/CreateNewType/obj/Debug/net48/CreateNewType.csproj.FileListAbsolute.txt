@@ -1,0 +1,4 @@
+C:\Users\ADMIN\AppData\Roaming\pyRevit\Extensions\ARC-dev.extension\Create C# addin\CreateNewType\obj\Debug\net48\CreateNewType.csproj.AssemblyReference.cache
+C:\Users\ADMIN\AppData\Roaming\pyRevit\Extensions\ARC-dev.extension\Create C# addin\CreateNewType\obj\Debug\net48\CreateNewType.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ADMIN\AppData\Roaming\pyRevit\Extensions\ARC-dev.extension\Create C# addin\CreateNewType\obj\Debug\net48\CreateNewType.csproj.CoreCompileInputs.cache
+C:\Users\ADMIN\AppData\Roaming\pyRevit\Extensions\ARC-dev.extension\Create C# addin\CreateNewType\obj\Debug\net48\CreateNewType.sourcelink.json

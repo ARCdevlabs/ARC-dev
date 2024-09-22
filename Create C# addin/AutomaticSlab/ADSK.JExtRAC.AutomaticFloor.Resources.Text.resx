@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+<resheader name="resmimetype"><value>text/microsoft-resx</value></resheader><resheader name="version"><value>1.3</value></resheader><resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader><resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader><data name="IDS_TXT_OK" xml:space="preserve"><value>OK</value></data>
+  <data name="IDS_SHPARAM_GROUP" xml:space="preserve"><value>RexJpn</value></data>
+  <data name="IDS_TXT_LOCK_STRUCTURAL" xml:space="preserve"><value>梁に拘束</value></data>
+  <data name="IDS_TXT_CANCEL" xml:space="preserve"><value>キャンセル</value></data>
+  <data name="IDS_TXT_FOUDATION_SLAB_FTYPE" xml:space="preserve"><value>スラブタイプ</value></data>
+  <data name="IDS_SHPARAM_DEF_CMD_LOCATESLAB" xml:space="preserve"><value>RexJpn-LocateSlab-Config</value></data>
+  <data name="IDS_ERR_VALNULL" xml:space="preserve"><value>値が空白です</value></data>
+  <data name="IDS_ERR_VALNUMBER" xml:space="preserve"><value>値が数値ではありません</value></data>
+  <data name="IDS_ERR_COMMAND" xml:space="preserve"><value>コマンドが失敗しました</value></data>
+  <data name="IDS_INFO_PICK_POINT" xml:space="preserve"><value>床を作成したい位置をピックしてください。終了するときは、[Esc]キーを押してください。</value></data>
+  <data name="IDS_TXT_LOCK_FOUNDATION_SLAB" xml:space="preserve"><value>梁に拘束</value></data>
+  <data name="IDS_TXT_STRUCTURAL" xml:space="preserve"><value>構造床配置</value></data>
+  <data name="IDS_TXT_LOCK_ARCHITECT" xml:space="preserve"><value>壁に拘束</value></data>
+  <data name="IDS_TXT_ERROR" xml:space="preserve"><value>エラー</value></data>
+  <data name="IDS_TXT_SLAB_DIRECTION" xml:space="preserve"><value>スパン方向</value></data>
+  <data name="IDS_TXT_NO_CREATE_FLOOR" xml:space="preserve"><value>床が作成できません。</value></data>
+  <data name="IDS_INFO_NO_EXIST_BEAMS" xml:space="preserve"><value>床生成対象の梁が存在しません。</value></data>
+  <data name="IDS_INFO_NO_EXIST_WALLS" xml:space="preserve"><value>床生成対象の壁が存在しません。</value></data>
+  <data name="IDS_INFO_ACTIVE_VIEW" xml:space="preserve"><value>平面図・天井伏図・構造伏図ビューで実行して下さい。</value></data>
+  <data name="IDS_UNIT_MM" xml:space="preserve"><value>mm</value></data>
+  <data name="IDS_TXT_SLABTYPE" xml:space="preserve"><value>スラブタイプ</value></data>
+  <data name="IDS_COLNAME_NAME" xml:space="preserve"><value>Name</value></data>
+  <data name="IDS_TXT_INFORMATION" xml:space="preserve"><value>情報</value></data>
+  <data name="IDS_TXT_LEVELHEIGHTOFFSET" xml:space="preserve"><value>レベル高さオフセット</value></data>
+  <data name="IDS_ERR_BEAMS" xml:space="preserve"><value>梁が取得できませんでした。</value></data>
+  <data name="IDS_ERR_VALOUT" xml:space="preserve"><value>値が範囲外です</value></data>
+  <data name="IDS_TXT_FOUDATION_SLAB" xml:space="preserve"><value>基礎スラブ配置</value></data>
+  <data name="IDS_TXT_ARCHITECTURE_FTYPE" xml:space="preserve"><value>床タイプ</value></data>
+  <data name="IDS_ERR_LEVELBEAMS" xml:space="preserve"><value>梁のレベルが取得できませんでした。</value></data>
+  <data name="IDS_TXT_CATEGORY" xml:space="preserve"><value>カテゴリ</value></data>
+  <data name="IDS_TXT_STRUCTURAL_FTYPE" xml:space="preserve"><value>床タイプ</value></data>
+  <data name="IDS_ERR_CURVBEAMS" xml:space="preserve"><value>梁のカーブが取得できませんでした。</value></data>
+  <data name="IDS_DEGREE" xml:space="preserve"><value>°</value></data>
+  <data name="IDS_SHPARAM_FILE" xml:space="preserve"><value>RexJParam.txt</value></data>
+  <data name="IDS_TXT_ARCHITECTURE" xml:space="preserve"><value>意匠床配置</value></data>
+  <data name="IDS_ERR_PARAMDEF" xml:space="preserve"><value>パラメータの定義に失敗しました</value></data>
+  <data name="IDS_ERR_SLABTYPE" xml:space="preserve"><value>スラブタイプが設定されていません。</value></data>
+  <data name="IDS_FILE_ITEMS" xml:space="preserve"><value>AutomaticFloor.xml</value></data>
+  <data name="IDS_COLNAME_ID" xml:space="preserve"><value>ID</value></data>
+  <data name="IDS_TXT_PARAMETER" xml:space="preserve"><value>パラメータ</value></data>
+  </root>

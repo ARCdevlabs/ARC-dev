@@ -1,0 +1,65 @@
+﻿<Window x:Class="NS.WPFLearningCSharp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        Height="540" Width="600"
+        WindowStartupLocation="CenterScreen"
+       
+  
+        
+    
+        
+     Title="WPFLearningCSharp" 
+    xmlns:System="clr-namespace:System;assembly=System.Runtime"
+    xmlns:theme="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2" Icon="/WPFLearningCSharp;component/ironpython.png" Background="#FFF9F9F9" AllowDrop="True">
+    <Grid x:Name="stackpanel" Margin="15">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+  
+
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <!-- Hàng này sẽ mở rộng để lấp đầy không gian -->
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Column="0">
+            <Button x:Name="new_button"
+                    Content= "{Binding binding_title_new_button}"
+                    HorizontalAlignment="Stretch" VerticalAlignment="Center"
+                    Height="30" 
+                    Click="click_button_cua_son"/>
+            <TextBox x:Name="search_tb" 
+                     Height="25"
+                     VerticalContentAlignment="Center"/>
+
+            <ListView x:Name="list_lb"
+                  SelectionMode="Extended"
+                  HorizontalContentAlignment="Stretch"
+                  ScrollViewer.VerticalScrollBarVisibility="Visible"
+                  Height="350">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <CheckBox VerticalAlignment="Center" 
+                                      IsChecked="{Binding IsChecked}"
+                                      Checked="check_box_Checked"
+                                      Unchecked="check_box_Unchecked"
+                                      />
+                            <TextBlock Text="{Binding Value}" VerticalAlignment="Center" Margin="5,0,0,0"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <Button x:Name="button_print"
+                    Content= "In giá trị đã chọn"
+                    HorizontalAlignment="Stretch" VerticalAlignment="Center"
+                    Height="30" 
+                    Click="hanh_dong_button_print"/>
+
+        </StackPanel>
+    </Grid>
+</Window>

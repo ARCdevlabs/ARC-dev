@@ -4,8 +4,49 @@ clr.AddReference("System.Windows.Forms")
 clr.AddReference("System")
 from System.Collections.ObjectModel import ObservableCollection
 from System.ComponentModel import INotifyPropertyChanged, PropertyChangedEventArgs
-from System.Windows.Input import Key, Keyboard
-from nances import script, forms
+# from System.Windows.Input import Key, Keyboard
+from pyrevit import script, forms
+
+import sys
+import os
+
+# Tìm đường dẫn thư mục pyRevit Extensions
+pyrevit_extensions_path = os.path.join(os.getenv('APPDATA'), 'pyRevit', 'Extensions')
+# hoặc sử dụng PROGRAMDATA nếu thư viện được cài đặt ở đó
+# pyrevit_extensions_path = os.path.join(os.getenv('PROGRAMDATA'), 'pyRevit', 'Extensions')
+
+# Đường dẫn thư viện nances
+nances_lib_path = os.path.join(pyrevit_extensions_path, 'ARC extension.extension', 'lib')
+
+# Thêm đường dẫn vào sys.path nếu chưa có
+if nances_lib_path not in sys.path:
+    sys.path.append(nances_lib_path)
+import nances
+
+
+
+class reactive(property):
+    """Decorator for WPF bound properties"""
+    def __init__(self, getter):
+        def newgetter(ui_control):
+            try:
+                return getter(ui_control)
+            except AttributeError:
+                return None
+        super(reactive, self).__init__(newgetter)
+
+    def setter(self, setter):
+        def newsetter(ui_control, newvalue):
+            oldvalue = self.fget(ui_control)
+            if oldvalue != newvalue:
+                setter(ui_control, newvalue)
+                ui_control.OnPropertyChanged(setter.__name__)
+        return property(
+            fget=self.fget,
+            fset=newsetter,
+            fdel=self.fdel,
+            doc=self.__doc__)
+
 
 class ButtonData_Cua_Son(forms.Reactive):
     def __init__(self, title):
@@ -75,12 +116,12 @@ class UI(forms.WPFWindow, forms.Reactive):
         self.list_lb.ItemsSource = ObservableCollection[ListViewItem](filtered_list)
 
     def click_button_cua_son(self, sender, args):
-        import nances
+        # import nances
         input_textbox_son = self.setup_search_text_box_son
         nances.message_box(str(input_textbox_son))
 
     def hanh_dong_button_print(self, sender, args):
-        import nances
+        # import nances
         checked_values = [str(item.Value) for item in self.list_lb.ItemsSource if item.IsChecked]
         nances.message_box(", ".join(checked_values))
                 

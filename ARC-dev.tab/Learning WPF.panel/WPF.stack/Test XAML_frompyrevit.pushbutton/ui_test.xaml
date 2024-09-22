@@ -273,7 +273,7 @@
                   Height="200"
                   HorizontalAlignment  ="Stretch">
                 <MediaElement Name="gif_bua"
-                            Source= 'C:\Users\ADMIN\AppData\Roaming\pyRevit\Extensions\ARC-dev.extension\ARC-dev.tab\Test7.panel\Slab.stack\Test XAML_frompyrevit.pushbutton\cuoi.gif'
+                            Source= 'C:\Users\ADMIN\AppData\Roaming\pyRevit\Extensions\ARC-dev.extension\ARC-dev.tab\Learning WPF.panel\WPF.stack\Test XAML_frompyrevit.pushbutton\cuoi.gif'
                             LoadedBehavior="Play"
                             Stretch="Uniform" />
             </GroupBox>
