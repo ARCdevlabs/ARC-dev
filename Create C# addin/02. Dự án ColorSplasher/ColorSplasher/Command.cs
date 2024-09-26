@@ -34,7 +34,7 @@ namespace ColorSplasher
                 MessageBox.Show(Resource.Error_FamilyProject,Resource.MsgBox_Warning, MessageBoxButton.OK,MessageBoxImage.Warning);
                 return Result.Cancelled;
             }
-            ColorSplasherWindow dlg = new ColorSplasherWindow(doc);
+            ColorSplasherWindow dlg = new ColorSplasherWindow(doc, uidoc);
             dlg.ShowDialog();
             return Result.Succeeded;
         }

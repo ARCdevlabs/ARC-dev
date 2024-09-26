@@ -1,5 +1,5 @@
 ﻿using Autodesk.Revit.DB;
-
+using Autodesk.Revit.UI;
 using System;
 using System.IO;
 using System.Collections.Generic;
@@ -18,6 +18,9 @@ using Color = System.Windows.Media.Color;
 using MessageBox = System.Windows.Forms.MessageBox;
 using OpenFileDialog = System.Windows.Forms.OpenFileDialog;
 using SaveFileDialog = System.Windows.Forms.SaveFileDialog;
+using System.ComponentModel;
+using System.Collections.ObjectModel;
+using System.Xml.Linq;
 
 namespace ColorSplasher.Views
 {
@@ -25,12 +28,51 @@ namespace ColorSplasher.Views
     /// Interaction logic for ColorSplasherWindows.xaml
     /// </summary>
 
+    //ListView_Sơn Thêm
+    public class ReactiveProperty<T> : INotifyPropertyChanged
+    //  Generic Class ReactiveProperty<T>:
+    //Đây là một lớp generic(T là một kiểu dữ liệu bất kỳ). Lớp này cho phép tạo các thuộc tính có thể
+    //thông báo thay đổi mà không cần viết lại mã cho từng kiểu dữ liệu cụ thể.
+    {
+        private T _value;
+        public T Value
+        {
+            get => _value;
+            set
+            {
+                if (!Equals(_value, value))
+                {
+                    _value = value;
+                    OnPropertyChanged(nameof(Value));
+                }
+            }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected virtual void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+    }
+
+
     public partial class ColorSplasherWindow : Window
     {
         readonly Random _random = new Random();
         readonly Document _doc;
+        readonly UIDocument _uidoc;
         private ElementId _solidLineElementId;
         private ElementId _solidFillElementId;
+
+
+
+        //ListView_Sơn Thêm
+        private ObservableCollection<ListViewItem> _listTest;
+        private bool _inCheck = false;
+        private bool _inUncheck = false;
+
+
+
 
         private readonly List<string> _excludedCategories = new List<string>()
         {
@@ -58,8 +100,9 @@ namespace ColorSplasher.Views
         };
 
 
-        public ColorSplasherWindow(Document doc)
+        public ColorSplasherWindow(Document doc, UIDocument uidoc)
         {
+
             //====================================We use the same language as Revit=========================================
             Autodesk.Revit.ApplicationServices.Application application = doc.Application;
             LanguageType lang = application.Language;
@@ -70,20 +113,229 @@ namespace ColorSplasher.Views
             }
             //====================================================================================================================================================
             InitializeComponent();
+
+            //ListView_Sơn Thêm
+            //SetupListView();
+
+
             var mainViewModel = new MainViewModel();
             // this creates an instance of the ViewModel
             DataContext = mainViewModel; // this sets the newly created ViewModel as the DataContext for the View
 
             _doc = doc;
+            _uidoc = uidoc;
             FillCategoryList();
             Title = "Color Splasher";
+
+        }
+
+        //ListView_Sơn Thêm
+
+        private void ListView_ScrollChanged(object sender, ScrollChangedEventArgs e)
+        {
+            // Lấy ScrollViewer từ ListBox và đồng bộ hóa
+            var listBoxScrollViewer = GetScrollViewer(lbColor);
+            if (listBoxScrollViewer != null)
+            {
+                listBoxScrollViewer.ScrollToVerticalOffset(e.VerticalOffset);
+            }
+        }
+
+        private void ListBox_ScrollChanged(object sender, ScrollChangedEventArgs e)
+        {
+            // Lấy ScrollViewer từ ListView và đồng bộ hóa
+            var listViewScrollViewer = GetScrollViewer(list_lb);
+            if (listViewScrollViewer != null)
+            {
+                listViewScrollViewer.ScrollToVerticalOffset(e.VerticalOffset);
+            }
+        }
+
+        // Phương thức để lấy ScrollViewer từ một Control
+        private ScrollViewer GetScrollViewer(DependencyObject depObj)
+        {
+            if (depObj is null) return null;
+
+            for (int i = 0; i < VisualTreeHelper.GetChildrenCount(depObj); i++)
+            {
+                var child = VisualTreeHelper.GetChild(depObj, i);
+                if (child is ScrollViewer) return (ScrollViewer)child;
+                var result = GetScrollViewer(child);
+                if (result != null) return result;
+            }
+
+            return null;
+        }
+        private void SetupListView(List<ParamValues> _giaTri)
+        {
+            if (_giaTri == null)
+            {
+                _listTest = new ObservableCollection<ListViewItem>();
+                _listTest = null;
+                list_lb.ItemsSource = _listTest; // Đảm bảo ListView không hiển thị gì
+                return;
+            }
+
+            _listTest = new ObservableCollection<ListViewItem>();
+
+            foreach (var _tungGiaTri in _giaTri)
+            {
+                string _giaTriToString = _tungGiaTri.Value;
+
+                ListViewItem item = new ListViewItem(_giaTriToString);
+
+
+                _listTest.Add(item);
+            }
+            list_lb.ItemsSource = _listTest;
+        }
+
+        //ListView_Sơn Thêm
+        private void check_box_Checked(object sender, RoutedEventArgs e)
+        {
+            if (!_inCheck)
+                //if (list_lb.SelectedItems.Count > 0)
+            {
+                try
+                {
+                    foreach (ListViewItem item in list_lb.SelectedItems)
+                    {
+                        item.IsChecked = true;
+                        _inCheck = false;
+                    }
+                }
+                finally
+                {
+                    _inCheck = false;
+                }
+            }
+        }
+
+        //ListView_Sơn Thêm
+        private void check_box_Unchecked(object sender, RoutedEventArgs e)
+        {
+            if (!_inUncheck)
+                //if (list_lb.SelectedItems.Count > 0)
+                {
+                try
+                {
+                    foreach (ListViewItem item in list_lb.SelectedItems)
+                    {
+                        item.IsChecked = false;
+                        _inUncheck = false;
+                    }
+                }
+                finally
+                {
+                    _inUncheck = false;
+                }
+            }
         }
 
 
-        /// <summary>
-        /// Elements coloring
-        /// </summary>
-        /// 
+
+
+        //ListView_Sơn Thêm
+        public class ListViewItem : INotifyPropertyChanged
+        {
+            private string _value;
+            private bool _isChecked;
+
+            public string Value => _value;
+            public bool IsChecked
+            {
+                get => _isChecked;
+                set
+                {
+                    if (_isChecked != value)
+                    {
+                        _isChecked = value;
+                        OnPropertyChanged(nameof(IsChecked));
+                    }
+                }
+            }
+
+            public ListViewItem(string value)
+            {
+                _value = value;
+                _isChecked = false;
+            }
+
+            public event PropertyChangedEventHandler PropertyChanged;
+            protected virtual void OnPropertyChanged(string propertyName)
+            {
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
+
+
+        private void selectElement_Click(object sender, RoutedEventArgs e)
+        {
+            ICollection<ElementId> elementIds = new List<ElementId>();
+
+            if (lbColor.Items == null || lbColor.Items.Count == 0)
+                return;
+
+            var collector = GetCollector();
+
+            foreach (var elt in collector)
+            {
+                if (null != elt.Category)
+                {
+                    if (lbCategory.SelectedValue != null)
+                    {
+                        foreach (var cat in lbCategory.SelectedItems.Cast<BuiltInCategories>().Where(c => c.Name == elt.Category.Name))
+                        {
+                            var param =
+                                cat.Params.FirstOrDefault(
+                                    p => p.Name == lbProperties.SelectedValue.ToString());
+                            if (param != null)
+                            {
+                                var type = param.Type;
+                                if (type == "d")
+                                    foreach (Parameter p in elt.Parameters)
+                                    {
+                                        if (p.Definition.Name == param.Name)
+                                        {
+                                            var s = ParametersStorage(p);
+                                            elementIds = AddElementToCollection(elt, s, elementIds);
+                                        }
+                                    }
+                                else if (type == "t")
+                                {
+                                    var et = elt.Document.GetElement(elt.GetTypeId());
+                                    foreach (Parameter p in et.Parameters)
+                                    {
+                                        if (p.Definition.Name == param.Name)
+                                        {
+                                            var s = ParametersStorage(p);
+                                            elementIds = AddElementToCollection(elt, s, elementIds);
+                                        }
+                                    }
+                                }
+                                else if (type == "m")
+                                {
+
+                                    var et = elt.Document.GetElement(elt.GetTypeId());
+                                    var s = et.Name;
+                                    elementIds = AddElementToCollection(elt, s, elementIds);
+                                }
+                            }
+                            else
+                            {
+                                var s = "*" + cat.Name + " (N/A)";
+                                elementIds = AddElementToCollection(elt, s, elementIds);
+                            }
+                        }
+                    }
+                   
+                }
+            }
+            SelectElement(elementIds);
+            this.Close();
+
+        }
+
         public class ParametersWithType {
             public string Name { get; set; }
             public string Type { get; set; }
@@ -168,6 +420,7 @@ namespace ColorSplasher.Views
         }
 
         private OverrideGraphicSettings ogs_standart = new OverrideGraphicSettings();
+
         private List<BuiltInCategories> bic = new List<BuiltInCategories>();
 
         private void FillCategoryList()
@@ -219,7 +472,9 @@ namespace ColorSplasher.Views
         }
 
         private void lbCategory_SelectionChanged(object sender, SelectionChangedEventArgs e) {
+
                 lbColor.ItemsSource = null;
+                SetupListView(null);
                 lbProperties.ItemsSource = null;
             if (lbCategory.SelectedItems.Count>0)
             {
@@ -240,6 +495,7 @@ namespace ColorSplasher.Views
             try
             {
                 lbColor.ItemsSource = null;
+                SetupListView(null);
                 var usedcols = new List<Brush>();
                 var paramssel = new List<ParamValues>(); //get all values from selected parameters
                 var collector = GetCollector();
@@ -391,8 +647,6 @@ namespace ColorSplasher.Views
                     }
                 }
 
-
-
                 try
                 {
                     paramssel = paramssel.OrderBy(x => x.Value, new NaturalSortComparer<string>()).ToList();
@@ -414,6 +668,10 @@ namespace ColorSplasher.Views
                 {
                     paramssel = paramssel.OrderBy(x => x.Value, new NaturalSortComparer<string>()).ToList();
                 }
+
+                //ListView_Sơn Thêm
+                SetupListView(paramssel.OrderBy(x => x.Value, new NaturalSortComparer<string>()).ToList());
+
                 lbColor.ItemsSource = paramssel.OrderBy(x => x.Value, new NaturalSortComparer<string>()).ToList();
             }
             catch
@@ -552,11 +810,67 @@ namespace ColorSplasher.Views
             return false;
         }
 
+
+
+
+
+        public ICollection<ElementId> AddElementToCollection(Element element, string s ,ICollection<ElementId> elementIds)
+        {
+            if (element != null)
+            {
+                foreach (ParamValues lbi in lbColor.Items)
+                {
+                    foreach (var llbString in list_lb.ItemsSource)
+                    {
+                        if (((ListViewItem)llbString).IsChecked)
+                        {
+                            if (((ListViewItem)llbString).Value.ToString() == lbi.Value)
+                            {
+                                if (s == (string.IsNullOrEmpty(lbi.Value) ? "*" + element.Category.Name + " (N/A)" : lbi.Value))
+                                {
+                                    // Thêm ID của đối tượng vào danh sách
+                                    elementIds.Add(element.Id);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            return elementIds; // Trả về danh sách
+        }
+
+        private void SelectElement(ICollection<ElementId> elementIds)
+        {
+            if (elementIds != null)
+            {             
+
+                _uidoc.Selection.SetElementIds(elementIds);
+            }
+        }
+
+
         private IList<Element> GetCollector()
         {
             return new FilteredElementCollector(_doc, _doc.ActiveView.Id).WhereElementIsNotElementType()
                 .WhereElementIsViewIndependent()
                 .ToElements().Where(c=> _excludedCategories.All(ec=> c.Category !=null && !ec.Equals(c.Category.Name,StringComparison.InvariantCultureIgnoreCase))).ToList();
+        }
+
+        private IList<Element> GetElementsByCategoryAndParameter(string categoryName, string parameterName, string parameterValue)
+        {
+            // Lấy danh sách các đối tượng từ GetCollector()
+            var allElements = GetCollector();
+
+            // Lọc các đối tượng theo category và giá trị của parameter
+            var filteredElements = allElements
+                .Where(element =>
+                    element.Category != null &&
+                    element.Category.Name.Equals(categoryName, StringComparison.InvariantCultureIgnoreCase) &&
+                    element.LookupParameter(parameterName)?.AsString() == parameterValue
+                ).ToList();
+
+            return filteredElements;
         }
         private string ParametersStorage(Parameter p) {
             var s = "";
@@ -639,6 +953,8 @@ namespace ColorSplasher.Views
                     paramssel[lbColor.SelectedIndex].Colour = color;
                     lbColor.ItemsSource = null;
                     lbColor.ItemsSource = paramssel;
+                    SetupListView(null);
+                    SetupListView(paramssel);
                 }
             }
         }
@@ -655,7 +971,7 @@ namespace ColorSplasher.Views
                 var converter = new BrushConverter();
                 result = (Brush)converter.ConvertFromString(colorval);
             }
-            catch (Exception e)
+            catch
             {
             }
             return result;
@@ -711,6 +1027,8 @@ namespace ColorSplasher.Views
                     }
                     lbColor.ItemsSource = null;
                     lbColor.ItemsSource = paramssel;
+                    SetupListView(null);
+                    SetupListView(paramssel);
                 }
             }
             else
@@ -736,6 +1054,8 @@ namespace ColorSplasher.Views
                 }
                 lbColor.ItemsSource = null;
                 lbColor.ItemsSource = paramssel;
+                SetupListView(null);
+                SetupListView(paramssel);
             }
         }
         private void btnRainbowColors_Click(object sender, RoutedEventArgs e) {
@@ -759,6 +1079,8 @@ namespace ColorSplasher.Views
                 }
                 lbColor.ItemsSource = null;
                 lbColor.ItemsSource = paramssel;
+                SetupListView(null);
+                SetupListView(paramssel);
             }
         }
         public static List<System.Drawing.Color> GetGradientColors(System.Drawing.Color start, System.Drawing.Color end, int steps) {

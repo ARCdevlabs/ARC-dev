@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PyRevitTestBundles")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e1ef0ed30642a5c79e8f77e634530fd1bf9ed332")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d7add6a6124550f13110a4252fe917b08aadd74f")]
 [assembly: System.Reflection.AssemblyProductAttribute("PyRevitTestBundles")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PyRevitTestBundles")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
