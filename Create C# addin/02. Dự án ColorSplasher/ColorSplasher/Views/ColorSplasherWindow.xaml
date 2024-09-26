@@ -8,73 +8,197 @@
         xmlns:common="clr-namespace:ColorSplasher.Common"
         Title="Color Splasher" 
             ResizeMode="NoResize" 
-            Width="900"
-            Height="700"
+            Width="986"
+            Height="750"
             WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto" MinHeight="642"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="383*" />
-            <ColumnDefinition Width="84*"/>
-            <ColumnDefinition Width="90*" />
-            <ColumnDefinition Width="344*"/>
+            <ColumnDefinition Width="200*" />
+            <ColumnDefinition Width="500*"/>
         </Grid.ColumnDefinitions>
-        <GroupBox Grid.Row="0" Grid.Column="0" Header="Filters" Margin="10,0,10,0" Grid.ColumnSpan="2" Grid.RowSpan="2" Height="581" VerticalAlignment="Top">
-            <StackPanel VerticalAlignment="Top" Height="654">
-                <Label Margin="0,0,0,0">
-                    <TextBlock Text="Hold Ctrl For Multiple Selections" TextWrapping="Wrap" FontWeight="Normal" />
-                </Label>
-                <ListBox x:Name="lbCategory" DisplayMemberPath="Name"  SelectedValuePath="Name" Height="182" SelectionChanged="lbCategory_SelectionChanged" FontWeight="Normal" Margin="10,0,10,5" SelectionMode="Extended"/>
-                <Label Content="Parameters" FontWeight="Normal"/>
-                <ListBox x:Name="lbProperties" Height="293" DisplayMemberPath="Name" SelectedValuePath="Name" SelectionChanged="lbProperties_SelectionChanged" FontWeight="Normal" Margin="10,0,10,5"/>
+        <StackPanel Grid.Column="0">
+            <GroupBox Grid.Row="0"
+                      Grid.Column="0"
+                      Header="Filters"
+                      Margin="10,0,10,0"
+                      Grid.ColumnSpan="2"
+                      Grid.RowSpan="2"
+                      Height="581"
+                      VerticalAlignment="Top"
+                      >
+                <StackPanel VerticalAlignment="Top" Height="654">
+                    <Label Margin="0,0,0,0">
+                        <TextBlock Text="Hold Ctrl For Multiple Selections"
+                                   TextWrapping="Wrap"
+                                   FontWeight="Normal" 
+                                   />
+                    </Label>
+                    <ListBox x:Name="lbCategory"
+                             DisplayMemberPath="Name"
+                             SelectedValuePath="Name"
+                             Height="182"
+                             SelectionChanged="lbCategory_SelectionChanged"
+                             FontWeight="Normal"
+                             Margin="10,0,10,10"
+                             SelectionMode="Extended"
+                             />
+                    <Label Content="Parameters"
+                           FontWeight="Normal"
+                           />
+                    <ListBox x:Name="lbProperties" 
+                             Height="293" 
+                             DisplayMemberPath="Name" 
+                             SelectedValuePath="Name" 
+                             SelectionChanged="lbProperties_SelectionChanged"
+                             FontWeight="Normal" 
+                             Margin="10,0,10,5"
+                             />
+                </StackPanel>
+            </GroupBox>
+        </StackPanel>
+        <StackPanel Grid.Column="1">
+            
+            <Grid>
+                <GroupBox 
+                        Header="Values and Select"
+                        Margin="10,0,10,0"
+                        Grid.Row="0" Height="581"
+                        VerticalAlignment="Top"
+                        >
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="11*" />
+                            <ColumnDefinition Width="157*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <ListView x:Name="list_lb"
+                                      Grid.Column="0"
+                                      Margin="10,10,0,10"
+                                      SelectionMode= "Extended"                                      
+                                      HorizontalContentAlignment="Left"
+                                      ScrollViewer.HorizontalScrollBarVisibility="Hidden"  
+                                      ScrollViewer.VerticalScrollBarVisibility="Hidden"    
+                                      ScrollViewer.ScrollChanged="ListView_ScrollChanged" BorderThickness="1,1,0,1"
+                                      Background="#FFE7FBF1"
+                                      >
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <CheckBox VerticalAlignment="Center"   
+                                                  IsHitTestVisible ="True"
+                                                  IsChecked="{Binding IsChecked}"        
+                                                  Checked="check_box_Checked"
+                                                  Unchecked="check_box_Unchecked"                                                  
+                                                  />
+                                        <TextBlock Text="{Binding Value}" 
+                                                        VerticalAlignment="Center"
+                                                        Margin="0,0,0,0" 
+                                                        Visibility="Hidden"
+                                                        />
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+
+                        <ListBox Grid.Column="1"
+                                         Margin="0,10,10,10"
+                                         x:Name="lbColor"                      
+                                         DisplayMemberPath="Value"
+                                         FontWeight="Normal"
+                                         ScrollViewer.ScrollChanged="ListBox_ScrollChanged"
+                                         SelectionChanged="lbColor_SelectionChanged"
+                                         >
+                            <ListBox.ItemContainerStyle>
+                                <Style TargetType="{x:Type ListBoxItem}">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding Visible}" Value="True">
+                                            <Setter Property="Background" Value="{Binding Colour}"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </ListBox.ItemContainerStyle>
+                        </ListBox>
+                    </Grid>
+                </GroupBox>
+            </Grid>
+            <StackPanel  Orientation="Horizontal"
+                                 HorizontalAlignment="Right"
+                                 Margin="10,10,10,10"
+                                 Grid.Row="1"
+                                 >
+
+                <Button Margin="0,0,10,0"
+                                x:Name="selectElement"
+                                Content="Select"
+                                Height="30" Width="100"
+                                Click="selectElement_Click"
+                                Background="#FFE7FBF1" 
+                                />
+
+                <Button Margin="0,0,10,0"
+                                        x:Name="btnRainbowColors"
+                                        Content="Rainbow"
+                                        Height="30" Width="100"
+                                        Click="btnRainbowColors_Click" />
+                <Button x:Name="btnRefreshColors"
+                                    Content="Refresh"
+                                    Height="30"
+                                    Width="100"
+                                    Click="btnRefreshColors_Click"/>
             </StackPanel>
-        </GroupBox>
-        <GroupBox Grid.Row="0" Grid.Column="2" Header="Values"  Margin="10,0,10,0" Grid.RowSpan="2" Height="581" VerticalAlignment="Top" Grid.ColumnSpan="2">
-            <Grid Height="528">
+
+            <Grid Grid.Row="1"
+                  Grid.Column="0"
+                  Grid.ColumnSpan="10" 
+                  VerticalAlignment="Center"
+                  Height="61">
                 <Grid.RowDefinitions>
-                    <RowDefinition/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition />
                 </Grid.ColumnDefinitions>
-                <ListBox Grid.Row="0" Grid.Column="0" Margin="10,10,10,45" x:Name="lbColor" DisplayMemberPath="Value" FontWeight="Normal" SelectionChanged="lbColor_SelectionChanged" Grid.RowSpan="2">
-                    <ListBox.ItemContainerStyle>
-                        <Style TargetType="{x:Type ListBoxItem}">
-                            <Style.Triggers>
-                                <DataTrigger Binding="{Binding Visible}" Value="True">
-                                    <Setter Property="Background" Value="{Binding Colour}"/>
-                                </DataTrigger>
-                            </Style.Triggers>
-                        </Style>
-                    </ListBox.ItemContainerStyle>
-                </ListBox>
-                <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,238,0,-14">
-                    <Button Margin="0,0,10,0" x:Name="btnRainbowColors" Content="Rainbow" Height="30" Width="100" Click="btnRainbowColors_Click" />
-                    <Button x:Name="btnRefreshColors" Content="Refresh" Height="30" Width="100" Click="btnRefreshColors_Click"/>
+
+                <StackPanel Grid.Row="0"
+                            Grid.Column="1"
+                            Orientation="Horizontal"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Bottom"
+                            >
+                    <Button x:Name="btnSvColorSchema"
+                            Content="Save Color" 
+                            Height="30"
+                            Width="100" 
+                            Margin="5,5,5,5"
+                            Click="btnSvColorSchema_Click" 
+                            />
+                    <Button x:Name="btnLdColorSchema" 
+                            Content="Load Color" 
+                            Height="30"
+                            Width="100" 
+                            Margin="5,5,5,5"
+                            Click="btnLdColorSchema_Click" 
+                            />
+                    <Button x:Name="btnApplySet" 
+                            Content="Apply Color" 
+                            Height="30" 
+                            Width="100" 
+                            Margin="5,5,5,5"
+                            Click="btnApplySet_Click" 
+                            />
+                    <Button x:Name="btnClearSet" 
+                            Content="Clear Color" 
+                            Height="30"
+                            Width="100"
+                            Margin="5,5,10,5"
+                            Click="btnClearSet_Click"
+                            />
                 </StackPanel>
             </Grid>
-        </GroupBox>
-        <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4" VerticalAlignment="Center">
-            <Grid.RowDefinitions>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition />
-            </Grid.ColumnDefinitions>
-
-            <TextBlock Grid.Row="0" Grid.Column="0">
-            </TextBlock>
-            <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal" Margin="0,202,9,-196" HorizontalAlignment="Right" Width="539">
-                <Button x:Name="btnSvColorSchema" Content="SaveSchema" Height="40" Width="125" Margin="5,15,5,0" Click="btnSvColorSchema_Click" />
-                <Button x:Name="btnLdColorSchema" Content="LoadSchema" Height="40" Width="125" Margin="5,15,5,0" Click="btnLdColorSchema_Click" />
-                <Button x:Name="btnApplySet" Content="ApplyColorSet" Height="40" Width="125" Margin="5,15,5,0" Click="btnApplySet_Click" />
-                <Button x:Name="btnClearSet" Content="ClearSet" Height="40" Width="125" Margin="5,15,5,0" Click="btnClearSet_Click"/>
-            </StackPanel>
-        </Grid>
+        </StackPanel>
     </Grid>
 </Window>

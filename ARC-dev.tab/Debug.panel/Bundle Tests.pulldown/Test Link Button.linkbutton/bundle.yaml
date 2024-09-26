@@ -4,4 +4,5 @@ author: "{{author}}"
 highlight: new
 assembly: PyRevitTestBundles
 command_class: PyRevitTestLinkCommand
-availability_class: PyRevitTestLinkCommandAvail
+
+#    availability_class: PyRevitTestLinkCommandAvail

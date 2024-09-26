@@ -1,5 +1,5 @@
 is_global = true
 build_property.RootNamespace = PyRevitTestBundles
-build_property.ProjectDir = D:\Son folder\19. Addin\pyRevit\pyRevit\extensions\pyRevitDevTools.extension\pyRevitDev.tab\Debug.panel\Bundle Tests.pulldown\bin\PyRevitTestBundles\
+build_property.ProjectDir = C:\Users\Admin\AppData\Roaming\pyRevit\Extensions\ARC-dev.extension\ARC-dev.tab\Debug.panel\Bundle Tests.pulldown\bin\PyRevitTestBundles\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
