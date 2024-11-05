@@ -80,8 +80,8 @@
                                       SelectionMode= "Extended"                                      
                                       HorizontalContentAlignment="Left"
                                       ScrollViewer.HorizontalScrollBarVisibility="Hidden"  
-                                      ScrollViewer.VerticalScrollBarVisibility="Hidden"    
-                                      ScrollViewer.ScrollChanged="ListView_ScrollChanged" BorderThickness="1,1,0,1"
+                                      ScrollViewer.VerticalScrollBarVisibility="Hidden"                                         
+                                      ScrollViewer.ScrollChanged="ListView_ScrollChanged" BorderThickness="1,1,0,1"  
                                       Background="#FFE7FBF1"
                                       >
                             <ListView.ItemTemplate>

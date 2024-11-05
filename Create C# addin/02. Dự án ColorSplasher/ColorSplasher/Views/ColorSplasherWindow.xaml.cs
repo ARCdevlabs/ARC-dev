@@ -67,6 +67,8 @@ namespace ColorSplasher.Views
 
 
         //ListView_Sơn Thêm
+        // Thêm khai báo cho tính năng check, uncheck của listview
+
         private ObservableCollection<ListViewItem> _listTest;
         private bool _inCheck = false;
         private bool _inUncheck = false;
@@ -114,9 +116,6 @@ namespace ColorSplasher.Views
             //====================================================================================================================================================
             InitializeComponent();
 
-            //ListView_Sơn Thêm
-            //SetupListView();
-
 
             var mainViewModel = new MainViewModel();
             // this creates an instance of the ViewModel
@@ -130,7 +129,8 @@ namespace ColorSplasher.Views
         }
 
         //ListView_Sơn Thêm
-
+        // ListView_ScrollChanged,ListBox_ScrollChanged,GetScrollViewer 
+        // Là các phương thức dùng để đồng bộ thanh cuộn theo phương dọc của ListView và ListBox
         private void ListView_ScrollChanged(object sender, ScrollChangedEventArgs e)
         {
             // Lấy ScrollViewer từ ListBox và đồng bộ hóa
@@ -166,6 +166,12 @@ namespace ColorSplasher.Views
 
             return null;
         }
+
+
+
+
+        //ListView_Sơn Thêm
+        // Phương thức SetupListView để có thể truyền dữ liệu vào listview
         private void SetupListView(List<ParamValues> _giaTri)
         {
             if (_giaTri == null)
@@ -191,6 +197,7 @@ namespace ColorSplasher.Views
         }
 
         //ListView_Sơn Thêm
+        // Phương thức check_box_Checked để tạo hành động khi click vào checkbox
         private void check_box_Checked(object sender, RoutedEventArgs e)
         {
             if (!_inCheck)
@@ -212,6 +219,7 @@ namespace ColorSplasher.Views
         }
 
         //ListView_Sơn Thêm
+        // Phương thức check_box_Unchecked để tạo hành động khi click vào checkbox
         private void check_box_Unchecked(object sender, RoutedEventArgs e)
         {
             if (!_inUncheck)
@@ -236,6 +244,7 @@ namespace ColorSplasher.Views
 
 
         //ListView_Sơn Thêm
+        // Tạo một class để khai báo về class ListViewItem
         public class ListViewItem : INotifyPropertyChanged
         {
             private string _value;
@@ -269,6 +278,8 @@ namespace ColorSplasher.Views
         }
 
 
+        //ListView_Sơn Thêm
+        //Thêm button để có thể select đối tượng
         private void selectElement_Click(object sender, RoutedEventArgs e)
         {
             ICollection<ElementId> elementIds = new List<ElementId>();
@@ -471,6 +482,7 @@ namespace ColorSplasher.Views
             lbCategory.ItemsSource = bic;
         }
 
+        //Reset dữ liệu ở ô Parameter và Parameter Value mỗi khi bấm Category
         private void lbCategory_SelectionChanged(object sender, SelectionChangedEventArgs e) {
 
                 lbColor.ItemsSource = null;
@@ -487,6 +499,7 @@ namespace ColorSplasher.Views
             }
         }
 
+        //Reset dữ liệu ở ô Parameter Value mỗi khi bấm Category
         private void lbProperties_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (lbProperties.SelectedItem == null)
@@ -812,8 +825,8 @@ namespace ColorSplasher.Views
 
 
 
-
-
+        //ListView_Sơn Thêm
+        // Thêm phương thức để add đối tượng vào một list
         public ICollection<ElementId> AddElementToCollection(Element element, string s ,ICollection<ElementId> elementIds)
         {
             if (element != null)
@@ -840,6 +853,7 @@ namespace ColorSplasher.Views
             return elementIds; // Trả về danh sách
         }
 
+        // Thêm phương thức để chọn đối tượng từ một list.
         private void SelectElement(ICollection<ElementId> elementIds)
         {
             if (elementIds != null)
