@@ -54,7 +54,8 @@
     <Compile Include="ARCLibrary.cs" />
     <Compile Include="ARCTransform.cs" />
     <None Include="SampleCommand_LeaderLine.cs" />
-    <Compile Include="Command_JoinLGSWall.cs" />
+    <Compile Include="Command_InputBeamInsulation.cs" />
+    <None Include="Command_JoinLGSWall.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

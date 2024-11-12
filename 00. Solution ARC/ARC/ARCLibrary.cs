@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Autodesk.Revit.UI;
 using Autodesk.Revit.DB;
 using Autodesk.Revit.UI.Selection;
+using Autodesk.Revit.DB.Structure;
 
 
 namespace ARC
@@ -143,18 +144,53 @@ namespace ARC
 
             return elements;
         }
+        public Line GetBeamLocation(Element beam)
+        {
+            // Kiểm tra nếu Element không phải là dầm hoặc không có thông tin về vị trí
+            if (beam == null || beam.Location == null || !(beam.Location is LocationCurve locationCurve))
+            {
+                throw new InvalidOperationException("Element không phải là dầm hoặc không có vị trí.");
+            }
 
+            // Lấy thông tin đường cong vị trí (LocationCurve)
+            Curve beamCurve = locationCurve.Curve;
+
+            // Lấy tọa độ điểm đầu và điểm cuối của dầm
+            XYZ startPoint = beamCurve.GetEndPoint(0);
+            XYZ endPoint = beamCurve.GetEndPoint(1);
+
+            Line line = Line.CreateBound(startPoint, endPoint);
+
+            return line;
+        }
+
+        public FamilyInstance CreateBeam(Document doc, Curve curve, FamilySymbol beamType, Level level)
+        {
+            // Tạo dầm mới
+            FamilyInstance beam = doc.Create.NewFamilyInstance(curve, beamType, level, StructuralType.Beam);
+
+            return beam;
+        }
+
+        public void ActivateSymbol(Document doc, FamilySymbol element)
+        {
+            try
+            {
+                // Kích hoạt FamilySymbol nếu chưa được kích hoạt
+                if (element != null && !element.IsActive)
+                {
+                    element.Activate();
+                    doc.Regenerate(); // Regenerate document to update changes in Revit
+                }
+            }
+            catch
+            {
+                // Xử lý lỗi khi không kích hoạt được FamilySymbol
+            }
+
+
+        }
     }
-
-
-
-
-
-
-
-
-
-
 
     //Class phụ
 
