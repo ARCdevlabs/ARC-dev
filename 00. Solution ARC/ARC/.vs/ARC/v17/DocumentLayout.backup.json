@@ -3,12 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\Admin\\AppData\\Roaming\\pyRevit\\Extensions\\ARC-dev.extension\\00. Solution ARC\\ARC\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{21D9627B-9E9A-48C3-BC61-91D1C42EB8E8}|ARC Addin.csproj|c:\\users\\admin\\appdata\\roaming\\pyrevit\\extensions\\arc-dev.extension\\00. solution arc\\arc\\arclibrary.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{21D9627B-9E9A-48C3-BC61-91D1C42EB8E8}|ARC Addin.csproj|solutionrelative:arclibrary.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{21D9627B-9E9A-48C3-BC61-91D1C42EB8E8}|ARC Addin.csproj|c:\\users\\admin\\appdata\\roaming\\pyrevit\\extensions\\arc-dev.extension\\00. solution arc\\arc\\inputinsulationwpf.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{21D9627B-9E9A-48C3-BC61-91D1C42EB8E8}|ARC Addin.csproj|solutionrelative:inputinsulationwpf.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{21D9627B-9E9A-48C3-BC61-91D1C42EB8E8}|ARC Addin.csproj|c:\\users\\admin\\appdata\\roaming\\pyrevit\\extensions\\arc-dev.extension\\00. solution arc\\arc\\command_inputbeaminsulation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{21D9627B-9E9A-48C3-BC61-91D1C42EB8E8}|ARC Addin.csproj|solutionrelative:command_inputbeaminsulation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{21D9627B-9E9A-48C3-BC61-91D1C42EB8E8}|ARC Addin.csproj|c:\\users\\admin\\appdata\\roaming\\pyrevit\\extensions\\arc-dev.extension\\00. solution arc\\arc\\command_inputbeaminsulation_form.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{21D9627B-9E9A-48C3-BC61-91D1C42EB8E8}|ARC Addin.csproj|solutionrelative:command_inputbeaminsulation_form.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{21D9627B-9E9A-48C3-BC61-91D1C42EB8E8}|ARC Addin.csproj|c:\\users\\admin\\appdata\\roaming\\pyrevit\\extensions\\arc-dev.extension\\00. solution arc\\arc\\inputinsulationwpf.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{21D9627B-9E9A-48C3-BC61-91D1C42EB8E8}|ARC Addin.csproj|solutionrelative:inputinsulationwpf.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,32 +22,44 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "InputInsulationWPF.xaml",
+              "DocumentMoniker": "C:\\Users\\Admin\\AppData\\Roaming\\pyRevit\\Extensions\\ARC-dev.extension\\00. Solution ARC\\ARC\\InputInsulationWPF.xaml",
+              "RelativeDocumentMoniker": "InputInsulationWPF.xaml",
+              "ToolTip": "C:\\Users\\Admin\\AppData\\Roaming\\pyRevit\\Extensions\\ARC-dev.extension\\00. Solution ARC\\ARC\\InputInsulationWPF.xaml",
+              "RelativeToolTip": "InputInsulationWPF.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-11-14T07:10:09.655Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "ARCLibrary.cs",
-              "DocumentMoniker": "C:\\Users\\Admin\\AppData\\Roaming\\pyRevit\\Extensions\\ARC-dev.extension\\00. Solution ARC\\ARC\\ARCLibrary.cs",
-              "RelativeDocumentMoniker": "ARCLibrary.cs",
-              "ToolTip": "C:\\Users\\Admin\\AppData\\Roaming\\pyRevit\\Extensions\\ARC-dev.extension\\00. Solution ARC\\ARC\\ARCLibrary.cs",
-              "RelativeToolTip": "ARCLibrary.cs",
-              "ViewState": "AgIAAJ0AAAAAAAAAAAAiwNMAAAABAAAAAAAAAA==",
+              "Title": "InputInsulationWPF.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\AppData\\Roaming\\pyRevit\\Extensions\\ARC-dev.extension\\00. Solution ARC\\ARC\\InputInsulationWPF.xaml.cs",
+              "RelativeDocumentMoniker": "InputInsulationWPF.xaml.cs",
+              "ToolTip": "C:\\Users\\Admin\\AppData\\Roaming\\pyRevit\\Extensions\\ARC-dev.extension\\00. Solution ARC\\ARC\\InputInsulationWPF.xaml.cs",
+              "RelativeToolTip": "InputInsulationWPF.xaml.cs",
+              "ViewState": "AgIAABUAAAAAAAAAAAAqwCYAAAA1AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-12T09:26:31.954Z",
+              "WhenOpened": "2024-11-14T06:02:07.587Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Command_InputBeamInsulation.cs",
-              "DocumentMoniker": "C:\\Users\\Admin\\AppData\\Roaming\\pyRevit\\Extensions\\ARC-dev.extension\\00. Solution ARC\\ARC\\Command_InputBeamInsulation.cs",
-              "RelativeDocumentMoniker": "Command_InputBeamInsulation.cs",
-              "ToolTip": "C:\\Users\\Admin\\AppData\\Roaming\\pyRevit\\Extensions\\ARC-dev.extension\\00. Solution ARC\\ARC\\Command_InputBeamInsulation.cs",
-              "RelativeToolTip": "Command_InputBeamInsulation.cs",
-              "ViewState": "AgIAAEoAAAAAAAAAAAAAAGAAAAAAAAAAAAAAAA==",
+              "Title": "Command_InputBeamInsulation_Form.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\AppData\\Roaming\\pyRevit\\Extensions\\ARC-dev.extension\\00. Solution ARC\\ARC\\Command_InputBeamInsulation_Form.cs",
+              "RelativeDocumentMoniker": "Command_InputBeamInsulation_Form.cs",
+              "ToolTip": "C:\\Users\\Admin\\AppData\\Roaming\\pyRevit\\Extensions\\ARC-dev.extension\\00. Solution ARC\\ARC\\Command_InputBeamInsulation_Form.cs",
+              "RelativeToolTip": "Command_InputBeamInsulation_Form.cs",
+              "ViewState": "AgIAAJoAAAAAAAAAAAAQwMEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-12T07:59:31.55Z",
+              "WhenOpened": "2024-11-14T05:18:54.572Z",
               "EditorCaption": ""
             }
           ]

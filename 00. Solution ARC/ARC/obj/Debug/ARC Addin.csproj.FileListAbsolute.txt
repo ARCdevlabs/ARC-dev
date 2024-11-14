@@ -4,3 +4,8 @@ C:\Users\ADMIN\AppData\Roaming\pyRevit\Extensions\ARC-dev.extension\00. Solution
 C:\Users\ADMIN\AppData\Roaming\pyRevit\Extensions\ARC-dev.extension\00. Solution ARC\ARC\bin\Debug\ARC.pdb
 C:\Users\ADMIN\AppData\Roaming\pyRevit\Extensions\ARC-dev.extension\00. Solution ARC\ARC\obj\Debug\ARC.dll
 C:\Users\ADMIN\AppData\Roaming\pyRevit\Extensions\ARC-dev.extension\00. Solution ARC\ARC\obj\Debug\ARC.pdb
+C:\Users\Admin\AppData\Roaming\pyRevit\Extensions\ARC-dev.extension\00. Solution ARC\ARC\obj\Debug\InputInsulationWPF.g.cs
+C:\Users\Admin\AppData\Roaming\pyRevit\Extensions\ARC-dev.extension\00. Solution ARC\ARC\obj\Debug\ARC_MarkupCompile.cache
+C:\Users\Admin\AppData\Roaming\pyRevit\Extensions\ARC-dev.extension\00. Solution ARC\ARC\obj\Debug\ARC_MarkupCompile.lref
+C:\Users\Admin\AppData\Roaming\pyRevit\Extensions\ARC-dev.extension\00. Solution ARC\ARC\obj\Debug\InputInsulationWPF.baml
+C:\Users\Admin\AppData\Roaming\pyRevit\Extensions\ARC-dev.extension\00. Solution ARC\ARC\obj\Debug\ARC.g.resources
