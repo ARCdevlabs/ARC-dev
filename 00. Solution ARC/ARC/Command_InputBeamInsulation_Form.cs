@@ -1,5 +1,6 @@
 ﻿using Autodesk.Revit.Attributes;
 using Autodesk.Revit.DB;
+using Autodesk.Revit.DB.Structure;
 using Autodesk.Revit.UI;
 using System;
 using System.Collections.Generic;
@@ -27,15 +28,15 @@ namespace ARC
 
                 TransactionGroup trangroup = new TransactionGroup(doc, "Input Beam Insulation Group Trans");
                 {
-                    trangroup.Start();
-                    Transaction trans0 = new Transaction(doc, "Setting Thickness");
-                    {
-                        trans0.Start();
+                    //trangroup.Start();
+                    //Transaction trans0 = new Transaction(doc, "Setting Thickness");
+                    //{
+                    //    trans0.Start();
 
-                        familySymbol.LookupParameter("耐火被覆t").Set(thickness);
+                    //    familySymbol.LookupParameter("耐火被覆t").Set(thickness);
 
-                        trans0.Commit();
-                    }
+                    //    trans0.Commit();
+                    //}
 
                 try
                     {
@@ -63,17 +64,18 @@ namespace ARC
                                 //Parameter kích thước
                                 try
                                 {
-                                    H_c = type.LookupParameter("H_c").AsDouble();
-                                    B_c = type.LookupParameter("B_c").AsDouble();
-                                    tw_c = type.LookupParameter("tw_c").AsDouble();
-                                    tf_c = type.LookupParameter("tf_c").AsDouble();
-                                }
+                                H_c = type.LookupParameter("H_c").AsDouble();
+                                B_c = type.LookupParameter("B_c").AsDouble();
+                                tw_c = type.LookupParameter("tw_c").AsDouble();
+                                tf_c = type.LookupParameter("tf_c").AsDouble();
+
+                            }
                                 catch
                                 {
-                                    //TaskDialog.Show("Beam Information", "Đã có lỗi xảy ra");
-                                    //throw new Exception("Đã xảy ra lỗi!");
+                                //TaskDialog.Show("Beam Information", "Đã có lỗi xảy ra");
+                                //throw new Exception("Đã xảy ra lỗi!");
 
-                                    continue;
+                                continue;
                                 }
 
                                 int yz_jus = ele.get_Parameter(BuiltInParameter.YZ_JUSTIFICATION).AsInteger();
@@ -125,7 +127,14 @@ namespace ARC
                                     newBeam.LookupParameter("B").Set(B_c);
                                     newBeam.LookupParameter("tw").Set(tw_c);
                                     newBeam.LookupParameter("tf").Set(tf_c);
-                                    try
+
+                                    int structureUsage = ele.get_Parameter(BuiltInParameter.INSTANCE_STRUCT_USAGE_PARAM).AsInteger();
+                                    if (structureUsage != 3 )
+                                    {
+                                        StructuralFramingUtils.DisallowJoinAtEnd(newBeam, 0);
+                                        StructuralFramingUtils.DisallowJoinAtEnd(newBeam, 1);
+                                    }    
+                                try
                                     {
                                         Parameter paramStartJoinCutBack = newBeam.get_Parameter(BuiltInParameter.START_JOIN_CUTBACK);
                                         paramStartJoinCutBack.Set(0);
