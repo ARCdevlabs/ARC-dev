@@ -8,8 +8,8 @@ from pyrevit.framework import IO
 
 # compile
 try:
-    source = script.get_bundle_file('ARClib.py')
-    dest = op.join(USER_SYS_TEMP, 'ARClib.dll')
+    source = script.get_bundle_file('ReadPassCode241125.py')
+    dest = op.join(USER_SYS_TEMP, 'ReadPassCode241125.dll')
     print dest
     clr.CompileModules(dest, source)
 except IO.IOException as ioerr:
@@ -29,6 +29,6 @@ clr.AddReferenceToFileAndPath(dest)
 
 uidoc = __revit__.ActiveUIDocument
 doc = uidoc.Document
-import ARClib
-ARClib.get_selected_elements(uidoc, doc, noti = True)
-# print (dir(ARClib))
+import ReadPassCode241125
+pass_code = ReadPassCode241125
+print pass_code.read_pass_code()

@@ -4,6 +4,7 @@ layout:
   - Test FullFrame Engine
   - Test Persistent Engine
   - Test IronPython Compile
+  - IronPython Compile
   - Test IronPython Search Paths
   - Test IronPython Threading
   - Test IronPython Events
