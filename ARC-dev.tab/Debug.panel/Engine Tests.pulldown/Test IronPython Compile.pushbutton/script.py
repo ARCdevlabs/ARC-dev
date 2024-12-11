@@ -8,8 +8,8 @@ from pyrevit.framework import IO
 
 # compile
 try:
-    source = script.get_bundle_file('ReadPassCode241125.py')
-    dest = op.join(USER_SYS_TEMP, 'ReadPassCode241125.dll')
+    source = script.get_bundle_file('ipycompiletest.py')
+    dest = op.join(USER_SYS_TEMP, 'ipycompiletest.dll')
     print dest
     clr.CompileModules(dest, source)
 except IO.IOException as ioerr:
@@ -20,12 +20,12 @@ except Exception as cerr:
 # import test
 sys.path.append(USER_SYS_TEMP)
 clr.AddReferenceToFileAndPath(dest)
+print USER_SYS_TEMP, dest
+import ipycompiletest
 
-# import ipycompiletest
+ipycompiletest.compile_test('Compiled function works.')
 
-# ipycompiletest.compile_test('Compiled function works.')
-
-# ipycompiletest.CompiledType('Compiled type works.')
+ipycompiletest.CompiledType('Compiled type works.')
 
 uidoc = __revit__.ActiveUIDocument
 doc = uidoc.Document

