@@ -1,0 +1,42 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <RootNamespace>IronPythonNetCore8._0</RootNamespace>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="IronPython">
+      <HintPath>reference\IronPython.dll</HintPath>
+    </Reference>
+    <Reference Include="IronPython.Modules">
+      <HintPath>reference\IronPython.Modules.dll</HintPath>
+    </Reference>
+    <Reference Include="IronPython.SQLite">
+      <HintPath>reference\IronPython.SQLite.dll</HintPath>
+    </Reference>
+    <Reference Include="IronPython.Wpf">
+      <HintPath>reference\IronPython.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Dynamic">
+      <HintPath>reference\Microsoft.Dynamic.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Scripting">
+      <HintPath>reference\Microsoft.Scripting.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Scripting.Metadata">
+      <HintPath>reference\Microsoft.Scripting.Metadata.dll</HintPath>
+    </Reference>
+    <Reference Include="RevitAPI">
+      <HintPath>..\..\..\..\..\..\..\..\Program Files\Autodesk\Revit 2025\RevitAPI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="RevitAPIUI">
+      <HintPath>..\..\..\..\..\..\..\..\Program Files\Autodesk\Revit 2025\RevitAPIUI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+
+</Project>
